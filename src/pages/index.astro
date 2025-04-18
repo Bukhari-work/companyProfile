@@ -1,34 +1,42 @@
 ---
-import "../styles/global.css";
+import Main from "@/layouts/Main.astro";
 // Component Imports
-import { Button } from "../components/ui/button.tsx";
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import { Button } from "@/components/ui/button.tsx";
+import { DrawerDialogDemo } from "@/components/ResponsiveDialog.tsx";
+import { AvatarDemo } from "@/components/AvatarDemo.tsx";
+import { ButtonDemo } from "@/components/ButtonDemo.tsx";
+//
+const content = { title: "light Mode" };
 ---
 
-<html lang="en" class="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro + TailwindCSS</title>
-  </head>
-
-  <body>
-    <div class="grid place-items-center h-screen content-center">
-      <Button>Tailwind Button in Astro!</Button>
-      <a href="/indexx" class="p-4 underline">Markdown is also supported...</a>
-    </div>
-  </body>
-
-  <script>
-    import confetti from "canvas-confetti";
-    const button = document.body.querySelector("button");
-
-    if (button) {
-      button.addEventListener("click", () => confetti());
-    }
-  </script>
-</html>
+<Main content={content}>
+  <a href="/indexx" class="font- absolute p-8 underline">Dark!</a>
+  <div class="grid h-screen place-items-center content-center">
+    <Button variant="default" client:load data-aw-toggle-color-scheme
+      >Button
+    </Button>
+    <br />
+    <Button variant="secondary"><a href="#">Button</a> </Button>
+    <br />
+    <DrawerDialogDemo client:idle />
+    <br />
+    <AvatarDemo client:load />
+    <br />
+    <ButtonDemo client:load />
+    <br />
+    <article class="prose dark:prose-invert lg:prose-xl">
+      <h1>Garlic bread with cheese: What the science tells us</h1>
+      <p class="font-pristina">
+        For years parents have espoused the health benefits of eating garlic
+        bread with cheese to their children, with the food earning such an
+        iconic status in our culture that kids will often dress up as warm,
+        cheesy loaf for Halloween.
+      </p>
+      <p class="font-corinthia text-4xl">
+        But a recent study shows that the celebrated appetizer may be linked to
+        a series of rabies cases springing up around the country.
+      </p>
+      <!-- ... -->
+    </article>
+  </div>
+</Main>

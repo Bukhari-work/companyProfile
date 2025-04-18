@@ -1,34 +1,17 @@
 ---
-import "../styles/global.css";
+import Main from "@/layouts/Main.astro";
+
 // Component Imports
 import { Button } from "@/components/ui/button.tsx";
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+//
+const content = { title: "light Mode" };
 ---
 
-<html lang="en" class="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro + TailwindCSS</title>
-  </head>
-
+<Main content={content} mode="dark">
   <body>
-    <div class="grid place-items-center h-screen content-center">
-      <Button>Tailwind Button in Astro!</Button>
-      <a href="/" class="p-4 underline">Markdown is also supported...</a>
+    <a href="/" class="absolute p-8 underline">Light!</a>
+    <div class="grid h-screen place-items-center content-center">
+      <Button client:load>Tailwind Button in Astro!</Button>
     </div>
   </body>
-
-  <script>
-    import confetti from "canvas-confetti";
-    const button = document.body.querySelector("button");
-
-    if (button) {
-      button.addEventListener("click", () => confetti());
-    }
-  </script>
-</html>
+</Main>

@@ -1,0 +1,71 @@
+{
+  "site": {
+    "title": "companyProfile",
+    "company": "companyName",
+    "base_url": "/",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.svg",
+    "logo": "/images/logo.svg",
+    "logo_darkmode": "/images/logo-darkmode.svg",
+    "logo_width": "30",
+    "logo_height": "30",
+    "logo_text": "companyProfile"
+  },
+  "menu": {
+    "main": [
+      {
+        "name": "About",
+        "url": "/indexx"
+      },
+      {
+        "name": "Project",
+        "url": "/project"
+      },
+      {
+        "name": "Contact",
+        "url": "/contact"
+      }
+    ],
+    "footer": [
+      {
+        "name": "Privacy Policy",
+        "url": "/privacy-policy"
+      },
+      {
+        "name": "Contact",
+        "url": "/contact"
+      }
+    ]
+  },
+
+  "navigation_button": {
+    "enable": true,
+    "label": "Hire Me! :D",
+    "link": "/contact"
+  },
+
+  "metadata": {
+    "meta_author": "Ahmad Bukhari",
+    "meta_image": "/images/og-image.png",
+    "meta_image_alt": "Please hire me :(",
+    "meta_description": "Ahmad Bukhari's Portfolio Site"
+  },
+
+  "params": {
+    "contact_form_url": "",
+    "copyright": "©2025 Ahmad Bukhari. All rights reserved.",
+    "credit": "Made with [Astro](https://astro.build) using [Astroplate](https://github.com/zeon-studio/astroplate) template"
+  },
+
+  "settings": {
+    "search": true,
+    "sticky_header": true,
+    "theme_switcher": true,
+    "default_theme": "system",
+    "pagination": 4,
+    "summary_length": 150,
+    "blog_folder": "blog",
+    "project_folder": "project"
+  }
+}

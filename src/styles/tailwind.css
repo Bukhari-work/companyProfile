@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -12,7 +15,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.66 0.0357 201.06);
+  --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -37,6 +40,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --kuning: oklch(0.89 0.184452 100.2816);
+  --ungu: oklch(0.38 0.1063 312.42);
 }
 
 .dark {
@@ -71,6 +77,9 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --kuning: oklch(0.89 0.184452 100.2816);
+  --ungu: oklch(0.38 0.1063 312.42);
 }
 
 @theme inline {
@@ -109,6 +118,31 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-kuning: var(--kuning);
+  --color-ungu: var(--ungu);
+
+  --font-asap: "Asap", sans-serif;
+  --font-corinthia: "Corinthia", cursive;
+  --font-trajan: "Trajan", serif;
+  --font-pristina: "Pristina", cursive;
+}
+
+@font-face {
+  font-family: Trajan;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/TrajanPro-Bold.otf") format("otf");
+  src: url("/fonts/TrajanPro-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Pristina;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Pristina.ttf") format("ttf");
 }
 
 @layer base {

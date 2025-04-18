@@ -1,16 +1,67 @@
 ---
-import '../styles/global.css';
-const { content } = Astro.props;
+import "../styles/tailwind.css";
+
+import { SEO } from "astro-seo";
+import Favicons from "@/layouts/Favicons.astro";
+
+import BasicScripts from "@/components/scripts/BasicScripts.astro";
+import ThemeScripts from "@/components/scripts/ThemeScripts.astro";
+import { ClientRouter } from "astro:transitions";
+
+import TwSizeIndicator from "@/layouts/TwSizeIndicator.astro";
+import Header from "@/layouts/Header.astro";
+
+import config from "@/config.json";
+const { content, mode } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{content.title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<!doctype html>
+<!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+<html lang="en" class={mode}>
+  <head>
+    <!-- Info-->
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- astro-seo component -->
+    <SEO
+      charset="UTF-8"
+      title={content.title}
+      description={content.description || config.metadata.meta_description}
+      openGraph={{
+        basic: {
+          title: content.title, // Use the same title for og:title
+          type: "website", // Or 'article', 'profile' etc. Adjust accordingly
+          image: content.image || config.metadata.meta_image,
+        },
+        image: {
+          alt: content.imageAlt || config.metadata.meta_image_alt,
+          width: 1200,
+          height: 630,
+        },
+        optional: {
+          siteName: config.site.title,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        creator: `@${config.site.company}`,
+      }}
+      canonical={content.canonical}
+    />
+
+    <Favicons />
+
+    <!-- Additional Integrations -->
+    <ClientRouter />
+    <BasicScripts />
+  </head>
+
+  <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+  <body class="sm:overscroll-y-none">
+    <TwSizeIndicator />
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+  </body>
 </html>
