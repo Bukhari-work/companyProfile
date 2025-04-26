@@ -13,21 +13,29 @@
     "logo_text": "companyProfile"
   },
   "menu": {
-    "main": [
+    "mainMenu": [
       {
-        "name": "About",
+        "name": "Beranda",
+        "url": "/"
+      },
+      {
+        "name": "Tentang",
         "url": "/indexx"
       },
       {
-        "name": "Project",
-        "url": "/project"
+        "name": "Buletin",
+        "url": "/blog"
       },
       {
-        "name": "Contact",
+        "name": "Kontak",
         "url": "/contact"
+      },
+      {
+        "name": "Lebih",
+        "url": "/more"
       }
     ],
-    "footer": [
+    "footerMenu": [
       {
         "name": "Privacy Policy",
         "url": "/privacy-policy"

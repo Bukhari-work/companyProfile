@@ -3,82 +3,100 @@ import Logo from "@/layouts/Logo.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import config from "@/config.json";
 import { cn } from "@/lib/utils";
-import { MenuDrawer } from "@/components/MenuDrawer.tsx";
-import { Button } from "@/components/ui/button.tsx";
-import { ChevronRight } from "lucide-react";
+import NavDrawer from "@/components/NavDrawer.astro";
+import Button from "@/components/ui-astro/Button.astro";
 
-export interface ChildNavigationLink {
+interface ChildNavigationLink {
   name: string;
   url: string;
 }
 
-export interface NavigationLink {
+interface NavigationLink {
   name: string;
   url: string;
   hasChildren?: boolean;
   children?: ChildNavigationLink[];
 }
-const { main }: { main: NavigationLink[] } = config.menu;
+
+const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
+
 const { pathname } = Astro.url;
 ---
 
-<header class="sticky top-0 z-50">
-  <div
-    class="dark:bg-ungu mx-auto flex flex-wrap items-center justify-evenly bg-white px-4 py-4 shadow-sm md:py-4 lg:py-3"
-  >
-    <Logo loading="eager" />
-    <nav class="flex items-center justify-between lg:text-sm">
-      <ul
-        class="order-3 hidden w-full py-4 text-center lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:py-0 xl:space-x-8"
-      >
-        {
-          main.map((menu) => (
-            <li class="nav-item">
-              <a
-                href={menu.url}
-                class={`group relative block p-3 transition-all duration-300 lg:px-2 lg:py-3 ${
-                  (pathname === `${menu.url}/` || pathname === menu.url) &&
-                  "text-ungu dark:text-kuning"
-                }`}
-              >
-                {menu.name}
-                <span
-                  class={cn(
-                    `bg-primary absolute bottom-1 left-0 h-0.5 w-full origin-bottom-left scale-x-0 transform transition-transform duration-200 ease-out group-hover:scale-x-100 ${
-                      (pathname === `${menu.url}/` || pathname === menu.url) &&
-                      "bg-ungu dark:bg-kuning scale-x-100"
-                    }`,
-                  )}
-                />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+<header
+  id="site-header"
+  class="bg-background/90 fixed top-0 z-30 w-screen border-b backdrop-blur-sm"
+>
+  <div class="relative mx-3 flex h-full grow border-x md:mx-8 lg:mx-12">
+    <nav
+      aria-label="Main navigation"
+      class="mx-auto flex w-full items-center justify-between px-3 md:max-w-6xl md:px-6"
+    >
+      <!-- Logo -->
+      <Logo
+        loading="eager"
+        className="p-2 transition-transform duration-300 hover:scale-105"
+      />
+
+      <!-- Desktop Menu -->
+      <div id="desktop-menu" class="hidden lg:flex">
+        <ul
+          id="navigation"
+          class="inline-flex w-auto flex-wrap justify-center space-x-4 self-center px-5 text-center text-sm"
+        >
+          {
+            mainMenu.map((menu) => (
+              <li>
+                <a
+                  href={menu.url}
+                  class={`group transition-color relative block px-2 py-3 duration-300 ${
+                    (pathname === `${menu.url}/` || pathname === menu.url) &&
+                    "text-ungu dark:text-kuning"
+                  }`}
+                  aria-current={
+                    pathname === `${menu.url}/` || pathname === menu.url
+                      ? "page"
+                      : undefined
+                  }
+                >
+                  {menu.name}
+                  <span
+                    class={cn(
+                      `bg-primary absolute bottom-1 left-0 h-0.5 w-full origin-bottom-left scale-x-0 transform transition-transform duration-200 ease-out group-hover:scale-x-100 ${
+                        (pathname === `${menu.url}/` ||
+                          pathname === menu.url) &&
+                        "bg-ungu dark:bg-kuning scale-x-100"
+                      }`,
+                    )}
+                  />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <ThemeToggle className="self-center" />
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="lg:hidden">
+        <Button icon="LuMenu" variant="outline" size="sm" data-aw-show-nav />
+      </div>
     </nav>
-    <ThemeToggle />
-    <nav>
-      <MenuDrawer client:load>
-        <a href="/" slot="home">
-          <Button variant="ghost" className="group flex w-full justify-between"
-            >Homepage
-            <ChevronRight />
-          </Button>
-        </a>
-        {
-          main.map((menu) => (
-            <a href={menu.url}>
-              <Button
-                variant="ghost"
-                className="w-full group flex justify-between"
-              >
-                {menu.name}
-                <ChevronRight />
-              </Button>
-            </a>
-          ))
-        }
-      </MenuDrawer>
-    </nav>
+
+    <!-- Grid accessories -->
+    <div
+      class="bg-kuning dark:bg-ungu absolute -bottom-1 -left-1 z-10 h-2 w-2 rounded-full"
+    >
+    </div>
+    <div
+      class="bg-kuning dark:bg-ungu absolute -right-1 -bottom-1 z-10 h-2 w-2 rounded-full"
+    >
+    </div>
   </div>
+
+  <script is:inline>
+    document.addEventListener("astro:after-swap", () => {});
+  </script>
 </header>
+
+<NavDrawer />

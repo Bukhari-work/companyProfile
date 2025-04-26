@@ -4,14 +4,17 @@ import "../styles/tailwind.css";
 import { SEO } from "astro-seo";
 import Favicons from "@/layouts/Favicons.astro";
 
-import BasicScripts from "@/components/scripts/BasicScripts.astro";
-import ThemeScripts from "@/components/scripts/ThemeScripts.astro";
+import BasicScripts from "@/scripts/BasicScripts.astro";
+import ThemeScript from "@/scripts/ThemeScript.astro";
+import ObserverScript from "@/scripts/ObserverScript.astro";
 import { ClientRouter } from "astro:transitions";
 
 import TwSizeIndicator from "@/layouts/TwSizeIndicator.astro";
 import Header from "@/layouts/Header.astro";
+import Footer from "@/layouts/Footer.astro";
 
 import config from "@/config.json";
+import { footerData } from "@/navigation";
 const { content, mode } = Astro.props;
 ---
 
@@ -53,15 +56,25 @@ const { content, mode } = Astro.props;
 
     <!-- Additional Integrations -->
     <ClientRouter />
+
+    <!-- Scripts -->
     <BasicScripts />
   </head>
 
   <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
-  <body class="sm:overscroll-y-none">
+
+  <body class="relative w-screen overflow-x-hidden sm:overscroll-y-none">
     <TwSizeIndicator />
-    <Header />
-    <main id="main-content">
-      <slot />
-    </main>
+    <div class="relative flex flex-none flex-col justify-between">
+      <Header />
+      <main id="main-content" class="mx-3 mt-16 grow border-x md:mx-8 lg:mx-12">
+        <slot />
+      </main>
+      <Footer {...footerData} />
+    </div>
+
+    <div class="absolute top-0 left-0 z-[-1] h-full w-3 md:w-8 lg:w-12"></div>
+    <div class="absolute top-0 right-0 z-[-1] h-full w-3 md:w-8 lg:w-12"></div>
+    <ObserverScript />
   </body>
 </html>

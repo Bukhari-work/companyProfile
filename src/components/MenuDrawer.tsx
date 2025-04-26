@@ -1,7 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useMediaQuery } from "@/scripts/hooks/useMediaQuery";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -30,18 +29,20 @@ export function MenuDrawer(props: any) {
           <Menu />
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="dark:bg-ungu">
+      <DrawerContent>
+        <DrawerHeader className="hidden">
+          <DrawerTitle>Site Navigation</DrawerTitle>
+          <DrawerDescription>
+            Browse all pages and features of this site.
+          </DrawerDescription>
+        </DrawerHeader>
         <DrawerFooter>
-          {props.home}
-          <hr className="dark:border-foreground/10" />
-          {props.children}
-          <hr className="dark:border-foreground/10" />
-          {props.more}
+          {props.menu}
           <Button variant="outline" onClick={toggleTheme}>
             Turn Light Mode On
           </Button>
           <DrawerClose asChild>
-            <Button variant="ghost">Cancel</Button>
+            <Button variant="ghost">Close</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>

@@ -1,0 +1,54 @@
+---
+import config from "@/config.json";
+import { MenuDrawer } from "@/components/MenuDrawer.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { ChevronRight } from "lucide-react";
+
+interface ChildNavigationLink {
+  name: string;
+  url: string;
+}
+
+interface NavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
+---
+
+<MenuDrawer
+  client:only="react"
+  transition:persist="menuDrawer"
+  data-state="closed"
+>
+  <ul slot="menu">
+    {
+      mainMenu.map((menu, index) => (
+        <>
+          <li>
+            <a href={menu.url}>
+              <Button
+                variant="ghost"
+                className=" flex w-full justify-between cursor-pointer"
+              >
+                {menu.name}
+                <ChevronRight />
+              </Button>
+            </a>
+          </li>
+          {/* Add hr after the first item */}
+          {index === 0 && mainMenu.length > 1 && (
+            <hr class="dark:border-foreground/10" />
+          )}
+          {/* Add hr before the last item */}
+          {index === mainMenu.length - 2 && mainMenu.length > 1 && (
+            <hr class="dark:border-foreground/10" />
+          )}
+        </>
+      ))
+    }
+  </ul>
+</MenuDrawer>

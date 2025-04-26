@@ -1,0 +1,67 @@
+---
+import config from "@/config.json";
+import Drawer from "@/components/ui-astro/Drawer.astro";
+import { ChevronRight } from "lucide-react";
+
+// Component Imports
+import Button from "@/components/ui-astro/Button.astro";
+
+interface ChildNavigationLink {
+  name: string;
+  url: string;
+}
+
+interface NavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
+const { pathname } = Astro.url;
+---
+
+<Drawer
+  id="navDrawer"
+  triggerIcon="LuMenu"
+  triggerVariant="outline"
+  triggerClass="hidden"
+>
+  <ul class="mt-auto flex flex-col gap-2 p-4">
+    {
+      mainMenu.map((menu, index) => (
+        <>
+          <li>
+            <Button
+              href={menu.url}
+              variant="ghost"
+              className="flex justify-between"
+              data-aw-close-nav
+              aria-current={
+                pathname === `${menu.url}/` || pathname === menu.url
+                  ? "page"
+                  : undefined
+              }
+            >
+              <span>{menu.name}</span>
+              <ChevronRight />
+            </Button>
+          </li>
+          {/* Add hr after the first item */}
+          {index === 0 && mainMenu.length > 1 && (
+            <hr class="dark:border-foreground/10" />
+          )}
+          {/* Add hr before the last item */}
+          {index === mainMenu.length - 2 && mainMenu.length > 1 && (
+            <hr class="dark:border-foreground/10" />
+          )}
+        </>
+      ))
+    }
+    <Button variant="outline" data-aw-toggle-color-scheme>
+      Turn Light Mode On
+    </Button>
+    <Button variant="ghost" data-aw-close-nav> Close </Button>
+  </ul>
+</Drawer>

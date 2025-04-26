@@ -4,7 +4,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@import "./style.css";
+
 @custom-variant dark (&:is(.dark *));
+@custom-variant intersect (&:not([no-intersect]));
 @plugin "@tailwindcss/typography";
 
 :root {
@@ -148,8 +151,36 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    @apply font-asap;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@theme {
+  --animate-fade-in: fadeInUp 1s ease-in-out both;
+  --animate-fade-out: fadeOutDown 1s ease-in-out both;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOutDown {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
   }
 }

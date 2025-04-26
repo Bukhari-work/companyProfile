@@ -1,7 +1,6 @@
 ---
 import config from "@/config.json";
 import { Image } from "astro:assets";
-import logoChamps from "@/assets/logoChamps.png";
 import logoUniv from "@/assets/logoUniversitasIndonesia.svg";
 import logoUnivDark from "@/assets/logoUniversitasIndonesiaDark.svg";
 
@@ -16,17 +15,23 @@ interface logoProps {
 
 const {
   loading,
+  className,
 }: {
   loading?: "eager" | "lazy" | null | undefined;
+  className?: string;
 } = Astro.props;
 
-const { logo, logo_darkmode, logo_width, logo_height, logo_text, title } =
-  config.site as logoProps;
+const { logo, logo_darkmode, logo_text, title } = config.site as logoProps;
+
+const logo_width: any = "30";
+const logo_height: any = "30";
 
 const { theme_switcher }: { theme_switcher: boolean } = config.settings;
 ---
 
-<div class="flex flex-nowrap justify-between text-center align-middle">
+<div
+  class={`flex flex-nowrap justify-between text-center align-middle ${className}`}
+>
   <a href="/" class="inline-flex">
     {
       logo || logo_darkmode ? (
@@ -59,10 +64,12 @@ const { theme_switcher }: { theme_switcher: boolean } = config.settings;
     <div
       class="font-trajan border-ungu ml-6 inline-flex flex-col justify-center border-l-5 px-2 pt-1 dark:border-[#717171]"
     >
-      <span class="text-foreground/30 self-start text-xs dark:text-white/30">
+      <span
+        class="text-foreground/30 font-trajan self-start text-xs dark:text-white/30"
+      >
         FKM
       </span>
-      <span class="-mt-1 self-start text-lg">CHAMPS</span>
+      <span class="font-trajan -mt-1 self-start text-lg">CHAMPS</span>
     </div>
   </a>
 </div>

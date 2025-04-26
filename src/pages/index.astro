@@ -1,8 +1,7 @@
 ---
 import Main from "@/layouts/Main.astro";
 // Component Imports
-import { Button } from "@/components/ui/button.tsx";
-import { DrawerDialogDemo } from "@/components/ResponsiveDialog.tsx";
+import Button from "@/components/ui-astro/Button.astro";
 import { AvatarDemo } from "@/components/AvatarDemo.tsx";
 import { ButtonDemo } from "@/components/ButtonDemo.tsx";
 //
@@ -10,21 +9,15 @@ const content = { title: "light Mode" };
 ---
 
 <Main content={content}>
-  <a href="/indexx" class="font- absolute p-8 underline">Dark!</a>
-  <div class="grid h-screen place-items-center content-center">
-    <Button variant="default" client:load data-aw-toggle-color-scheme
-      >Button
-    </Button>
-    <br />
-    <Button variant="secondary"><a href="#">Button</a> </Button>
-    <br />
-    <DrawerDialogDemo client:idle />
+  <a href="/indexx" class="pl-8 underline">Dark!</a>
+  <div class="grid place-items-center content-center">
+    <Button size="lg" href="/">Button</Button>
     <br />
     <AvatarDemo client:load />
     <br />
     <ButtonDemo client:load />
     <br />
-    <article class="prose dark:prose-invert lg:prose-xl">
+    <article class="prose dark:prose-invert lg:prose-xl animate-in">
       <h1>Garlic bread with cheese: What the science tells us</h1>
       <p class="font-pristina">
         For years parents have espoused the health benefits of eating garlic
@@ -37,6 +30,38 @@ const content = { title: "light Mode" };
         a series of rabies cases springing up around the country.
       </p>
       <!-- ... -->
+      <p class="font-pristina">
+        For years parents have espoused the health benefits of eating garlic
+        bread with cheese to their children, with the food earning such an
+        iconic status in our culture that kids will often dress up as warm,
+        cheesy loaf for Halloween.
+      </p>
+      <p class="font-corinthia text-4xl">
+        But a recent study shows that the celebrated appetizer may be linked to
+        a series of rabies cases springing up around the country.
+      </p>
+      <!-- ... -->
+      <p class="font-pristina">
+        For years parents have espoused the health benefits of eating garlic
+        bread with cheese to their children, with the food earning such an
+        iconic status in our culture that kids will often dress up as warm,
+        cheesy loaf for Halloween.
+      </p>
+      <p class="font-corinthia text-4xl">
+        But a recent study shows that the celebrated appetizer may be linked to
+        a series of rabies cases springing up around the country.
+      </p>
+      <!-- ... -->
+      <p class="font-pristina">
+        For years parents have espoused the health benefits of eating garlic
+        bread with cheese to their children, with the food earning such an
+        iconic status in our culture that kids will often dress up as warm,
+        cheesy loaf for Halloween.
+      </p>
+      <p class="font-corinthia text-4xl">
+        But a recent study shows that the celebrated appetizer may be linked to
+        a series of rabies cases springing up around the country.
+      </p>
     </article>
   </div>
 </Main>
