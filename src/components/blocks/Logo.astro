@@ -1,0 +1,107 @@
+---
+import config from "@/config.json";
+import { Image } from "astro:assets";
+import logoUniv from "@/assets/logoUniversitasIndonesia.svg";
+import logoUnivDark from "@/assets/logoUniversitasIndonesiaDark.svg";
+
+interface logoProps {
+  logo: string;
+  logo_darkmode: string;
+  logo_text: string;
+  title: string;
+}
+
+const {
+  loading,
+  className,
+  size = "default", // Add a size prop with a default value 'md'
+}: {
+  loading?: "eager" | "lazy" | null | undefined;
+  className?: string;
+  size?: "default" | "sm" | "lg"; // Define the possible values for the size prop
+} = Astro.props;
+
+// Retrieve config values - these are checked for existence but actual image sources are hardcoded below
+const { logo, logo_darkmode, logo_text, title } = config.site as logoProps;
+
+// Define size mappings for logo dimensions and text sizes
+const sizeMap = {
+  sm: {
+    width: 24,
+    height: 24,
+    textSm: "text-[0.675rem]",
+    textLg: "text-sm",
+    lineLeft: "ml-3 border-l-4 px-2",
+  }, // Smaller size
+  default: {
+    width: 30,
+    height: 30,
+    textSm: "text-xs",
+    textLg: "text-lg",
+    lineLeft: "ml-4 border-l-4 px-2",
+  }, // Medium size (original)
+  lg: {
+    width: 40,
+    height: 40,
+    textSm: "text-sm",
+    textLg: "text-xl",
+    lineLeft: "ml-5 border-l-5 px-3",
+  }, // Larger size
+};
+
+// Get the dimensions and text classes based on the selected size, default to 'md' if size is invalid
+const currentSize = sizeMap[size] || sizeMap.default;
+
+const logoWidth = currentSize.width;
+const logoHeight = currentSize.height;
+const textSmClass = currentSize.textSm;
+const textLgClass = currentSize.textLg;
+const lineLeftClass = currentSize.lineLeft;
+
+const { theme_switcher }: { theme_switcher: boolean } = config.settings;
+---
+
+<div
+  class={`flex flex-nowrap justify-between text-center align-middle ${className}`}
+>
+  <a href="/" class="inline-flex">
+    {
+      logo || logo_darkmode ? (
+        <>
+          <Image
+            src={logoUniv}
+            class={`inline-block py-1 ${theme_switcher && "dark:hidden"}`}
+            width={logoWidth}
+            height={logoHeight}
+            alt={title}
+            loading={loading}
+          />
+          {theme_switcher && (
+            <Image
+              src={logoUnivDark}
+              class={"hidden py-1 dark:inline-block"}
+              width={logoWidth}
+              height={logoHeight}
+              alt={title}
+              loading={loading}
+            />
+          )}
+        </>
+      ) : logo_text ? (
+        logo_text
+      ) : (
+        title
+      )
+    }
+    <div
+      class={`${lineLeftClass} font-trajan border-l-ungu inline-flex flex-col justify-center  pt-1 dark:border-[#717171] dark:border-l-2`}
+    >
+      <span
+        class={`${textSmClass} text-foreground/30 font-trajan self-start dark:text-kuning`}
+      >
+        FKM
+      </span>
+      <span class={`${textLgClass} font-trajan -mt-1 self-start`}>CHAMPS</span>
+    </div>
+  </a>
+</div>

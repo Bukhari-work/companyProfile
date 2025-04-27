@@ -1,9 +1,9 @@
 ---
-import Logo from "@/layouts/Logo.astro";
-import ThemeToggle from "@/components/ThemeToggle.astro";
+import Logo from "@/components/blocks/Logo.astro";
+import ThemeToggle from "@/components/blocks/ThemeToggle.astro";
 import config from "@/config.json";
 import { cn } from "@/lib/utils";
-import NavDrawer from "@/components/NavDrawer.astro";
+import NavDrawer from "@/components/blocks/NavDrawer.astro";
 import Button from "@/components/ui-astro/Button.astro";
 
 interface ChildNavigationLink {
@@ -36,6 +36,7 @@ const { pathname } = Astro.url;
       <Logo
         loading="eager"
         className="p-2 transition-transform duration-300 hover:scale-105"
+        size="sm"
       />
 
       <!-- Desktop Menu -->
@@ -83,13 +84,13 @@ const { pathname } = Astro.url;
       </div>
     </nav>
 
-    <!-- Grid accessories -->
+    <!-- Dot accessories -->
     <div
-      class="bg-kuning dark:bg-ungu absolute -bottom-1 -left-1 z-10 h-2 w-2 rounded-full"
+      class="bg-kuning dark:bg-ungu lg:bg-ungu dark:lg:bg-kuning absolute -bottom-1 -left-1 z-10 h-2 w-2 rounded-full"
     >
     </div>
     <div
-      class="bg-kuning dark:bg-ungu absolute -right-1 -bottom-1 z-10 h-2 w-2 rounded-full"
+      class="bg-kuning dark:bg-ungu lg:bg-ungu dark:lg:bg-kuning absolute -right-1 -bottom-1 z-10 h-2 w-2 rounded-full"
     >
     </div>
   </div>

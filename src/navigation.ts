@@ -47,20 +47,24 @@ export const footerData = {
   ],
   secondaryLinks: [
     { text: "Terms", href: "/terms" },
-    { text: "Privacy Policy", href: "/privacy" },
+    { text: "Attributions", href: "/attributions" },
   ],
   socialLinks: [
-    { ariaLabel: "X", icon: "LuTwitter", href: "#" },
-    { ariaLabel: "Instagram", icon: "LuInstagram", href: "#" },
+    { ariaLabel: "Linkedin", icon: "LuLinkedin", href: "#" },
+    {
+      ariaLabel: "Instagram",
+      icon: "LuInstagram",
+      href: "#",
+    },
     { ariaLabel: "Facebook", icon: "LuFacebook", href: "#" },
     {
-      ariaLabel: "Github",
-      icon: "LuGithub",
+      ariaLabel: "WhatsApp",
+      icon: "FaWhatsapp",
       href: "/",
     },
   ],
   footNote: `
     <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="/favicon.png" alt="Champs logo" loading="lazy"></img>
-    Made by <a href="https://bukhari-work.github.io/"> Bukhari</a> · All rights reserved.
+    Center for Health Administration & Policy Studies.
   `,
 };
