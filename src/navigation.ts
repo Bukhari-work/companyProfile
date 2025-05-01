@@ -1,3 +1,20 @@
+export const headerData = {
+  links: [
+    {
+      text: "Home",
+      href: "/",
+    },
+    {
+      text: "About",
+      href: "/about",
+    },
+    {
+      text: "Contact",
+      href: "/contact",
+    },
+  ],
+};
+
 export const footerData = {
   links: [
     {
@@ -13,16 +30,6 @@ export const footerData = {
       ],
     },
     {
-      title: "Platform",
-      links: [
-        { text: "Developer API", href: "#" },
-        { text: "Partners", href: "#" },
-        { text: "Atom", href: "#" },
-        { text: "Electron", href: "#" },
-        { text: "AstroWind Desktop", href: "#" },
-      ],
-    },
-    {
       title: "Support",
       links: [
         { text: "Docs", href: "#" },
@@ -33,21 +40,28 @@ export const footerData = {
       ],
     },
     {
-      title: "Company",
+      title: "Contact",
       links: [
-        { text: "About", href: "#" },
-        { text: "Blog", href: "#" },
-        { text: "Careers", href: "#" },
-        { text: "Press", href: "#" },
-        { text: "Inclusion", href: "#" },
-        { text: "Social Impact", href: "#" },
-        { text: "Shop", href: "#" },
+        { text: "021 786 7370", href: "tel:+62217867370" },
+        {
+          text: "+62 813 2409 6624",
+          href: "https://wa.me/6281324096624",
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+        { text: "champs@ui.ac.id", href: "mailto:champs@ui.ac.id" },
+        { text: "champsui09@gmail.com", href: "mailto:champsui09@gmail.com" },
       ],
     },
   ],
   secondaryLinks: [
-    { text: "Terms", href: "/terms" },
-    { text: "Attributions", href: "/attributions" },
+    {
+      text: "Fakultas Kesehatan Masyarakat</br>\
+      Universitas Indonesia<br/>\
+      Pondok Cina, Kecamatan Beji, Kota Depok<br/>\
+      Jawa Barat 16424, Indonesia",
+      href: "https://maps.app.goo.gl/7TDV2YcWJNLNM9o37",
+    },
   ],
   socialLinks: [
     { ariaLabel: "Linkedin", icon: "LuLinkedin", href: "#" },

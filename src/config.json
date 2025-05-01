@@ -1,8 +1,8 @@
 {
   "site": {
     "title": "companyProfile",
-    "company": "companyName",
-    "base_url": "/",
+    "company": "CHAMPS",
+    "base_href": "/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.svg",
@@ -15,34 +15,46 @@
   "menu": {
     "mainMenu": [
       {
-        "name": "Beranda",
-        "url": "/"
+        "text": "Beranda",
+        "href": "/"
       },
       {
-        "name": "Tentang",
-        "url": "/indexx"
+        "text": "Tentang",
+        "href": "/indexx"
       },
       {
-        "name": "Buletin",
-        "url": "/blog"
+        "text": "Buletin",
+        "href": "/blog"
       },
       {
-        "name": "Kontak",
-        "url": "/contact"
+        "text": "Kontak",
+        "href": "/contact"
       },
       {
-        "name": "Lebih",
-        "url": "/more"
+        "text": "Lebih",
+        "href": "/more"
       }
     ],
-    "footerMenu": [
+    "aboutMenu": [
       {
-        "name": "Privacy Policy",
-        "url": "/privacy-policy"
+        "text": "Tentang",
+        "href": "/indexx"
       },
       {
-        "name": "Contact",
-        "url": "/contact"
+        "text": "Values",
+        "href": "/indexx2"
+      },
+      {
+        "text": "Mission",
+        "href": "/indexx3"
+      },
+      {
+        "text": "Team",
+        "href": "/contact"
+      },
+      {
+        "text": "Expert",
+        "href": "/contact"
       }
     ]
   },
@@ -61,7 +73,7 @@
   },
 
   "params": {
-    "contact_form_url": "",
+    "contact_form_href": "",
     "copyright": "©2025 Ahmad Bukhari. All rights reserved.",
     "credit": "Made with [Astro](https://astro.build) using [Astroplate](https://github.com/zeon-studio/astroplate) template"
   },

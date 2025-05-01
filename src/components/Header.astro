@@ -5,17 +5,12 @@ import config from "@/config.json";
 import { cn } from "@/lib/utils";
 import NavDrawer from "@/components/blocks/NavDrawer.astro";
 import Button from "@/components/ui-astro/Button.astro";
+import type { HTMLAttributes } from "astro/types";
 
-interface ChildNavigationLink {
-  name: string;
-  url: string;
-}
-
-interface NavigationLink {
-  name: string;
-  url: string;
+interface NavigationLink extends HTMLAttributes<"a"> {
+  text: string;
   hasChildren?: boolean;
-  children?: ChildNavigationLink[];
+  children?: HTMLAttributes<"a">[];
 }
 
 const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
@@ -49,23 +44,23 @@ const { pathname } = Astro.url;
             mainMenu.map((menu) => (
               <li>
                 <a
-                  href={menu.url}
-                  class={`group transition-color relative block px-2 py-3 duration-300 ${
-                    (pathname === `${menu.url}/` || pathname === menu.url) &&
+                  href={menu.href}
+                  class={`group relative block px-2 py-3 ${
+                    (pathname === `${menu.href}/` || pathname === menu.href) &&
                     "text-ungu dark:text-kuning"
                   }`}
                   aria-current={
-                    pathname === `${menu.url}/` || pathname === menu.url
+                    pathname === `${menu.href}/` || pathname === menu.href
                       ? "page"
                       : undefined
                   }
                 >
-                  {menu.name}
+                  {menu.text}
                   <span
                     class={cn(
                       `bg-primary absolute bottom-1 left-0 h-0.5 w-full origin-bottom-left scale-x-0 transform transition-transform duration-200 ease-out group-hover:scale-x-100 ${
-                        (pathname === `${menu.url}/` ||
-                          pathname === menu.url) &&
+                        (pathname === `${menu.href}/` ||
+                          pathname === menu.href) &&
                         "bg-ungu dark:bg-kuning scale-x-100"
                       }`,
                     )}
@@ -86,11 +81,11 @@ const { pathname } = Astro.url;
 
     <!-- Dot accessories -->
     <div
-      class="bg-kuning dark:bg-ungu lg:bg-ungu dark:lg:bg-kuning absolute -bottom-1 -left-1 z-10 h-2 w-2 rounded-full"
+      class="bg-background border-primary absolute -bottom-1 -left-1 z-10 h-2 w-2 rotate-45 border"
     >
     </div>
     <div
-      class="bg-kuning dark:bg-ungu lg:bg-ungu dark:lg:bg-kuning absolute -right-1 -bottom-1 z-10 h-2 w-2 rounded-full"
+      class="bg-background border-primary absolute -right-1 -bottom-1 z-10 h-2 w-2 rotate-45 border"
     >
     </div>
   </div>

@@ -2,69 +2,53 @@
 import config from "@/config.json";
 ---
 
-<script is:inline define:vars={{ defaultTheme: config.settings.default_theme }}>
-  if (window.basic_script) {
+<script
+  is:inline
+  type="module"
+  define:vars={{ defaultTheme: config.settings.default_theme }}
+>
+  if (window.theme_script) {
     return;
   }
+  window.theme_script = true;
 
-  window.basic_script = true;
+  import { attachEvent } from "@/scripts/utils.ts";
 
   function applyTheme(theme) {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }
 
-  function initTheme() {
-    const isSystemDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    let theme;
+  const initTheme = function () {
     if (
       (defaultTheme && defaultTheme.endsWith(":only")) ||
       (!localStorage.theme && defaultTheme !== "system")
     ) {
-      theme = defaultTheme.replace(":only", "");
+      applyTheme(defaultTheme.replace(":only", ""));
     } else if (
       localStorage.theme === "dark" ||
-      (!localStorage.theme && isSystemDark)
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
-      theme = "dark";
+      applyTheme("dark");
     } else {
-      theme = "light";
+      applyTheme("light");
     }
-    applyTheme(theme);
-  }
-
-  let toggleButtons = [];
-  function cacheToggleButtons() {
-    toggleButtons = Array.from(
-      document.querySelectorAll("[data-aw-toggle-color-scheme]"),
-    );
-  }
-  function attachToggleHandlers() {
-    toggleButtons.forEach((btn) => {
-      btn.addEventListener(
-        "click",
-        () => {
-          if (defaultTheme.endsWith(":only")) return;
-          requestAnimationFrame(() => {
-            const isDark = document.documentElement.classList.toggle("dark");
-            localStorage.theme = isDark ? "dark" : "light";
-          });
-        },
-        { passive: true },
-      );
-    });
-  }
-
-  const onLoad = () => {
-    cacheToggleButtons();
-    attachToggleHandlers();
   };
-
   initTheme();
-  window.onload = onLoad;
-  document.addEventListener("astro:after-swap", () => {
-    initTheme();
-    onLoad();
-  });
+
+  const onLoad = function () {
+    attachEvent("[data-aw-toggle-color-scheme]", "click", function () {
+      if (defaultTheme.endsWith(":only")) {
+        return;
+      }
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    });
+  };
 </script>

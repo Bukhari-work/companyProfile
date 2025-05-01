@@ -1,67 +1,54 @@
 ---
-import Main from "@/layouts/Base.astro";
-// Component Imports
+import Main from "@/layouts/Main.astro";
+
+// UI Imports
 import Button from "@/components/ui-astro/Button.astro";
-import { AvatarDemo } from "@/components/AvatarDemo.tsx";
-import { ButtonDemo } from "@/components/ButtonDemo.tsx";
-//
+
+// Component imports
+import Hero from "@/components/Hero.astro";
+
+// Attributes
 const content = { title: "light Mode" };
 ---
 
 <Main content={content}>
-  <a href="/indexx" class="pl-8 underline">Dark!</a>
-  <div class="grid place-items-center content-center">
-    <Button size="lg" href="/">Button</Button>
-    <br />
-    <AvatarDemo client:load />
-    <br />
-    <ButtonDemo client:load />
-    <br />
-    <article class="prose dark:prose-invert lg:prose-xl animate-in">
-      <h1>Garlic bread with cheese: What the science tells us</h1>
-      <p class="font-pristina">
-        For years parents have espoused the health benefits of eating garlic
-        bread with cheese to their children, with the food earning such an
-        iconic status in our culture that kids will often dress up as warm,
-        cheesy loaf for Halloween.
-      </p>
-      <p class="font-corinthia text-4xl">
-        But a recent study shows that the celebrated appetizer may be linked to
-        a series of rabies cases springing up around the country.
-      </p>
-      <!-- ... -->
-      <p class="font-pristina">
-        For years parents have espoused the health benefits of eating garlic
-        bread with cheese to their children, with the food earning such an
-        iconic status in our culture that kids will often dress up as warm,
-        cheesy loaf for Halloween.
-      </p>
-      <p class="font-corinthia text-4xl">
-        But a recent study shows that the celebrated appetizer may be linked to
-        a series of rabies cases springing up around the country.
-      </p>
-      <!-- ... -->
-      <p class="font-pristina">
-        For years parents have espoused the health benefits of eating garlic
-        bread with cheese to their children, with the food earning such an
-        iconic status in our culture that kids will often dress up as warm,
-        cheesy loaf for Halloween.
-      </p>
-      <p class="font-corinthia text-4xl">
-        But a recent study shows that the celebrated appetizer may be linked to
-        a series of rabies cases springing up around the country.
-      </p>
-      <!-- ... -->
-      <p class="font-pristina">
-        For years parents have espoused the health benefits of eating garlic
-        bread with cheese to their children, with the food earning such an
-        iconic status in our culture that kids will often dress up as warm,
-        cheesy loaf for Halloween.
-      </p>
-      <p class="font-corinthia text-4xl">
-        But a recent study shows that the celebrated appetizer may be linked to
-        a series of rabies cases springing up around the country.
-      </p>
-    </article>
-  </div>
+  <Hero
+    actions={[
+      {
+        text: "Contact Us",
+        href: "#",
+        target: "_self",
+        icon: "FaWhatsapp",
+        size: "lg",
+      },
+      {
+        text: "About Us",
+        icon: "FaUsers",
+        href: "#features",
+        size: "lg",
+      },
+    ]}
+    imageBg={{
+      src: "/images/hero-bg.jpeg",
+      height: 512,
+      width: 1024,
+      alt: "AstroWind Hero Image",
+    }}
+  >
+    <Fragment slot="tagline">Faculty of Public Health</Fragment>
+    <Fragment slot="title">
+      CENTER FOR HEALTH ADMINISTRATION & POLICY STUDIES
+    </Fragment>
+    <Fragment slot="subtitle">
+      <span class="hidden sm:block">
+        Bridging Research, Policy, and Practice for Tomorrow’s Healthcare
+      </span>
+    </Fragment>
+    <Fragment slot="content">
+      The foundation of health development must be based on policy
+      considerations that encourage the fulfilment of society's health needs in
+      an effective, efficient, equitable, and sustainable manner.
+    </Fragment>
+  </Hero>
+  <div class="grid place-items-center content-center"></div>
 </Main>

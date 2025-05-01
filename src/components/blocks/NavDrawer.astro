@@ -59,8 +59,19 @@ const { pathname } = Astro.url;
         </>
       ))
     }
-    <Button variant="outline" data-aw-toggle-color-scheme>
+    <Button
+      variant="outline"
+      className="hidden dark:block"
+      data-aw-toggle-color-scheme
+    >
       Turn Light Mode On
+    </Button>
+    <Button
+      variant="outline"
+      className="dark:hidden"
+      data-aw-toggle-color-scheme
+    >
+      Turn Night Mode On
     </Button>
     <Button variant="ghost" data-aw-close-nav> Close </Button>
   </ul>

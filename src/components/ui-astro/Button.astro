@@ -6,7 +6,7 @@ import { buttonVariants } from "@/components/ui/button.tsx";
 
 import { cn } from "@/lib/utils.ts";
 
-interface Props
+export interface Props
   extends HTMLAttributes<"button">,
     Omit<HTMLAttributes<"a">, "type">,
     HTMLAttributes<"label"> {
@@ -17,6 +17,7 @@ interface Props
     | "outline"
     | "ghost"
     | "destructive"
+    | "link"
     | undefined;
   size?: "default" | "sm" | "lg" | undefined;
   text?: string | undefined;

@@ -1,10 +1,10 @@
 ---
 import Logo from "@/components/blocks/Logo.astro";
 import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
+import type { HTMLAttributes } from "astro/types";
 
-interface Link {
+interface Link extends HTMLAttributes<"a"> {
   text?: string;
-  href?: string;
   ariaLabel?: string;
   icon?: string;
 }
@@ -38,13 +38,15 @@ const {
     <!-- Main section -->
     <div
       class:list={[
-        "relative w-full px-6",
+        "relative w-full max-w-5xl self-center px-6",
         "grid grid-cols-12 gap-4 gap-y-8 py-8 sm:gap-8 md:py-12",
         "intersect-once intersect-quarter intercept-no-queue motion-safe:md:intersect:animate-fade-in motion-safe:md:opacity-0",
       ]}
     >
       <!-- Logo and secondary links column-->
-      <div class="border-b-kuning col-span-12 pb-5 lg:col-span-4 lg:mx-auto">
+      <div
+        class="border-b-kuning text-foreground col-span-12 pb-5 lg:col-span-4 lg:mx-auto"
+      >
         <Logo className="mb-2" size="lg" />
         <div class="flex gap-1 text-sm">
           {
@@ -52,8 +54,10 @@ const {
               <>
                 {index !== 0 ? " · " : ""}
                 <a
-                  class="text-sm transition duration-150 ease-in-out hover:underline"
+                  class="flex underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   set:html={text}
                 />
               </>
@@ -68,10 +72,12 @@ const {
             <div class="mb-3 font-medium text-pretty">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
+                {links.map(({ text, href, target, rel, ariaLabel }) => (
                   <li class="mb-2">
                     <a
                       class="underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+                      target={target}
+                      rel={rel}
                       href={href}
                       aria-label={ariaLabel}
                     >
@@ -115,11 +121,11 @@ const {
 
     <!-- Dot accessories -->
     <div
-      class="bg-kuning dark:bg-ungu lg:bg-ungu dark:lg:bg-kuning absolute -top-1 -left-1 z-10 h-2 w-2 rounded-full"
+      class="bg-background border-primary absolute -top-1 -left-1 z-10 h-2 w-2 rotate-45 border"
     >
     </div>
     <div
-      class="bg-kuning dark:bg-ungu lg:bg-ungu dark:lg:bg-kuning absolute -top-1 -right-1 z-10 h-2 w-2 rounded-full"
+      class="bg-background border-primary absolute -top-1 -right-1 z-10 h-2 w-2 rotate-45 border"
     >
     </div>
   </div>

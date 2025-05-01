@@ -46,6 +46,7 @@
 
   --kuning: oklch(0.89 0.184452 100.2816);
   --ungu: oklch(0.38 0.1063 312.42);
+  --primary2: oklch(0.38 0.1063 312.42);
 }
 
 .dark {
@@ -83,6 +84,24 @@
 
   --kuning: oklch(0.89 0.184452 100.2816);
   --ungu: oklch(0.38 0.1063 312.42);
+  --primary2: oklch(0.89 0.184452 100.2816);
+}
+
+@font-face {
+  font-family: Trajan;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/TrajanPro-Bold.otf") format("otf");
+  src: url("/fonts/TrajanPro-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Pristina;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Pristina.ttf") format("ttf");
 }
 
 @theme inline {
@@ -96,7 +115,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
+  --color-primary: var(--primary2);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -131,34 +150,7 @@
   --font-pristina: "Pristina", cursive;
 }
 
-@font-face {
-  font-family: Trajan;
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/fonts/TrajanPro-Bold.otf") format("otf");
-  src: url("/fonts/TrajanPro-Regular.ttf") format("ttf");
-}
-
-@font-face {
-  font-family: Pristina;
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/Pristina.ttf") format("ttf");
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-    @apply font-asap;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@theme {
+@theme inline {
   --animate-fade-in: fadeInUp 1s ease-in-out both;
   --animate-fade-out: fadeOutDown 1s ease-in-out both;
 
@@ -182,5 +174,17 @@
       opacity: 0;
       transform: translateY(2rem);
     }
+  }
+}
+
+@layer base, components, utilities;
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    @apply font-asap;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

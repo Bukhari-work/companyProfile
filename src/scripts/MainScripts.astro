@@ -3,11 +3,11 @@ import config from "@/config.json";
 ---
 
 <script is:inline define:vars={{ defaultTheme: config.settings.default_theme }}>
-  if (window.basic_script) {
+  if (window.main_script) {
     return;
   }
 
-  window.basic_script = true;
+  window.main_script = true;
 
   function applyTheme(theme) {
     if (theme === "dark") {

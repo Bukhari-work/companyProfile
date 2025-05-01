@@ -36,7 +36,7 @@ const slot = await Astro.slots.render("default");
     </div> -->
     <Fragment set:html={slot} />
   </Element>
-  <label class="drawer-backdrop"></label>
+  <div class="drawer-backdrop"></div>
 </Element>
 <Button
   className={cn("drawer-trigger", triggerClass)}
