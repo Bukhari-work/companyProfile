@@ -1,19 +1,14 @@
 ---
 import config from "@/config.json";
-import { MenuDrawer } from "@/components/MenuDrawer.tsx";
+import { MenuDrawer } from "@/components/blocks/MenuDrawer.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { ChevronRight } from "lucide-react";
+import type { HTMLAttributes } from "astro/types";
 
-interface ChildNavigationLink {
-  name: string;
-  url: string;
-}
-
-interface NavigationLink {
-  name: string;
-  url: string;
+interface NavigationLink extends HTMLAttributes<"a"> {
+  text: string;
   hasChildren?: boolean;
-  children?: ChildNavigationLink[];
+  children?: HTMLAttributes<"a">[];
 }
 
 const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
@@ -29,12 +24,12 @@ const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
       mainMenu.map((menu, index) => (
         <>
           <li>
-            <a href={menu.url}>
+            <a href={menu.href}>
               <Button
                 variant="ghost"
                 className=" flex w-full justify-between cursor-pointer"
               >
-                {menu.name}
+                {menu.text}
                 <ChevronRight />
               </Button>
             </a>

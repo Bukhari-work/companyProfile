@@ -45,7 +45,7 @@ const {
     >
       <!-- Logo and secondary links column-->
       <div
-        class="border-b-kuning text-foreground col-span-12 pb-5 lg:col-span-4 lg:mx-auto"
+        class="border-b-kuning text-foreground col-span-12 pb-5 lg:col-span-4"
       >
         <Logo className="mb-2" size="lg" />
         <div class="flex gap-1 text-sm">
@@ -68,7 +68,7 @@ const {
       <!-- Main links column -->
       {
         links.map(({ title, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
+          <div class="text-foreground col-span-6 md:col-span-3 lg:col-span-2">
             <div class="mb-3 font-medium text-pretty">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">

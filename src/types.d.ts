@@ -1,6 +1,8 @@
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import type { HTMLAttributes, ImageMetadata } from "astro/types";
 import type { Props as ButtonProps } from "@/components/ui-astro/Button.astro";
+import type { Image } from "astro:assets";
+import type { ComponentProps } from "astro/types";
 
 export interface Post {
   /** A unique ID number that identifies a post. */
@@ -137,8 +139,8 @@ export interface Item {
   description?: string;
   icon?: string;
   classes?: Record<string, string>;
-  callToAction?: CallToAction;
-  image?: Image;
+  callToAction?: ButtonProps;
+  image?: ComponentProps<typeof Image>;
 }
 
 export interface Price {
@@ -245,7 +247,7 @@ export interface Brands extends Omit<Headline, "classes">, Component {
 }
 
 export interface Features extends Omit<Headline, "classes">, Component {
-  image?: string | unknown;
+  image?: ComponentProps<typeof Image>;
   video?: Video;
   items?: Array<Item>;
   columns?: number;

@@ -22,7 +22,6 @@ export interface Props
   size?: "default" | "sm" | "lg" | undefined;
   text?: string | undefined;
   icon?: string | undefined;
-  href?: string | undefined;
 }
 
 const {
@@ -32,7 +31,9 @@ const {
   text,
   icon,
   href,
-  target = href?.startsWith("http") ? "_blank" : undefined,
+  target = typeof href === "string" && href.startsWith("http")
+    ? "_blank"
+    : undefined,
   ...rest
 } = Astro.props;
 ---

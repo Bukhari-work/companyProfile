@@ -1,0 +1,29 @@
+---
+import type { HTMLTag } from "astro/types";
+import type { Component } from "@/types";
+import { cn } from "@/lib/utils.ts";
+
+export interface Props extends Component {
+  containerClass?: string;
+  ["as"]?: HTMLTag;
+}
+
+const { id, containerClass = "", as = "section" } = Astro.props;
+
+const WrapperTag = as;
+---
+
+<WrapperTag class="not-prose relative scroll-mt-[72px]" {...id ? { id } : {}}>
+  <div class="pointer-events-none absolute inset-0 -z-[1]" aria-hidden="true">
+    <slot name="bg" />
+  </div>
+  <div
+    class={cn(
+      "intersect-once intersect-quarter intercept-no-queue motion-safe:md:intersect:animate-fade-in motion-safe:md:opacity-0",
+      "text-default relative mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16  lg:py-20",
+      containerClass,
+    )}
+  >
+    <slot />
+  </div>
+</WrapperTag>

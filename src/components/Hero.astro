@@ -37,8 +37,8 @@ const content = await Astro.slots.render("content");
       >
         {
           hasTagline && (
-            <p class="text-ungu dark:text-kuning mb-1 text-base font-bold tracking-wide uppercase">
-              <slot name="tagline" />{" "}
+            <p class="prose dark:prose-invert mx-auto font-bold tracking-wide uppercase">
+              <slot name="tagline" />
             </p>
           )
         }
@@ -46,8 +46,8 @@ const content = await Astro.slots.render("content");
         <!-- Title: Only render the h1 container if the 'title' slot is used -->
         {
           hasTitle && (
-            <h1 class="font-heading mb-2 text-4xl font-bold tracking-tighter md:text-5xl">
-              <slot name="title" />{" "}
+            <h1 class="font-heading mb-6 text-4xl font-bold tracking-tighter md:text-5xl">
+              <slot name="title" />
             </h1>
           )
         }
@@ -64,11 +64,17 @@ const content = await Astro.slots.render("content");
         <!-- Actions: Only render the div container if the 'actions' slot is used -->
         {
           actions && (
-            <div class="mx-auto mt-6 flex max-w-xs flex-col flex-nowrap gap-4 sm:max-w-md sm:flex-row sm:justify-center">
+            <div class="mx-auto mt-3 flex max-w-xs flex-col flex-nowrap gap-4 sm:max-w-md sm:flex-row sm:justify-center">
               {Array.isArray(actions) ? (
                 actions.map((action) => (
                   <div class="flex w-full">
-                    <Button {...(action || {})} class="w-full" />
+                    <Button
+                      {...(action || {})}
+                      class:list={[
+                        "w-full",
+                        "intersect-once intersect-quarter intercept-no-queue motion-safe:md:intersect:animate-fade-in motion-safe:md:opacity-0",
+                      ]}
+                    />
                   </div>
                 ))
               ) : (

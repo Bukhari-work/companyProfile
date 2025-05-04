@@ -20,9 +20,9 @@ const { pathname } = Astro.url;
 
 <header
   id="site-header"
-  class="bg-background/90 fixed top-0 z-30 w-screen border-b backdrop-blur-sm"
+  class="bg-background/90 fixed top-0 z-30 w-screen backdrop-blur-sm"
 >
-  <div class="relative mx-3 flex h-full grow border-x md:mx-8 lg:mx-12">
+  <div class="relative mx-3 flex h-full grow md:mx-8 lg:mx-12">
     <nav
       aria-label="Main navigation"
       class="mx-auto flex w-full items-center justify-between px-3 md:max-w-6xl md:px-6"
@@ -58,7 +58,7 @@ const { pathname } = Astro.url;
                   {menu.text}
                   <span
                     class={cn(
-                      `bg-primary absolute bottom-1 left-0 h-0.5 w-full origin-bottom-left scale-x-0 transform transition-transform duration-200 ease-out group-hover:scale-x-100 ${
+                      `bg-primary origin-bottom-center absolute bottom-1 left-0 h-0.5 w-full scale-x-0 transform transition-transform duration-300 ease-out group-hover:scale-x-100 ${
                         (pathname === `${menu.href}/` ||
                           pathname === menu.href) &&
                         "bg-ungu dark:bg-kuning scale-x-100"
@@ -96,3 +96,22 @@ const { pathname } = Astro.url;
 </header>
 
 <NavDrawer />
+
+<script is:inline>
+  const addBorder = () => {
+    const header = document.getElementById("site-header");
+    if (header) {
+      const scrollThreshold = 50; // Adjust this value as needed
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollThreshold) {
+          header.classList.add("border-b");
+        } else {
+          header.classList.remove("border-b");
+        }
+      });
+    }
+  };
+
+  window.addEventListener("load", addBorder);
+  document.addEventListener("astro:after-swap", addBorder);
+</script>

@@ -48,7 +48,7 @@ const slot = await Astro.slots.render("default");
 />
 
 <script is:inline type="module" define:vars={{ id: id, modal: modal }}>
-  import { enableScroll, disableScroll } from "../src/scripts/utils/scroll.ts";
+  import { enableScroll, disableScroll } from "../src/lib/scroll.ts";
 
   const drawerFunction = function () {
     const drawer = document.getElementById(`${id}`);

@@ -1,11 +1,10 @@
 ---
 import Main from "@/layouts/Main.astro";
 
-// UI Imports
-import Button from "@/components/ui-astro/Button.astro";
-
 // Component imports
 import Hero from "@/components/Hero.astro";
+import Stats from "@/components/Stats.astro";
+import Features from "@/components/Features.astro";
 
 // Attributes
 const content = { title: "light Mode" };
@@ -50,5 +49,88 @@ const content = { title: "light Mode" };
       an effective, efficient, equitable, and sustainable manner.
     </Fragment>
   </Hero>
-  <div class="grid place-items-center content-center"></div>
+
+  <Stats
+    stats={[
+      { title: "Downloads", amount: "132K" },
+      { title: "Stars", amount: "24.8K" },
+      { title: "Forks", amount: "10.3K" },
+      { title: "Users", amount: "48.4K" },
+    ]}
+  />
+
+  <Features
+    title="Our templates"
+    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: "Educational",
+        description:
+          "Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.",
+        icon: "LuUser",
+      },
+      {
+        title: "Interior Design",
+        description:
+          "Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.",
+        icon: "LuUser",
+      },
+      {
+        title: "Photography",
+        description:
+          "Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.",
+        icon: "LuUser",
+      },
+    ]}
+  />
+  <Features
+    columns={3}
+    isAfterContent={true}
+    items={[
+      {
+        title: "E-commerce",
+        description:
+          "Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.",
+        icon: "LuUser",
+      },
+      {
+        title: "Blog",
+        description:
+          "Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.",
+        icon: "LuUser",
+      },
+      {
+        title: "Business",
+        description:
+          "Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.",
+        icon: "LuUser",
+      },
+      {
+        title: "Branding",
+        description:
+          "Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.",
+        icon: "LuUser",
+      },
+      {
+        title: "Medical",
+        description:
+          "Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.",
+        icon: "LuUser",
+      },
+      {
+        title: "Fashion Design",
+        description:
+          "Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.",
+        icon: "LuUser",
+      },
+    ]}
+    image={{
+      src: "/images/hero-bg.jpeg",
+      height: 256,
+      width: 512,
+      alt: "AstroWind Hero Image",
+    }}
+  />
 </Main>

@@ -2,20 +2,15 @@
 import config from "@/config.json";
 import Drawer from "@/components/ui-astro/Drawer.astro";
 import { ChevronRight } from "lucide-react";
+import type { HTMLAttributes } from "astro/types";
 
 // Component Imports
 import Button from "@/components/ui-astro/Button.astro";
 
-interface ChildNavigationLink {
-  name: string;
-  url: string;
-}
-
-interface NavigationLink {
-  name: string;
-  url: string;
+interface NavigationLink extends HTMLAttributes<"a"> {
+  text: string;
   hasChildren?: boolean;
-  children?: ChildNavigationLink[];
+  children?: HTMLAttributes<"a">[];
 }
 
 const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
@@ -34,17 +29,17 @@ const { pathname } = Astro.url;
         <>
           <li>
             <Button
-              href={menu.url}
+              href={menu.href}
               variant="ghost"
               className="flex justify-between"
               data-aw-close-nav
               aria-current={
-                pathname === `${menu.url}/` || pathname === menu.url
+                pathname === `${menu.href}/` || pathname === menu.href
                   ? "page"
                   : undefined
               }
             >
-              <span>{menu.name}</span>
+              <span>{menu.text}</span>
               <ChevronRight />
             </Button>
           </li>
