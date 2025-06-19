@@ -1,53 +1,4 @@
----
-import type { ComponentProps, HTMLAttributes } from "astro/types";
-import Button from "@/components/ui-astro/Button.astro";
-import Element from "@/components/ui-astro/Element.astro";
-import { cn } from "@/lib/utils";
-
-// Define props for the Drawer component
-interface Props extends HTMLAttributes<"dialog"> {
-  id: string;
-  modal?: boolean;
-  // Props to configure the trigger button:
-  triggerVariant?: ComponentProps<typeof Button>["variant"];
-  triggerSize?: ComponentProps<typeof Button>["size"];
-  triggerText?: string;
-  triggerIcon?: string;
-  triggerClass?: string; // Optional class for the trigger button
-}
-
-const {
-  id,
-  modal = true,
-  triggerVariant = "ghost",
-  triggerSize = "default",
-  triggerText,
-  triggerIcon,
-  triggerClass,
-  ...rest // Rest of the props go to the <dialog> element
-} = Astro.props;
-
-const slot = await Astro.slots.render("default");
----
-
-<Element class:list="drawer" {id} {modal}>
-  <Element class:list="drawer-body" as="aside" {...rest}>
-    <!-- <div class="bg-muted mx-auto mt-4 h-2 w-[100px] shrink-0 rounded-full">
-    </div> -->
-    <Fragment set:html={slot} />
-  </Element>
-  <div class="drawer-backdrop"></div>
-</Element>
-<Button
-  className={cn("drawer-trigger", triggerClass)}
-  data-drawer-target={id}
-  variant={triggerVariant}
-  size={triggerSize}
-  text={triggerText}
-  icon={triggerIcon}
-/>
-
-<script is:inline type="module" define:vars={{ id: id, modal: modal }}>
+<script is:inline type="module">
   // START OF SCROLL.TS (for modal, enabling or disabling scrolling)
   // left: 37, up: 38, right: 39, down: 40,
   // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
@@ -103,19 +54,34 @@ const slot = await Astro.slots.render("default");
     element.removeEventListener("touchmove", preventDefault, wheelOpt);
     element.removeEventListener("keydown", preventDefaultForScrollKeys, false);
   }
-  // END OF SCROLL.TS
 
-  const drawerFunction = function () {
-    const drawer = document.getElementById(`${id}`);
+  // END OF SCROLL.TS
+  function attachEvent(selector, event, fn) {
+    const matches =
+      typeof selector === "string"
+        ? document.querySelectorAll(selector)
+        : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+
+  const drawerAttachFunction = function () {
+    const drawer = document.getElementById("navDrawer");
+
+    if (!drawer) return;
     const drawerBody = drawer.querySelector(".drawer-body");
     const drawerBackdrop = drawer.querySelector(".drawer-backdrop");
 
-    const showButton = document.querySelector(`[data-drawer-target="${id}"]`);
+    const modal = drawer.getAttribute("modal") === `true`;
 
-    // "Show" button opens the dialog modally
-    showButton.addEventListener("click", () => {
+    // Attach event listener to open the dialog
+    attachEvent("[data-aw-show-nav]", "click", function () {
       drawerBody.classList.add("translate-y-0");
       drawerBackdrop.classList.add("overlay");
+      console.log("Drawer opened");
 
       if (modal) {
         document.documentElement.classList.add("overflow-hidden");
@@ -124,8 +90,8 @@ const slot = await Astro.slots.render("default");
       }
     });
 
-    // Backdrop closes the dialog
-    drawerBackdrop.addEventListener("click", () => {
+    // Attach event listener to close the dialog
+    attachEvent("[data-aw-close-nav]", "click", function (_, elem) {
       drawerBody.classList.remove("translate-y-0");
       drawerBackdrop.classList.remove("overlay");
 
@@ -137,11 +103,7 @@ const slot = await Astro.slots.render("default");
     });
   };
 
-  // Initial execution
-  drawerFunction();
-
+  window.addEventListener("load", drawerAttachFunction);
   // Script re-execution for viewTransition
-  document.addEventListener("astro:page-load", () => {
-    drawerFunction();
-  });
+  document.addEventListener("astro:after-swap", drawerAttachFunction);
 </script>

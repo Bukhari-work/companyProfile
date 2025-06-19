@@ -4,7 +4,8 @@ import "../styles/tailwind.css";
 import { SEO } from "astro-seo";
 import Favicons from "@/layouts/blocks/Favicons.astro";
 
-import MainScripts from "@/scripts/MainScripts.astro";
+import MainScript from "@/scripts/MainScript.astro";
+import DrawerAttachScript from "@/scripts/DrawerAttachScript.astro";
 import ObserverScript from "@/scripts/ObserverScript.astro";
 import { ClientRouter } from "astro:transitions";
 
@@ -57,7 +58,8 @@ const { content, mode } = Astro.props;
     <ClientRouter />
 
     <!-- Scripts -->
-    <MainScripts />
+    <MainScript />
+    <DrawerAttachScript />
   </head>
 
   <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
