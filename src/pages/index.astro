@@ -5,7 +5,9 @@ import Main from "@/layouts/Main.astro";
 import Hero from "@/components/Hero.astro";
 import Stats from "@/components/Stats.astro";
 import Features from "@/components/Features.astro";
-
+import Steps from "@/components/Steps.astro";
+import NumberedList from "@/components/NumberedList.astro";
+import Content from "@/components/Content.astro";
 // Attributes
 const content = { title: "light Mode" };
 ---
@@ -133,4 +135,124 @@ const content = { title: "light Mode" };
       alt: "AstroWind Hero Image",
     }}
   />
+
+  <Steps
+    id="resume"
+    title="Work experience"
+    items={[
+      {
+        title:
+          'Graphic Designer <br /> <span class="text-base">ABC Design Studio, New York, NY</span> <br /> <span class="text-sm">2021 - Present</span>',
+        description: `Collaborate with clients to understand design requirements and objectives. <br /> Develop branding solutions, including logos, color palettes, and brand guidelines. <br /> Design marketing materials such as brochures, posters, and digital assets. <br /> Create visually appealing user interfaces for websites and applications.`,
+        icon: "LuUser",
+      },
+      {
+        title:
+          'Junior Graphic Designer <br /> <span class="font-normal">XYZ Creative Agency, Los Angeles, CA</span> <br /> <span class="text-sm font-normal">2018 - 2021</span>',
+        description: `Assisted senior designers in creating design concepts and visual assets. <br /> Contributed to the development of brand identities and marketing collateral. <br /> Collaborated with the marketing team to ensure consistent design across campaigns. <br /> Gained hands-on experience in various design software and tools.`,
+        icon: "LuUsers",
+      },
+    ]}
+    classes={{ container: "max-w-3xl" }}
+  />
+
+  <Steps
+    title="Get your dream website up and running in no time with AstroWind."
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Download</span>',
+        description:
+          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
+        icon: "LuPackage",
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Add content</span>',
+        description:
+          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
+        icon: "LuFileText",
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        description:
+          "Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.",
+        icon: "LuCross",
+      },
+      {
+        title: "Ready!",
+        icon: "LuCheck",
+      },
+    ]}
+    image={{
+      src: "https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+      alt: "Steps image",
+    }}
+  />
+  <NumberedList
+    title="Achievements"
+    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
+    isReversed={true}
+    callToAction={{
+      text: "See more",
+      href: "/",
+    }}
+    items={[
+      {
+        title: "Global reach",
+        description:
+          "Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.",
+        icon: "LuGlobe",
+      },
+      {
+        title: "Positive customer feedback and reviews",
+        description:
+          "Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.",
+        icon: "LuMail",
+      },
+      {
+        title: "Awards and recognition as industry experts",
+        description:
+          "Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.",
+        icon: "LuStar",
+      },
+    ]}
+  />
+  <Content
+    isReversed
+    tagline="Inside template"
+    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    items={[
+      {
+        title: "Built on top of Astro 5.0",
+        description:
+          "Benefiting from the performance and developer-friendly features of this modern static site generator.",
+      },
+      {
+        title: "Styled using Tailwind CSS",
+        description:
+          "Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.",
+      },
+      {
+        title: "Cross-browser compatibility",
+        description:
+          "Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.",
+      },
+    ]}
+    image={{
+      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Colorful Image",
+    }}
+  >
+    <Fragment slot="content">
+      <h3
+        class="mb-2 text-2xl font-bold tracking-tight sm:text-3xl dark:text-white"
+      >
+        Building on modern foundations
+      </h3>
+      Gain a competitive advantage by incorporating industry leading practices
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 </Main>

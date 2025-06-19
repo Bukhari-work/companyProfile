@@ -2,7 +2,6 @@
 import Logo from "@/components/blocks/Logo.astro";
 import ThemeToggle from "@/components/blocks/ThemeToggle.astro";
 import config from "@/config.json";
-import { cn } from "@/lib/utils";
 import NavDrawer from "@/components/blocks/NavDrawer.astro";
 import Button from "@/components/ui-astro/Button.astro";
 import type { HTMLAttributes } from "astro/types";
@@ -38,16 +37,16 @@ const { pathname } = Astro.url;
       <div id="desktop-menu" class="hidden lg:flex">
         <ul
           id="navigation"
-          class="inline-flex w-auto flex-wrap justify-center space-x-4 self-center px-5 text-center text-sm"
+          class="inline-flex w-auto flex-wrap justify-center space-x-1 self-center px-5 text-center text-sm"
         >
           {
             mainMenu.map((menu) => (
               <li>
                 <a
                   href={menu.href}
-                  class={`group relative block px-2 py-3 ${
+                  class={`text-foreground/80 group hover:bg-primary/5 dark:hover:bg-primary/12 relative block gap-10 rounded-xl px-4 py-3 transition-colors duration-200 ${
                     (pathname === `${menu.href}/` || pathname === menu.href) &&
-                    "text-ungu dark:text-kuning"
+                    "text-primary/80 bg-primary/10"
                   }`}
                   aria-current={
                     pathname === `${menu.href}/` || pathname === menu.href
@@ -56,15 +55,6 @@ const { pathname } = Astro.url;
                   }
                 >
                   {menu.text}
-                  <span
-                    class={cn(
-                      `bg-primary absolute bottom-1 left-0 h-0.5 w-full origin-center scale-x-0 transform transition-transform duration-200 ease-out group-hover:scale-x-100 ${
-                        (pathname === `${menu.href}/` ||
-                          pathname === menu.href) &&
-                        "bg-primary scale-x-100"
-                      }`,
-                    )}
-                  />
                 </a>
               </li>
             ))

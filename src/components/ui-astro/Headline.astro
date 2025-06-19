@@ -18,7 +18,12 @@ const {
 
 {
   (title || subtitle || tagline) && (
-    <div class={cn("mb-8 text-center md:mx-auto md:mb-12", containerClass)}>
+    <div
+      class={cn(
+        "prose dark:prose-invert mb-8 text-center md:mx-auto md:mb-12",
+        containerClass,
+      )}
+    >
       {tagline && (
         <p
           class="text-base font-bold tracking-wide uppercase"
