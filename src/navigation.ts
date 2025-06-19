@@ -40,7 +40,7 @@ export const footerData = {
       ],
     },
     {
-      title: "Contact",
+      title: "Kontak",
       links: [
         { text: "021 786 7370", href: "tel:+62217867370" },
         {
@@ -57,9 +57,7 @@ export const footerData = {
   secondaryLinks: [
     {
       text: "Fakultas Kesehatan Masyarakat</br>\
-      Universitas Indonesia<br/>\
-      Pondok Cina, Kecamatan Beji, Kota Depok<br/>\
-      Jawa Barat 16424, Indonesia",
+      Universitas Indonesia<br/>",
       href: "https://maps.app.goo.gl/7TDV2YcWJNLNM9o37",
     },
   ],

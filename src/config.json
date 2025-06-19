@@ -19,7 +19,11 @@
         "href": "/"
       },
       {
-        "text": "Tentang",
+        "text": "Pengalaman",
+        "href": "/experience"
+      },
+      {
+        "text": "Tentang Kami",
         "href": "/indexx"
       },
       {
@@ -41,19 +45,19 @@
         "href": "/indexx"
       },
       {
-        "text": "Values",
+        "text": "Nilai",
         "href": "/indexx2"
       },
       {
-        "text": "Mission",
+        "text": "Misi",
         "href": "/indexx3"
       },
       {
-        "text": "Team",
+        "text": "Tim",
         "href": "/contact"
       },
       {
-        "text": "Expert",
+        "text": "Ahli",
         "href": "/contact"
       }
     ]
