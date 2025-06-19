@@ -188,6 +188,7 @@ import config from "@/config.json";
     attachEvent("[data-aw-show-nav]", "click", function () {
       drawerBody.classList.add("translate-y-0");
       drawerBackdrop.classList.add("overlay");
+      console.log("Drawer opened");
 
       if (modal) {
         document.documentElement.classList.add("overflow-hidden");
