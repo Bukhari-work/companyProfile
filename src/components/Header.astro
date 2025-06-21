@@ -13,7 +13,14 @@ interface NavigationLink extends HTMLAttributes<"a"> {
   children?: HTMLAttributes<"a">[];
 }
 
-const { mainMenu }: { mainMenu: NavigationLink[] } = config.menu;
+interface AboutLink extends HTMLAttributes<"a"> {
+  text: string;
+}
+
+const {
+  mainMenu,
+  aboutMenu,
+}: { mainMenu: NavigationLink[]; aboutMenu: AboutLink[] } = config.menu;
 
 const { pathname } = Astro.url;
 ---
@@ -25,7 +32,7 @@ const { pathname } = Astro.url;
   <div class="relative mx-3 flex h-full grow md:mx-8 lg:mx-12">
     <nav
       aria-label="Main navigation"
-      class="mx-auto flex w-full items-center justify-between px-3 md:max-w-6xl md:px-6"
+      class="mx-auto flex w-full items-center justify-between px-3 md:max-w-5xl md:px-6"
     >
       <!-- Logo -->
       <Logo
@@ -46,7 +53,10 @@ const { pathname } = Astro.url;
                 <a
                   href={menu.href}
                   class={`group relative block px-2 py-3 ${
-                    (pathname === `${menu.href}/` || pathname === menu.href) &&
+                    (pathname === `${menu.href}/` ||
+                      pathname === menu.href ||
+                      (menu.text === "About Us" &&
+                        aboutMenu.some((about) => about.href === pathname))) &&
                     "text-ungu dark:text-kuning"
                   }`}
                   aria-current={
@@ -60,7 +70,11 @@ const { pathname } = Astro.url;
                     class={cn(
                       `bg-primary absolute bottom-1 left-0 h-0.5 w-full origin-center scale-x-0 transform transition-transform duration-200 ease-out group-hover:scale-x-100 ${
                         (pathname === `${menu.href}/` ||
-                          pathname === menu.href) &&
+                          pathname === menu.href ||
+                          (menu.text === "About Us" &&
+                            aboutMenu.some(
+                              (about) => about.href === pathname,
+                            ))) &&
                         "bg-primary scale-x-100"
                       }`,
                     )}

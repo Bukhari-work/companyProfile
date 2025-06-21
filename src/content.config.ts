@@ -6,16 +6,16 @@ import { glob } from "astro/loaders";
 
 // 3. Define your collection(s)
 const people = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/authors" }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/people" }),
   schema: z.object({
-    name: z.string(),
+    title: z.string(),
     role: z.enum(["Advisor", "Leadership", "Expert", "Member"]),
     description: z.string().optional(),
     responsibility: z.string().optional(),
     expertise: z.string().optional(),
     image: z
       .object({
-        src: z.string().url(),
+        src: z.string(),
         alt: z.string(),
       })
       .optional(),
@@ -33,15 +33,15 @@ const people = defineCollection({
 });
 
 // Project collection schema
-const blogs = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/project" }),
+const news = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/news" }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
     subtitle: z.string().optional(),
     image: z
       .object({
-        src: z.string().url(),
+        src: z.string(),
         alt: z.string(),
       })
       .optional(),
@@ -53,4 +53,4 @@ const blogs = defineCollection({
 });
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { people, blogs };
+export const collections = { people, news };

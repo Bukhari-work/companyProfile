@@ -1,0 +1,84 @@
+---
+import Main from "@/layouts/Main.astro";
+
+import SideBar from "@/components/SideBar.astro";
+
+// Attributes
+const content = { title: "Experience" };
+---
+
+<Main content={content}>
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-6 pb-24 xl:gap-16">
+    <SideBar class="col-span-5 lg:col-span-1" />
+    <article
+      class="prose dark:prose-invert col-span-5 min-w-full font-light lg:col-span-4"
+    >
+      <h1
+        class="font-trajan text-primary mt-8 mb-4 scroll-mt-24 text-5xl lg:text-5xl"
+      >
+        Our Vision
+      </h1>
+      <div class="max-w-3xl">
+        <p>
+          Welcome to the Center for Health Administration & Policy Studies
+          (CHAMPS). Established with a steadfast commitment to improving health
+          outcomes, CHAMPS is a leading institution dedicated to advancing
+          health administration and policy in Indonesia and across Southeast
+          Asia. We believe that effective, equitable, and sustainable health
+          systems are built on a foundation of rigorous research, informed
+          policy, and collaborative action.
+        </p>
+        <p>
+          Our vision is simple yet profound: to become a center of excellence in
+          Southeast Asia in the field of health administration and policy.
+        </p>
+        <p>
+          What does this mean for us, and for the future of health in the
+          region? It means we are committed to being the benchmark for
+          innovation, research, and practical application in health policy and
+          administration. We envision a future where effective, equitable, and
+          sustainable health policies aren't just aspirations but realities
+          across Southeast Asia. This future will be driven by robust,
+          evidence-based research, groundbreaking solutions, and a new
+          generation of empowered leaders equipped to tackle complex health
+          challenges. CHAMPS is dedicated to being at the forefront of this
+          transformation, consistently setting new standards for excellence in
+          scholarship, practice, and real-world impact. We believe that by
+          achieving this vision, we can significantly contribute to better
+          health outcomes and stronger healthcare systems for all in the region.
+        </p>
+
+        <p>Our work encompasses:</p>
+        <ul>
+          <li>
+            <strong>Comprehensive Research:</strong> Conducting in-depth studies
+            and analyses on various aspects of health administration and policy,
+            contributing to evidence-based recommendations that shape national and
+            regional health strategies.
+          </li><li>
+            <strong>Capacity Building:</strong> Offering specialized training programs
+            and workshops for healthcare professionals and policymakers, equipping
+            them with the knowledge and skills necessary to enhance the effectiveness
+            of health systems and services.
+          </li><li>
+            <strong>Strategic Consultation:</strong> Providing tailored advisory
+            services to support governmental bodies, healthcare institutions, and
+            private sector organizations in strategic planning, health system development,
+            and advocacy for sustainable health development.
+          </li><li>
+            <strong>Knowledge Dissemination:</strong> Actively sharing our findings
+            and insights through publications, conferences, and public engagement,
+            ensuring that valuable information reaches those who can utilize it for
+            positive change.
+          </li>
+        </ul>
+      </div>
+      <hr class="!bg-primary/10 my-8 !h-px w-full !border-0 border-t" />
+      <p>
+        Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
+          >champs@ui.ac.id</a
+        >.
+      </p>
+    </article>
+  </section>
+</Main>

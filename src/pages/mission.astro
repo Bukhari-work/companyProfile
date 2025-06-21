@@ -1,0 +1,70 @@
+---
+import Main from "@/layouts/Main.astro";
+
+import SideBar from "@/components/SideBar.astro";
+
+// Attributes
+const content = { title: "About Us - Mission" };
+---
+
+<Main content={content}>
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-6 pb-24 xl:gap-16">
+    <SideBar class="col-span-5 lg:col-span-1" />
+    <article
+      class="prose dark:prose-invert col-span-5 min-w-full font-light lg:col-span-4"
+    >
+      <h1
+        class="font-trajan text-primary mt-8 mb-4 scroll-mt-24 text-5xl lg:text-5xl"
+      >
+        The Mission
+      </h1>
+      <div class="max-w-3xl">
+        <p>
+          At CHAMPS, our mission is to drive significant progress in health
+          administration and policy, both in Indonesia and across Southeast
+          Asia. We achieve this through a multi-faceted approach, focusing on
+          research, partnership, and education:
+        </p>
+        <ul>
+          <li>
+            <strong>Advancing Healthcare Studies: </strong>We are dedicated to
+            conducting cutting-edge studies on healthcare systems and policies
+            in Indonesia. Our research aims to generate critical insights and
+            evidence to inform effective solutions for real-world health
+            challenges.
+          </li><li>
+            <strong>Partnering for Better Health Services: </strong> We serve as
+            a trusted partner to communities and the government, actively collaborating
+            to improve the quality of health services throughout Indonesia. By working
+            together, we strive to translate research into tangible improvements
+            for public health.
+          </li><li>
+            <strong>Fostering Regional Collaboration: </strong> Recognizing the interconnectedness
+            of health across borders, we aim to be a valuable partner for international
+            institutions in developing health administration and policy studies within
+            the Southeast Asian region. We believe in sharing knowledge and expertise
+            to collectively advance health outcomes.
+          </li><li>
+            <strong>Applying Academic Expertise: </strong> CHAMPS provides a vital
+            platform for the teaching staff of the Department of Health Administration
+            and Policy and the Faculty of Public Health to apply their scientific
+            knowledge. This ensures our academic insights directly contribute to
+            practical advancements in health administration and policy.
+          </li><li>
+            <strong>Nurturing Future Leaders: </strong> We are committed to fostering
+            the next generation of experts in health administration and policy. By
+            serving as a means of regeneration for our teaching staff, we support
+            the continuous development of specialized expertise crucial for the future
+            of public health.
+          </li>
+        </ul>
+      </div>
+      <hr class="!bg-primary/10 my-8 !h-px w-full !border-0 border-t" />
+      <p>
+        Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
+          >champs@ui.ac.id</a
+        >.
+      </p>
+    </article>
+  </section>
+</Main>

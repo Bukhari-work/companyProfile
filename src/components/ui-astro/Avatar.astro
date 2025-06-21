@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+
+const { image, resolution = 200, loading, isStacked = false } = Astro.props;
+---
+
+<Image
+  src={image}
+  height={resolution}
+  width={resolution}
+  alt=""
+  loading={loading}
+  class:list={[
+    "rounded-full bg-black/20 object-cover outline-2 outline-offset-2 outline-inherit",
+    {
+      "size-14": isStacked,
+      "size-6": !isStacked,
+    },
+  ]}
+  aria-hidden="true"
+/>

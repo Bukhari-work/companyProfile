@@ -1,0 +1,275 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Notice from "@/shortcodes/Notice";
+
+import social from "@/config/social.json";
+import Social from "@/components/Social.astro";
+
+const contact = (await getEntry(
+  "contact",
+  "-index",
+)) as CollectionEntry<"contact">;
+const { title, description, meta_title, image, content } = contact.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader title={title} />
+  <section
+    class="section-sm col-10 mx-auto grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr] xl:col-8"
+  >
+    <script
+      is:inline
+      src="https://www.google.com/recaptcha/api.js?render=6LdfBfYqAAAAAFIULe8Wl_X3hGIp3WTpcrpUMiO2"
+      async
+      defer></script>
+    <div class="container mx-auto py-6">
+      <h3>{content.messageTitle}</h3>
+      <!-- Add success message container -->
+      <div
+        id="successMessage"
+        class="mt-4 hidden translate-y-4 opacity-0 transition-all duration-300 ease-in-out"
+      >
+        <Notice type="success">
+          <span id="successMessageText">
+            Thank you, <strong id="successName"></strong>! 🌟
+            <div class="mt-4 rounded-lg border p-3">
+              <div>Your message:</div>
+              <div id="successUserMessage"></div>
+            </div>
+            <div class="mt-4">
+              I'll respond to <strong id="successEmail"></strong> within 24 hours.
+            </div></span
+          >
+        </Notice>
+      </div>
+      <article
+        id="contactDescription"
+        class="mt-4 translate-y-0 space-y-4 opacity-100 transition-all duration-300 ease-in-out lg:col-10"
+      >
+        <p>
+          {content.message}
+        </p>
+        <p>
+          {content.messageTwo}
+        </p>
+        <div class="">
+          <Social source={social.main} className="social-icons" />
+        </div>
+      </article>
+    </div>
+    <div
+      class="bg-border dark:bg-darkmode-border container rounded-xl px-6 py-6"
+    >
+      <div class="row">
+        <div class="mx-auto">
+          <form
+            id="contactForm"
+            method="POST"
+            data-contact-url={config.params.contact_form_url}
+          >
+            <div class="mb-6">
+              <label for="name" class="form-label">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="name"
+                name="name"
+                class="form-input"
+                placeholder="Budi Susanti"
+                type="text"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <div class="mb-6 hidden" aria-hidden="true">
+              <label for="website" class="form-label">Website</label>
+              <input
+                id="website"
+                name="website"
+                class="form-input"
+                placeholder="bukhari-work.github.io"
+                type="text"
+                autocomplete="off"
+              />
+            </div>
+            <div class="mb-6">
+              <label for="email" class="form-label">
+                Working e-Mail <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="budi.susanti@email.com"
+                type="email"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <div class="mb-6">
+              <label for="message" class="form-label">
+                Message <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-input"
+                placeholder="Message goes here..."
+                rows="8"
+                required></textarea>
+            </div>
+            <button id="submitBtn" type="submit" class="btn btn-primary">
+              Submit
+            </button>
+            <div id="inline-badge" class="inline-block"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .is-invalid {
+    @apply border-red-500;
+  }
+
+  input:focus,
+  textarea:focus {
+    @apply ring-1 ring-blue-500 outline-none;
+  }
+
+  .is-invalid:focus {
+    @apply ring-1 ring-red-500 outline-none;
+  }
+</style>
+
+<script is:inline>
+  const validateField = (field) => {
+    const isValid = field.checkValidity();
+    field.classList.toggle("is-invalid", !isValid);
+  };
+
+  document
+    .querySelectorAll("input[required], textarea[required]")
+    .forEach((field) => {
+      // Validate on user interaction
+      field.addEventListener("input", () => validateField(field));
+      field.addEventListener("blur", () => validateField(field));
+    });
+
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const submitBtn = document.getElementById("submitBtn");
+      const successMessage = document.getElementById("successMessage");
+      const contactDescription = document.getElementById("contactDescription");
+      const url = form.dataset.contactUrl;
+
+      const website = form.website.value.trim();
+      if (website) return;
+
+      // Ensure grecaptcha is loaded before executing
+      if (typeof grecaptcha === "undefined" || !grecaptcha) {
+        throw new Error("reCaptcha is not loaded. Please try again later.");
+      }
+
+      try {
+        // Get the reCAPTCHA token
+        const token = await new Promise((resolve, reject) => {
+          grecaptcha.ready(() => {
+            grecaptcha
+              .execute("6LdfBfYqAAAAAFIULe8Wl_X3hGIp3WTpcrpUMiO2", {
+                action: "submit",
+              })
+              .then(resolve)
+              .catch(reject);
+          });
+        });
+
+        // Basic validation
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name || !email || !message) {
+          throw new Error("All fields are required");
+        }
+
+        // Add loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+        submitBtn.classList.remove("btn-primary");
+
+        // Send form data
+        const response = await fetch(url, {
+          method: "POST",
+          body: new URLSearchParams({
+            name: name,
+            email: email,
+            message: message,
+            recaptchaToken: token,
+          }),
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          document.getElementById("successName").textContent = name;
+          document.getElementById("successUserMessage").textContent = message;
+          document.getElementById("successEmail").textContent = email;
+
+          form.reset();
+
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: "smooth" });
+
+          // Show and animate success message
+          successMessage.classList.remove("hidden");
+          contactDescription.classList.add("hidden");
+          successMessage.offsetWidth;
+          successMessage.classList.remove("opacity-0", "translate-y-4");
+          successMessage.classList.add("opacity-100", "translate-y-0");
+          contactDescription.classList.remove("opacity-100", "translate-y-0");
+          contactDescription.classList.add("opacity-0", "translate-y-4");
+
+          // Automatically hide after some seconds with exit animation
+          setTimeout(() => {
+            successMessage.classList.remove("opacity-100", "translate-y-0");
+            successMessage.classList.add("opacity-0", "translate-y-4");
+            contactDescription.classList.remove("opacity-0", "translate-y-4");
+            contactDescription.classList.add("opacity-100", "translate-y-0");
+
+            setTimeout(() => {
+              successMessage.classList.add("hidden");
+              contactDescription.classList.remove("hidden");
+            }, 300);
+          }, 6000);
+        } else {
+          throw new Error(result.message || "Submission failed");
+        }
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+        submitBtn.classList.add("btn-primary");
+      }
+    });
+</script>

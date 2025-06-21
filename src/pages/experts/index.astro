@@ -1,0 +1,78 @@
+---
+import Main from "@/layouts/Main.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getEntry, type CollectionEntry } from "astro:content";
+
+import SideBar from "@/components/SideBar.astro";
+import AuthorCard from "@/components/blocks/AuthorCard.astro";
+
+const COLLECTION_FOLDER = "people";
+
+const peopleIndex = (await getEntry(
+  COLLECTION_FOLDER,
+  "-index",
+)) as CollectionEntry<"people">;
+const people = await getSinglePage(COLLECTION_FOLDER);
+
+// Attributes
+const content = { title: "About Us - Experts" };
+
+interface SocialLink {
+  ariaLabel: string;
+  href: string;
+  text?: string; // Make text optional as per your usage in Fragment
+  icon?: string; // Make icon optional if not all links have icons
+}
+
+const socialLinks: SocialLink[] = [
+  {
+    ariaLabel: "Follow us on Twitter",
+    href: "https://twitter.com/yourcompany",
+    icon: "LuTwitter", // Assuming 'twitter' maps to an icon in DynamicIcon
+  },
+  {
+    ariaLabel: "Connect with us on LinkedIn",
+    href: "https://linkedin.com/company/yourcompany",
+    icon: "LuLinkedin",
+  },
+  {
+    ariaLabel: "Visit our GitHub repository",
+    href: "https://github.com/yourcompany",
+    icon: "LuGithub",
+  },
+  {
+    ariaLabel: "Send us an email",
+    href: "mailto:info@yourcompany.com",
+    icon: "LuMail", // You might have an email icon or choose to omit it
+  },
+];
+
+const person = {
+  data: {
+    name: "Nuruddin Zangi",
+    image: "/images/hero.png",
+    social: socialLinks,
+  },
+  body: "Nuruddin Zangi is a national hero born in 2018. He led Indonesia to independence, pioneering one of the first production uses of conflict-free national defense strategy. He's been dreaming about world peace since his small town of Jakarta were Invaded, and is excited to finally have the power and authority to achieve this vision.",
+};
+---
+
+<Main content={content}>
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-6 xl:gap-16">
+    <SideBar class="col-span-5 lg:col-span-1" />
+    <article
+      class="prose dark:prose-invert col-span-5 min-w-full font-light lg:col-span-4"
+    >
+      <h1
+        class="font-trajan text-primary mt-8 mb-4 scroll-mt-24 text-5xl lg:text-5xl"
+      >
+        Researchers
+      </h1>
+      <div class="not-prose">
+        <AuthorCard data={person} className="m-3" />
+        <AuthorCard data={person} className="m-3" />
+        <AuthorCard data={person} className="m-3" />
+      </div>
+    </article>
+  </section>
+</Main>

@@ -1,0 +1,38 @@
+---
+import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+
+interface Link extends HTMLAttributes<"a"> {
+  text?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+interface Props {
+  socialLinks: Array<Link>;
+  className?: string;
+}
+
+const { className, socialLinks = [] } = Astro.props;
+---
+
+{
+  socialLinks?.length ? (
+    <ul class={cn("mb-4 -ml-2 flex md:mb-0", className)}>
+      {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+        <li>
+          <a
+            class="hover:bg-primary/5 dark:hover:bg-primary/12 inline-flex items-center rounded-lg p-2.5 text-sm"
+            aria-label={ariaLabel}
+            href={href}
+          >
+            {icon && <DynamicIcon icon={icon} className="h-5 w-5 mx-1" />}
+            <Fragment set:html={text} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    ""
+  )
+}

@@ -273,19 +273,19 @@ export interface Steps extends Omit<Headline, "classes">, Component {
     icon?: string;
     classes?: Record<string, string>;
   }>;
-  callToAction?: string | CallToAction;
+  callToAction?: ButtonProps;
   image?: string | Image;
   isReversed?: boolean;
 }
 
 export interface Content extends Omit<Headline, "classes">, Component {
   content?: string;
-  image?: string | unknown;
+  image?: string | Image;
   items?: Array<Item>;
   columns?: number;
   isReversed?: boolean;
   isAfterContent?: boolean;
-  callToAction?: CallToAction;
+  callToAction?: ButtonProps;
 }
 
 export interface Contact extends Omit<Headline, "classes">, Form, Component {}
