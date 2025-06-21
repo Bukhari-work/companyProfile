@@ -1,155 +1,38 @@
 ---
-import config from "@/config/config.json";
-import Base from "@/layouts/Base.astro";
-import PageHeader from "@/partials/PageHeader.astro";
+import config from "@/config.json";
+import Main from "@/layouts/Main.astro";
 import { getEntry } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Notice from "@/shortcodes/Notice";
 
-import social from "@/config/social.json";
-import Social from "@/components/Social.astro";
+import { footerData } from "@/navigation.ts";
+import Social from "@/components/blocks/Social.astro";
 
-const contact = (await getEntry(
-  "contact",
-  "-index",
-)) as CollectionEntry<"contact">;
-const { title, description, meta_title, image, content } = contact.data;
+const { socialLinks } = footerData;
+const page = { title: "Contact" };
 ---
 
-<Base
-  title={title}
-  meta_title={meta_title}
-  description={description}
-  image={image}
->
-  <PageHeader title={title} />
+<Main content={page}>
   <section
     class="section-sm col-10 mx-auto grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr] xl:col-8"
   >
-    <script
-      is:inline
-      src="https://www.google.com/recaptcha/api.js?render=6LdfBfYqAAAAAFIULe8Wl_X3hGIp3WTpcrpUMiO2"
-      async
-      defer></script>
-    <div class="container mx-auto py-6">
-      <h3>{content.messageTitle}</h3>
-      <!-- Add success message container -->
-      <div
-        id="successMessage"
-        class="mt-4 hidden translate-y-4 opacity-0 transition-all duration-300 ease-in-out"
-      >
-        <Notice type="success">
-          <span id="successMessageText">
-            Thank you, <strong id="successName"></strong>! 🌟
-            <div class="mt-4 rounded-lg border p-3">
-              <div>Your message:</div>
-              <div id="successUserMessage"></div>
-            </div>
-            <div class="mt-4">
-              I'll respond to <strong id="successEmail"></strong> within 24 hours.
-            </div></span
-          >
-        </Notice>
-      </div>
-      <article
-        id="contactDescription"
-        class="mt-4 translate-y-0 space-y-4 opacity-100 transition-all duration-300 ease-in-out lg:col-10"
-      >
-        <p>
-          {content.message}
-        </p>
-        <p>
-          {content.messageTwo}
-        </p>
-        <div class="">
-          <Social source={social.main} className="social-icons" />
-        </div>
-      </article>
-    </div>
-    <div
-      class="bg-border dark:bg-darkmode-border container rounded-xl px-6 py-6"
-    >
-      <div class="row">
-        <div class="mx-auto">
-          <form
-            id="contactForm"
-            method="POST"
-            data-contact-url={config.params.contact_form_url}
-          >
-            <div class="mb-6">
-              <label for="name" class="form-label">
-                Full Name <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="Budi Susanti"
-                type="text"
-                autocomplete="name"
-                required
-              />
-            </div>
-            <div class="mb-6 hidden" aria-hidden="true">
-              <label for="website" class="form-label">Website</label>
-              <input
-                id="website"
-                name="website"
-                class="form-input"
-                placeholder="bukhari-work.github.io"
-                type="text"
-                autocomplete="off"
-              />
-            </div>
-            <div class="mb-6">
-              <label for="email" class="form-label">
-                Working e-Mail <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="email"
-                name="email"
-                class="form-input"
-                placeholder="budi.susanti@email.com"
-                type="email"
-                autocomplete="email"
-                required
-              />
-            </div>
-            <div class="mb-6">
-              <label for="message" class="form-label">
-                Message <span class="text-red-500">*</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                class="form-input"
-                placeholder="Message goes here..."
-                rows="8"
-                required></textarea>
-            </div>
-            <button id="submitBtn" type="submit" class="btn btn-primary">
-              Submit
-            </button>
-            <div id="inline-badge" class="inline-block"></div>
-          </form>
-        </div>
-      </div>
-    </div>
   </section>
-</Base>
+</Main>
 
 <style>
   .is-invalid {
-    @apply border-red-500;
+    border-color: #ef4444; /* Equivalent to Tailwind's border-red-500 */
   }
 
   input:focus,
   textarea:focus {
-    @apply ring-1 ring-blue-500 outline-none;
+    box-shadow: 0 0 0 1px #3b82f6; /* Equivalent to Tailwind's ring-1 ring-blue-500 */
+    outline: none;
   }
 
   .is-invalid:focus {
-    @apply ring-1 ring-red-500 outline-none;
+    box-shadow: 0 0 0 1px #ef4444; /* Equivalent to Tailwind's ring-1 ring-red-500 */
+    outline: none;
   }
 </style>
 

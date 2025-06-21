@@ -40,7 +40,7 @@ export const footerData = {
       ],
     },
     {
-      title: "Kontak",
+      title: "Contact",
       links: [
         { text: "021 786 7370", href: "tel:+62217867370" },
         {
@@ -62,17 +62,25 @@ export const footerData = {
     },
   ],
   socialLinks: [
-    { ariaLabel: "Linkedin", icon: "LuLinkedin", href: "#" },
+    {
+      ariaLabel: "Linkedin",
+      icon: "LuLinkedin",
+      href: "https://id.linkedin.com/company/champsui",
+    },
     {
       ariaLabel: "Instagram",
       icon: "LuInstagram",
-      href: "#",
+      href: "https://www.instagram.com/champs_ui/",
     },
-    { ariaLabel: "Facebook", icon: "LuFacebook", href: "#" },
+    {
+      ariaLabel: "Facebook",
+      icon: "LuFacebook",
+      href: "https://www.facebook.com/champs.fkmui/",
+    },
     {
       ariaLabel: "WhatsApp",
       icon: "FaWhatsapp",
-      href: "/",
+      href: "https://wa.me/6281324096624",
     },
   ],
   footNote: `

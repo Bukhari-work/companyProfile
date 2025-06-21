@@ -104,6 +104,7 @@ export interface Video {
 export interface Component {
   id?: string;
   bg?: string;
+  flatBackground?: boolean;
   classes?: Record<string, string | Record<string, string>>;
 }
 

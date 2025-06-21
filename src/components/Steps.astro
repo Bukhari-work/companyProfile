@@ -12,6 +12,7 @@ const {
   items = [],
   image = await Astro.slots.render("image"),
   isReversed = false,
+  flatBackground,
 
   id,
   classes = {},
@@ -23,6 +24,7 @@ const {
   id={id}
   containerClass={`max-w-5xl ${classes?.container ?? ""}`}
   bg={bg}
+  flatBackground={flatBackground}
 >
   <div
     class:list={[

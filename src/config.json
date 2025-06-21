@@ -62,26 +62,25 @@
 
   "navigation_button": {
     "enable": true,
-    "label": "Hire Me! :D",
+    "label": "Contact Us!",
     "link": "/contact"
   },
 
   "metadata": {
     "meta_author": "Ahmad Bukhari",
     "meta_image": "/images/og-image.png",
-    "meta_image_alt": "Please hire me :(",
-    "meta_description": "Ahmad Bukhari's Portfolio Site"
+    "meta_image_alt": "CHAMPS",
+    "meta_description": "CHAMPS UI Official Website"
   },
 
   "params": {
     "contact_form_href": "",
-    "copyright": "©2025 Ahmad Bukhari. All rights reserved.",
-    "credit": "Made with [Astro](https://astro.build) using [Astroplate](https://github.com/zeon-studio/astroplate) template"
+    "copyright": "©2025 Ahmad Bukhari. All rights reserved."
   },
 
   "settings": {
     "search": true,
-    "sticky_header": true,
+    "sticky_header": false,
     "theme_switcher": true,
     "default_theme": "system",
     "pagination": 4,

@@ -9,6 +9,7 @@ const {
   subtitle = await Astro.slots.render("subtitle"),
   tagline,
   stats = [],
+  flatBackground,
 
   id,
   classes = {},
@@ -17,6 +18,7 @@ const {
 
 <ComponentWrapper
   id={id}
+  flatBackground={flatBackground}
   containerClass={`max-w-5xl mx-auto ${classes?.container ?? ""}`}
 >
   <slot name="bg" slot="bg" />

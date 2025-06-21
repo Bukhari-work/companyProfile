@@ -8,7 +8,12 @@ export interface Props extends Component {
   ["as"]?: HTMLTag;
 }
 
-const { id, containerClass = "", as = "section" } = Astro.props;
+const {
+  id,
+  containerClass = "",
+  as = "section",
+  flatBackground = false,
+} = Astro.props;
 
 const WrapperTag = as;
 ---
@@ -17,7 +22,9 @@ const WrapperTag = as;
   <div class="pointer-events-none absolute inset-0 -z-[1]" aria-hidden="true">
     <slot name="bg">
       <div
-        class="pointer-events-none absolute inset-0 mask-b-from-3% mask-b-to-3%"
+        class={flatBackground
+          ? "pointer-events-none absolute inset-0"
+          : "pointer-events-none absolute inset-0 mask-b-from-3% mask-b-to-3%"}
       >
         <div class="bg-primary/5 h-full w-full"></div>
       </div>
