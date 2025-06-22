@@ -25,7 +25,7 @@ const content = { title: "light Mode" };
       {
         text: "Our Experiences",
         icon: "FaUsers",
-        href: "experinece",
+        href: "experience",
         size: "lg",
       },
     ]}
@@ -59,6 +59,57 @@ const content = { title: "light Mode" };
       { title: "Trainings", amount: "150+" },
       { title: "Partners", amount: "40+" },
     ]}
+  />
+
+  <Steps
+    title="LeChamps"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Download</span>',
+        description:
+          "Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod.",
+        icon: "LuPackage",
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Add content</span>',
+        description:
+          "Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod.",
+        icon: "LuFileText",
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        description:
+          "Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod.",
+        icon: "LuCross",
+      },
+      {
+        title: "Ready!",
+        icon: "LuCheck",
+      },
+    ]}
+    image={{
+      src: "https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+      alt: "Steps image",
+    }}
+  />
+  <Steps
+    id="experience"
+    title="Work experience"
+    items={[
+      {
+        title:
+          'Graphic Designer <br /> <span class="text-base">ABC Design Studio, New York, NY</span> <br /> <span class="text-sm">2021 - Present</span>',
+        description: `Collaborate with clients to understand design requirements and objectives. <br /> Develop branding solutions, including logos, color palettes, and brand guidelines. <br /> Design marketing materials such as brochures, posters, and digital assets. <br /> Create visually appealing user interfaces for websites and applications.`,
+        icon: "LuUser",
+      },
+      {
+        title:
+          'Junior Graphic Designer <br /> <span class="font-normal">XYZ Creative Agency, Los Angeles, CA</span> <br /> <span class="text-sm font-normal">2018 - 2021</span>',
+        description: `Assisted senior designers in creating design concepts and visual assets. <br /> Contributed to the development of brand identities and marketing collateral. <br /> Collaborated with the marketing team to ensure consistent design across campaigns. <br /> Gained hands-on experience in various design software and tools.`,
+        icon: "LuUsers",
+      },
+    ]}
+    classes={{ container: "max-w-3xl" }}
   />
 
   <Features
@@ -106,57 +157,45 @@ const content = { title: "light Mode" };
     ]}
   />
 
-  <Steps
-    id="resume"
-    title="Work experience"
+  <Content
+    isReversed
+    tagline="We are leChamps!"
+    title="Research, Training, and Development"
     items={[
       {
-        title:
-          'Graphic Designer <br /> <span class="text-base">ABC Design Studio, New York, NY</span> <br /> <span class="text-sm">2021 - Present</span>',
-        description: `Collaborate with clients to understand design requirements and objectives. <br /> Develop branding solutions, including logos, color palettes, and brand guidelines. <br /> Design marketing materials such as brochures, posters, and digital assets. <br /> Create visually appealing user interfaces for websites and applications.`,
-        icon: "LuUser",
-      },
-      {
-        title:
-          'Junior Graphic Designer <br /> <span class="font-normal">XYZ Creative Agency, Los Angeles, CA</span> <br /> <span class="text-sm font-normal">2018 - 2021</span>',
-        description: `Assisted senior designers in creating design concepts and visual assets. <br /> Contributed to the development of brand identities and marketing collateral. <br /> Collaborated with the marketing team to ensure consistent design across campaigns. <br /> Gained hands-on experience in various design software and tools.`,
-        icon: "LuUsers",
-      },
-    ]}
-    classes={{ container: "max-w-3xl" }}
-  />
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: "Research",
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: "LuPackage",
+          "Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod.",
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
+        title: "Training",
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: "LuFileText",
+          "Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod.",
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: "Development",
         description:
-          "Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.",
-        icon: "LuCross",
-      },
-      {
-        title: "Ready!",
-        icon: "LuCheck",
+          "Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod.",
       },
     ]}
     image={{
-      src: "https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-      alt: "Steps image",
+      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Colorful Image",
     }}
-  />
+  >
+    <Fragment slot="content">
+      <h3
+        class="mb-2 text-2xl font-bold tracking-tight sm:text-3xl dark:text-white"
+      >
+        Building on modern foundations
+      </h3>
+      Gain a competitive advantage by incorporating industry leading practices
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
   <NumberedList
     title="Achievements"
     subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
@@ -186,43 +225,4 @@ const content = { title: "light Mode" };
       },
     ]}
   />
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: "Built on top of Astro 5.0",
-        description:
-          "Benefiting from the performance and developer-friendly features of this modern static site generator.",
-      },
-      {
-        title: "Styled using Tailwind CSS",
-        description:
-          "Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.",
-      },
-      {
-        title: "Cross-browser compatibility",
-        description:
-          "Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Colorful Image",
-    }}
-  >
-    <Fragment slot="content">
-      <h3
-        class="mb-2 text-2xl font-bold tracking-tight sm:text-3xl dark:text-white"
-      >
-        Building on modern foundations
-      </h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
 </Main>

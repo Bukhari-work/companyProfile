@@ -50,7 +50,7 @@ const content = await Astro.slots.render("content");
         <!-- Title: Only render the h1 container if the 'title' slot is used -->
         {
           hasTitle && (
-            <h1 class="font-heading mb-12 text-4xl font-bold tracking-tighter md:text-5xl">
+            <h1 class="mb-12 text-4xl font-bold tracking-tighter md:text-5xl">
               <slot name="title" />
             </h1>
           )
@@ -59,7 +59,7 @@ const content = await Astro.slots.render("content");
         <!-- Subtitle: Only render the paragraph container if the 'subtitle' slot is used -->
         {
           hasSubtitle && (
-            <h3 class="text-ungu dark:text-kuning mx-auto max-w-3xl text-lg font-bold">
+            <h3 class="text-primary mx-auto max-w-3xl text-lg font-bold">
               <slot name="subtitle" />{" "}
             </h3>
           )
@@ -92,7 +92,7 @@ const content = await Astro.slots.render("content");
         {
           content && (
             <div class="relative mx-auto my-3 w-full flex-nowrap leading-5">
-              <Quote content={content}>
+              <Quote quote={content}>
                 <slot name="content" />
               </Quote>
             </div>

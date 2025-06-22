@@ -59,7 +59,7 @@ const content = await Astro.slots.render("content");
         <!-- Subtitle: Only render the paragraph container if the 'subtitle' slot is used -->
         {
           hasSubtitle && (
-            <h3 class="text-ungu dark:text-kuning mx-auto max-w-3xl text-lg font-bold">
+            <h3 class="text-primary mx-auto max-w-3xl text-lg font-bold">
               <slot name="subtitle" />{" "}
             </h3>
           )

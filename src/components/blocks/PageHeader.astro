@@ -1,0 +1,18 @@
+---
+import Breadcrumbs from "@/components/ui-astro/Breadcrumbs.astro";
+import { humanize } from "@/lib/textConverter";
+
+const { title = "" }: { title?: string } = Astro.props;
+---
+
+<section>
+  <div class="mx-auto text-center">
+    <div class="bg-primary/5 items-center py-8">
+      <h1
+        class="font-brittany text-primary mt-8 mb-14 -skew-3 scroll-mt-24 text-5xl underline decoration-4 underline-offset-8"
+        set:text={humanize(title)}
+      />
+      <Breadcrumbs className="not-prose mt-6" />
+    </div>
+  </div>
+</section>

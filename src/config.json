@@ -19,12 +19,12 @@
         "href": "/"
       },
       {
-        "text": "Experience",
-        "href": "/experience"
-      },
-      {
         "text": "About Us",
         "href": "/about"
+      },
+      {
+        "text": "Experience",
+        "href": "/experience"
       },
       {
         "text": "News",

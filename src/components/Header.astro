@@ -57,7 +57,7 @@ const { pathname } = Astro.url;
                       pathname === menu.href ||
                       (menu.text === "About Us" &&
                         aboutMenu.some((about) => about.href === pathname))) &&
-                    "text-ungu dark:text-kuning"
+                    "text-primary"
                   }`}
                   aria-current={
                     pathname === `${menu.href}/` || pathname === menu.href
