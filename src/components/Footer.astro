@@ -1,5 +1,6 @@
 ---
 import Logo from "@/components/blocks/Logo.astro";
+import { Image } from "astro:assets";
 import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
 import type { HTMLAttributes } from "astro/types";
 
@@ -47,7 +48,21 @@ const {
       <div
         class="border-b-kuning text-foreground col-span-12 pb-5 lg:col-span-4"
       >
-        <Logo className="mb-2" size="lg" />
+        <Image
+          src="/images/Logo-landscape-black.png"
+          alt="Company Logo"
+          width={250}
+          height={250}
+          class="-ml-2 hidden py-2 transition-transform duration-300 hover:scale-105 dark:block"
+        />
+        <Image
+          src="/images/Logo-landscape-white.png"
+          alt="Company Logo"
+          width={250}
+          height={250}
+          class="-ml-2 py-2 transition-transform duration-300 hover:scale-105 dark:hidden"
+        />
+
         <div class="flex gap-1 text-sm">
           {
             secondaryLinks.map(({ text, href }, index) => (

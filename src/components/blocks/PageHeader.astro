@@ -7,11 +7,13 @@ const { title = "" }: { title?: string } = Astro.props;
 
 <section>
   <div class="mx-auto text-center">
-    <div class="bg-primary/5 items-center py-8">
-      <h1
-        class="font-brittany text-primary mt-8 mb-14 -skew-3 scroll-mt-24 text-5xl underline decoration-4 underline-offset-8"
-        set:text={humanize(title)}
-      />
+    <div class="bg-border items-center py-8">
+      <div class="flex flex-col items-center justify-center">
+        <h1
+          class="font-brittany bg-primary/30 mt-8 mb-14 w-fit scroll-mt-24 text-7xl font-thin text-gray-800 dark:text-gray-200"
+          set:text={humanize(title)}
+        />
+      </div>
       <Breadcrumbs className="not-prose mt-6" />
     </div>
   </div>

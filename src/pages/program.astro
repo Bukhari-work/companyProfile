@@ -1,0 +1,82 @@
+---
+import config from "@/config.json";
+import Main from "@/layouts/Main.astro";
+import PageHeader from "@/components/blocks/PageHeader.astro";
+import DynamicIcon from "@/components/blocks/DynamicIcon";
+
+import { footerData } from "@/navigation.ts";
+
+const content = { title: "Contact" };
+---
+
+<Main content={content}>
+  <PageHeader title={content.title} />
+  <section class="mx-auto grid max-w-6xl grid-cols-6 gap-6 p-6 pb-24 xl:gap-16">
+    <div
+      class="prose dark:prose-invert col-span-5 min-w-full font-light lg:col-span-3"
+    >
+      <h1 class="text-primary mt-8 mb-4 scroll-mt-24">Get the Help!</h1>
+      <article
+        id="contactDescription"
+        class="mt-4 translate-y-0 space-y-4 opacity-100 transition-all duration-300 ease-in-out lg:col-10"
+      >
+        <p>
+          For any inquiries regarding potential collaborations, feel free to
+          reach us through the following platforms:
+        </p>
+      </article>
+    </div>
+    <div
+      class="prose dark:prose-invert bg-primary/5 right-0 col-span-5 rounded-xl px-10 pb-10 font-light lg:col-span-3"
+    >
+      <div>
+        <h3>Telephone and Facsimile</h3>
+        <ul>
+          <li class="flex flex-row items-center gap-2">
+            <DynamicIcon icon="LuPhone" />
+            +62 (217) 867370
+          </li>
+          <li>
+            <span class="font-bold">Fax:</span> +62 (217) 867370
+          </li>
+        </ul>
+      </div><div>
+        <h3>Email and Website</h3>
+        <ul>
+          <li>
+            <span class="font-bold">Email:</span> champs@ui.ac.id
+          </li>
+          <li>
+            <span class="font-bold">Email:</span> champsui09@gmail.com
+          </li>
+          <li>
+            <span class="font-bold">Website:</span> www.champsui.org
+          </li>
+        </ul>
+      </div><div>
+        <h3>Social Media</h3>
+        <ul>
+          <li>
+            <span class="font-bold">Facebook:</span> www.facebook.com/champs.fkmui
+          </li>
+          <li>
+            <span class="font-bold">LinkedIn:</span> www.linkedin.com/company/champsui
+          </li>
+          <li>
+            <span class="font-bold">Instagram:</span> www.instagram.com/champs_ui
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Address</h3>
+        <a
+          class="flex font-normal no-underline"
+          href="https://maps.app.goo.gl/7TDV2YcWJNLNM9o37"
+          target="_blank"
+          rel="noopener noreferrer"
+          set:html="Room 312, Building G, 3rd Floor of Faculty of Public Health Universitas Indonesia Depok, West Java Indonesia"
+        />
+      </div>
+    </div>
+  </section>
+</Main>

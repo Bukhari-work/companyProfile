@@ -29,21 +29,21 @@ const sizeMap = {
   sm: {
     width: 24,
     height: 24,
-    textSm: "text-[0.675rem]",
+    textSm: "text-[0.275rem]",
     textLg: "text-sm",
     lineLeft: "ml-3 border-l-4 px-2",
   }, // Smaller size
   default: {
     width: 30,
     height: 30,
-    textSm: "text-xs",
+    textSm: "text-[0.475rem]",
     textLg: "text-lg",
     lineLeft: "ml-4 border-l-4 px-2",
   }, // Medium size (original)
   lg: {
     width: 40,
     height: 40,
-    textSm: "text-sm",
+    textSm: "text-[0.375rem]",
     textLg: "text-xl",
     lineLeft: "ml-5 border-l-5 px-3",
   }, // Larger size
@@ -97,14 +97,14 @@ const { theme_switcher }: { theme_switcher: boolean } = config.settings;
       class={`${lineLeftClass} font-trajan border-l-ungu inline-flex flex-col justify-center  pt-1 dark:border-[#717171] dark:border-l-2`}
     >
       <span
-        class={`${textSmClass} text-foreground/30 font-trajan self-start dark:text-kuning`}
+        class={`${textLgClass} font-trajan -mt-1 self-start text-foreground`}
       >
-        FKM
+        CHAMPS
       </span>
       <span
-        class={`${textLgClass} font-trajan -mt-1 self-start text-foreground`}
-        >CHAMPS</span
-      >
+        class={`${textSmClass} font-pristina -mt-1 self-start text-foreground text-left`}
+        >Center for Health Administration & Policy Studies
+      </span>
     </div>
   </a>
 </div>

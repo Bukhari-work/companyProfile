@@ -2,9 +2,9 @@
 import Logo from "@/components/blocks/Logo.astro";
 import ThemeToggle from "@/components/blocks/ThemeToggle.astro";
 import config from "@/config.json";
-import { cn } from "@/lib/utils";
 import NavDrawer from "@/components/blocks/NavDrawer.astro";
 import Button from "@/components/ui-astro/Button.astro";
+import { Image } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
 interface NavigationLink extends HTMLAttributes<"a"> {
@@ -32,32 +32,41 @@ const { pathname } = Astro.url;
   <div class="relative mx-3 flex h-full grow md:mx-8 lg:mx-12">
     <nav
       aria-label="Main navigation"
-      class="mx-auto flex w-full items-center justify-between px-3 md:max-w-5xl md:px-6"
+      class="mx-auto flex w-full items-center justify-between px-3 md:max-w-7xl md:px-6"
     >
       <!-- Logo -->
-      <Logo
-        loading="eager"
-        className="p-2 transition-transform duration-300 hover:scale-105"
-        size="sm"
+      <Image
+        src="/images/Logo-landscape-black.png"
+        alt="Company Logo"
+        width={150}
+        height={150}
+        class="hidden p-2 transition-transform duration-300 hover:scale-105 dark:block"
       />
 
+      <Image
+        src="/images/Logo-landscape-white.png"
+        alt="Company Logo"
+        width={150}
+        height={150}
+        class="p-2 transition-transform duration-300 hover:scale-105 dark:hidden"
+      />
       <!-- Desktop Menu -->
       <div id="desktop-menu" class="hidden lg:flex">
         <ul
           id="navigation"
-          class="inline-flex w-auto flex-wrap justify-center space-x-4 self-center px-5 text-center text-sm"
+          class="inline-flex w-auto flex-wrap justify-center space-x-1 self-center px-5 text-center text-sm"
         >
           {
             mainMenu.map((menu) => (
               <li>
                 <a
                   href={menu.href}
-                  class={`group relative block px-2 py-3 ${
+                  class={`text-foreground/80 group hover:bg-primary/12 relative block gap-10 rounded-xl px-4 py-3 transition-colors duration-200 ${
                     (pathname === `${menu.href}/` ||
                       pathname === menu.href ||
                       (menu.text === "About Us" &&
                         aboutMenu.some((about) => about.href === pathname))) &&
-                    "text-primary"
+                    "text-primary/80 bg-primary/12"
                   }`}
                   aria-current={
                     pathname === `${menu.href}/` || pathname === menu.href
@@ -66,29 +75,29 @@ const { pathname } = Astro.url;
                   }
                 >
                   {menu.text}
-                  <span
-                    class={cn(
-                      `bg-primary absolute bottom-1 left-0 h-0.5 w-full origin-center scale-x-0 transform transition-transform duration-200 ease-out group-hover:scale-x-100 ${
-                        (pathname === `${menu.href}/` ||
-                          pathname === menu.href ||
-                          (menu.text === "About Us" &&
-                            aboutMenu.some(
-                              (about) => about.href === pathname,
-                            ))) &&
-                        "bg-primary scale-x-100"
-                      }`,
-                    )}
-                  />
                 </a>
               </li>
             ))
           }
         </ul>
+
+        <Button
+          size="default"
+          className="bg-primary/60 my-auto mr-10 transition-colors duration-800"
+          href="program">Join Our Program!</Button
+        >
+
         <ThemeToggle className="self-center" />
       </div>
 
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="lg:hidden">
+        <Button
+          variant="outline"
+          size="default"
+          className="mx-4 my-auto"
+          href="program">Join Our Program!</Button
+        >
         <Button icon="LuMenu" variant="outline" size="sm" data-aw-show-nav />
       </div>
     </nav>

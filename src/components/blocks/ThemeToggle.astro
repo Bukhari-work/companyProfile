@@ -3,12 +3,12 @@ const { className }: { className?: string } = Astro.props;
 ---
 
 <button
-  class={`relative inline-flex items-center justify-center h-4 w-10 cursor-pointer rounded-2xl  bg-black dark:bg-white ${className}`}
+  class={`relative inline-flex items-center justify-center h-4 w-10 cursor-pointer rounded-2xl  bg-primary/40 ${className}`}
   data-aw-toggle-color-scheme
 >
   <span class="sr-only">theme switcher</span>
   <span
-    class="relative -left-2 flex h-6 w-6 items-center justify-center rounded-full bg-black transition-all duration-300 dark:left-2 dark:bg-white"
+    class="bg-primary/90 relative -left-2 flex h-6 w-6 items-center justify-center rounded-full transition-all duration-300 dark:left-2"
   >
     <!-- Sun -->
     <svg

@@ -60,14 +60,6 @@ const { content, mode } = Astro.props;
     <!-- Scripts -->
     <MainScript />
     <DrawerAttachScript />
-
-    <link
-      rel="preload"
-      href="/fonts/BrittanySignatureScript.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
   </head>
 
   <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
@@ -78,7 +70,7 @@ const { content, mode } = Astro.props;
       <Header />
       <main
         id="main-content"
-        class="relative mx-3 mt-16 grow border-x md:mx-8 lg:mx-12"
+        class="relative mx-3 mt-14 grow border-x md:mx-8 lg:mx-12"
       >
         <slot />
       </main>
