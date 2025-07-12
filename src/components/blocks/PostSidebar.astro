@@ -1,0 +1,66 @@
+---
+import { humanize } from "@/lib/utils/textConverter";
+
+const { tags, categories, allCategories } = Astro.props;
+---
+
+<aside class="lg:col-4">
+  <!-- categories -->
+  <div
+    class="shadow-border dark:shadow-darkmode-border bg-theme-light dark:bg-darkmode-theme-light text-primary dark:text-darkmode-primary border-border dark:border-darkmode-border relative overflow-hidden rounded-3xl border p-8 shadow-lg"
+  >
+    <div class="mb-8">
+      <a
+        class="h5 hover:text-primary dark:hover:text-darkmode-primary mb-6"
+        href={`/categories`}>Categories</a
+      >
+      <div
+        class="border-border dark:border-darkmode-border border-t p-4 pl-2 md:col-span-1 md:pl-6"
+      >
+        <ul class="space-y-4">
+          {
+            categories.map((category: any) => {
+              const count = allCategories.filter(
+                (c: any) => c === category,
+              ).length;
+              return (
+                <li>
+                  <a
+                    class="flex justify-between transition-colors hover:text-gray-500"
+                    href={`/categories/${category}`}
+                  >
+                    {humanize(category)} <span>({count})</span>
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </div>
+    <!-- tags -->
+    <div class="mb-8">
+      <a class="h5 mb-6" href={`/tags`}>Tags</a>
+      <div
+        class="border-border dark:border-darkmode-border border-t p-4 pl-2 md:col-span-1 md:pl-6"
+      >
+        <ul>
+          {
+            tags.map((tag: any) => {
+              return (
+                <li class="inline-block">
+                  <a
+                    class="btn btn-outline-primary m-1 px-3 py-1"
+                    href={`/tags/${tag}`}
+                  >
+                    {humanize(tag)}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</aside>

@@ -32,13 +32,22 @@ const content = { title: "Contact" };
       <div>
         <h3>Telephone and Facsimile</h3>
         <ul>
-          <li class="flex flex-row items-center gap-2">
-            <DynamicIcon icon="LuPhone" />
-            +62 (217) 867370
-          </li>
+          <a href="https://wa.me/+6281234567890">
+            <li class="flex flex-row items-center gap-2">
+              <DynamicIcon icon="LuPhone" />
+              <a
+                href="tel:62217867370"
+                class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                +62 (217) 867370
+              </a>
+            </li>
+          </a>
           <li class="flex flex-row items-center gap-2">
             <DynamicIcon icon="LuRoute" />
-            <span class="font-bold">Fax:</span> +62 (217) 867370
+            +62 (217) 867370
           </li>
         </ul>
       </div><div>
@@ -46,47 +55,94 @@ const content = { title: "Contact" };
         <ul>
           <li class="flex flex-row items-center gap-2">
             <DynamicIcon icon="LuMail" />
-            <span class="font-bold">Email:</span> champs@ui.ac.id
+            <a
+              href="mailto:champs@ui.ac.id"
+              class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              champs@ui.ac.id
+            </a>
           </li>
           <li class="flex flex-row items-center gap-2">
             <DynamicIcon icon="LuMail" />
-            <span class="font-bold">Email:</span> champsui09@gmail.com
+            <a
+              href="mailto:champsui09@gmail.com"
+              class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              champsui09@gmail.com
+            </a>
           </li>
           <li class="flex flex-row items-center gap-2">
             <DynamicIcon icon="LuGlobe" />
-            <span class="font-bold">Website:</span> www.champsui.org
+            <a
+              href="/"
+              class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+            >
+              www.champsui.org
+            </a>
           </li>
         </ul>
+
         <div>
           <h3>Social Media</h3>
           <ul>
             <li class="flex flex-row items-center gap-2">
+              <DynamicIcon icon="FaWhatsapp" />
+              <a
+                href="https://wa.me/+6281324096624"
+                class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+              >
+                +62 813 2409 6624
+              </a>
+            </li>
+            <li class="flex flex-row items-center gap-2">
               <DynamicIcon icon="LuFacebook" />
-              <span class="font-bold">Facebook:</span> www.facebook.com/champs.fkmui
+              <a
+                href="https://www.facebook.com/champs.fkmui"
+                class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Champs FKM UI
+              </a>
             </li>
             <li class="flex flex-row items-center gap-2">
               <DynamicIcon icon="LuLinkedin" />
-              <span class="font-bold">LinkedIn:</span> www.linkedin.com/company/champsui
+              <a
+                href="https://www.linkedin.com/company/champsui"
+                class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Champs FKM UI
+              </a>
             </li>
             <li class="flex flex-row items-center gap-2">
               <DynamicIcon icon="LuInstagram" />
-              <span class="font-bold">Instagram:</span> www.instagram.com/champs_ui
+              <a
+                href="https://www.instagram.com/champs_ui"
+                class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
+              >
+                @champs_UI
+              </a>
             </li>
           </ul>
-        </div>
-        <div>
-          <h3>Address</h3>
-          <ul>
-            <li class="flex flex-row items-center gap-2">
+          <div>
+            <h3>Address</h3>
+            <span>
+              <span class="font-bold">Room 312, Building G, 3rd Floor of</span>
               <a
-                class="flex font-normal no-underline"
                 href="https://maps.app.goo.gl/7TDV2YcWJNLNM9o37"
+                class="font-light underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white"
                 target="_blank"
                 rel="noopener noreferrer"
-                set:html="Room 312, Building G, 3rd Floor of Faculty of Public Health Universitas Indonesia Depok, West Java Indonesia"
+                set:html="Faculty of Public Health Universitas Indonesia Depok, West Java Indonesia"
               />
-            </li>
-          </ul>
+            </span>
+          </div>
         </div>
       </div>
     </div>

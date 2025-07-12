@@ -9,7 +9,7 @@ import Steps from "@/components/Steps.astro";
 import NumberedList from "@/components/NumberedList.astro";
 import Content from "@/components/Content.astro";
 // Attributes
-const content = { title: "light Mode" };
+const content = { title: "Home" };
 ---
 
 <Main content={content}>
@@ -17,15 +17,15 @@ const content = { title: "light Mode" };
     actions={[
       {
         text: "Contact Us",
-        href: "#",
-        target: "_self",
+        href: "https://wa.me/6281324096624",
+        target: "_blank",
         icon: "FaWhatsapp",
         size: "lg",
       },
       {
         text: "Our Experiences",
         icon: "FaUsers",
-        href: "experience",
+        href: "experiences",
         size: "lg",
       },
     ]}

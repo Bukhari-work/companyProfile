@@ -37,6 +37,7 @@ const news = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/news" }),
   schema: z.object({
     title: z.string(),
+    author: reference("people"),
     description: z.string().optional(),
     subtitle: z.string().optional(),
     image: z
@@ -46,7 +47,8 @@ const news = defineCollection({
       })
       .optional(),
     date: z.coerce.date().optional(),
-    author: reference("people"),
+    categories: z.array(z.string()).default(["others"]),
+    tags: z.array(z.string()).default(["others"]),
     relatedPosts: z.array(reference("blogs")),
     draft: z.boolean().optional(),
   }),

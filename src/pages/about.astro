@@ -1,9 +1,9 @@
 ---
 import Main from "@/layouts/Main.astro";
-import Hero from "@/components/Hero.astro";
 
 import SideBar from "@/components/SideBar.astro";
 import Quote from "@/components/ui-astro/Quote.astro";
+import { Image } from "astro:assets";
 
 // Attributes
 const content = { title: "About Us" };
@@ -13,7 +13,7 @@ const content = { title: "About Us" };
   <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-6 pb-24 xl:gap-16">
     <SideBar class="col-span-5 lg:col-span-1" />
     <article
-      class="prose dark:prose-invert col-span-5 min-w-full font-light lg:col-span-3"
+      class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-3"
     >
       <h1
         class="font-lexend text-primary mt-8 mb-2 w-fit scroll-mt-24 text-6xl font-semibold"
@@ -22,7 +22,7 @@ const content = { title: "About Us" };
       </h1>
       <Quote
         quote="Becoming a center of excellence in Southeast Asia in the field of health administration and policy."
-        className="not-prose font-lexend -mb-4 text-center text-2xl dark:text-white"
+        className="not-prose font-lexend -mb-4 pl-0 text-center text-2xl"
       />
       <p>
         The Center for Health Administration and Policy Studies (CHAMPS),
@@ -75,17 +75,22 @@ const content = { title: "About Us" };
           positive change.
         </li>
         <hr class="!bg-primary/10 my-8 !h-px w-full !border-0 border-t" />
-        <p>
-          Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
-            >champs@ui.ac.id</a
-          >.
+        <p class="text-center">
+          Want to work with us? contact us at
+          <a href="mailto:champs@ui.ac.id">champs@ui.ac.id</a>.
         </p>
       </ul>
     </article>
     <article
-      class="text-middle sticky top-24 col-span-5 h-150 w-100 min-w-full bg-blue-500 text-center align-middle lg:col-span-1"
+      class="text-middle bg-primary/20 dark:bg-primary/80 sticky top-24 col-span-1 hidden h-fit w-fit transition-transform duration-1000 hover:scale-102 lg:block"
     >
-      Kata Yaya di sini mau ada gambar
+      <Image
+        src="/images/about-us.png"
+        alt="about us background"
+        width={250}
+        height={750}
+        class="p-2"
+      />
     </article>
   </section>
 </Main>

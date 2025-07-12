@@ -18,15 +18,11 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: "Product",
+      title: "Programs",
       links: [
-        { text: "Features", href: "#" },
-        { text: "Security", href: "#" },
-        { text: "Team", href: "#" },
-        { text: "Enterprise", href: "#" },
-        { text: "Customer stories", href: "#" },
-        { text: "Pricing", href: "#" },
-        { text: "Resources", href: "#" },
+        { text: "Research", href: "#" },
+        { text: "Workshop", href: "#" },
+        { text: "Consultation", href: "#" },
       ],
     },
     {
@@ -42,7 +38,7 @@ export const footerData = {
     {
       title: "Contact",
       links: [
-        { text: "021 786 7370", href: "tel:+62217867370" },
+        { text: "021 786 7370", href: "tel:62217867370" },
         {
           text: "+62 813 2409 6624",
           href: "https://wa.me/6281324096624",

@@ -28,7 +28,7 @@ const { content, mode } = Astro.props;
     <!-- astro-seo component -->
     <SEO
       charset="UTF-8"
-      title={content.title}
+      title={`Champs | ${content.title}`}
       description={content.description || config.metadata.meta_description}
       openGraph={{
         basic: {

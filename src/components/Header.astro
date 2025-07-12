@@ -83,7 +83,7 @@ const { pathname } = Astro.url;
 
         <Button
           size="default"
-          className="bg-primary/60 my-auto mr-10 transition-colors duration-800"
+          className="bg-primary/60 my-auto mr-5 transition-colors duration-800"
           href="program">Join Our Program!</Button
         >
 
@@ -93,12 +93,17 @@ const { pathname } = Astro.url;
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="lg:hidden">
         <Button
-          variant="outline"
-          size="default"
-          className="mx-4 my-auto"
+          size="sm"
+          className="bg-primary/60 mr-2 align-middle transition-colors duration-800"
           href="program">Join Our Program!</Button
         >
-        <Button icon="LuMenu" variant="outline" size="sm" data-aw-show-nav />
+        <Button
+          icon="LuMenu"
+          variant="outline"
+          size="sm"
+          data-aw-show-nav
+          className="align-middle"
+        />
       </div>
     </nav>
 

@@ -23,8 +23,12 @@
         "href": "/about"
       },
       {
-        "text": "Experience",
-        "href": "/experience"
+        "text": "Experiences",
+        "href": "/experiences"
+      },
+      {
+        "text": "Publications",
+        "href": "/publications"
       },
       {
         "text": "News",
@@ -85,7 +89,7 @@
     "default_theme": "system",
     "pagination": 4,
     "summary_length": 150,
-    "blog_folder": "blog",
-    "project_folder": "project"
+    "news_folder": "news",
+    "publications_folder": "publications"
   }
 }
