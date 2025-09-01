@@ -8,11 +8,11 @@ import { glob } from "astro/loaders";
 const people = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/people" }),
   schema: z.object({
-    title: z.string(),
-    role: z.enum(["Advisor", "Leadership", "Expert", "Member"]),
-    description: z.string().optional(),
+    name: z.string(),
+    role: z.enum(["Experts", "The Team"]),
     responsibility: z.string().optional(),
-    expertise: z.string().optional(),
+    description: z.string().optional(),
+    expertise: z.array(z.string()).optional(),
     image: z
       .object({
         src: z.string(),
@@ -25,6 +25,7 @@ const people = defineCollection({
           platform: z.string(),
           icon: z.string(),
           href: z.string().url(),
+          text: z.string().optional(),
         }),
       )
       .optional(),
@@ -37,7 +38,7 @@ const news = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/news" }),
   schema: z.object({
     title: z.string(),
-    author: reference("people"),
+    authors: z.array(reference("people").default("champs-ui")),
     description: z.string().optional(),
     subtitle: z.string().optional(),
     image: z

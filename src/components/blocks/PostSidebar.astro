@@ -7,16 +7,11 @@ const { tags, categories, allCategories } = Astro.props;
 <aside class="lg:col-4">
   <!-- categories -->
   <div
-    class="shadow-border dark:shadow-darkmode-border bg-theme-light dark:bg-darkmode-theme-light text-primary dark:text-darkmode-primary border-border dark:border-darkmode-border relative overflow-hidden rounded-3xl border p-8 shadow-lg"
+    class="dark:shadow-primary/20 relative overflow-hidden rounded-3xl border-2 p-8 shadow-xl"
   >
     <div class="mb-8">
-      <a
-        class="h5 hover:text-primary dark:hover:text-darkmode-primary mb-6"
-        href={`/categories`}>Categories</a
-      >
-      <div
-        class="border-border dark:border-darkmode-border border-t p-4 pl-2 md:col-span-1 md:pl-6"
-      >
+      <a class="hover:text-primary mb-6" href={`/categories`}>Categories</a>
+      <div class="border-t p-4 pl-2 md:col-span-1 md:pl-6">
         <ul class="space-y-4">
           {
             categories.map((category: any) => {
@@ -26,7 +21,7 @@ const { tags, categories, allCategories } = Astro.props;
               return (
                 <li>
                   <a
-                    class="flex justify-between transition-colors hover:text-gray-500"
+                    class="hover:text-primary flex justify-between transition-colors"
                     href={`/categories/${category}`}
                   >
                     {humanize(category)} <span>({count})</span>
@@ -40,17 +35,15 @@ const { tags, categories, allCategories } = Astro.props;
     </div>
     <!-- tags -->
     <div class="mb-8">
-      <a class="h5 mb-6" href={`/tags`}>Tags</a>
-      <div
-        class="border-border dark:border-darkmode-border border-t p-4 pl-2 md:col-span-1 md:pl-6"
-      >
+      <a class="hover:text-primary mb-6" href={`/tags`}>Tags</a>
+      <div class="border-t p-4 pl-2 md:col-span-1 md:pl-6">
         <ul>
           {
             tags.map((tag: any) => {
               return (
                 <li class="inline-block">
                   <a
-                    class="btn btn-outline-primary m-1 px-3 py-1"
+                    class="hover:text-primary flex justify-between transition-colors"
                     href={`/tags/${tag}`}
                   >
                     {humanize(tag)}

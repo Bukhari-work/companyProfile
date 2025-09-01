@@ -4,25 +4,30 @@ import type { HTMLAttributes } from "astro/types";
 import { cn } from "@/lib/utils";
 
 interface Link extends HTMLAttributes<"a"> {
-  text?: string;
   ariaLabel?: string;
   icon?: string;
+  platform?: string;
+  text?: string;
 }
 interface Props {
-  socialLinks: Array<Link>;
+  socialLinks?: Array<Link>;
   className?: string;
+  childClassName?: string;
 }
 
-const { className, socialLinks = [] } = Astro.props;
+const { className, socialLinks = [], childClassName } = Astro.props;
 ---
 
 {
   socialLinks?.length ? (
     <ul class={cn("mb-4 -ml-2 flex md:mb-0", className)}>
-      {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+      {socialLinks.map(({ ariaLabel, href, icon, platform, text }) => (
         <li>
           <a
-            class="hover:bg-primary/5 dark:hover:bg-primary/12 inline-flex items-center rounded-lg p-2.5 text-sm"
+            class={cn(
+              "hover:bg-primary/5 dark:hover:bg-primary/12 inline-flex items-center rounded-lg p-2.5 text-sm",
+              childClassName,
+            )}
             aria-label={ariaLabel}
             href={href}
           >

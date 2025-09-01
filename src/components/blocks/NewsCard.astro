@@ -13,11 +13,11 @@ const {
 }: { summary_length: number; news_folder: string } = config.settings;
 
 const { data } = Astro.props;
-const { title, description, image, date, author, tags } = data.data;
+const { title, description, image, date, authors, tags } = data.data;
 ---
 
 <article
-  class="bg-primary/5 relative grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border p-6 transition-all duration-300 ease-in-out hover:translate-y-4 hover:scale-95 hover:shadow-lg md:grid-cols-[1fr_2fr]"
+  class="outline-primary relative grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border-2 p-6 hover:outline-2 md:grid-cols-[1fr_2fr]"
 >
   <!-- Image Column -->
   {
@@ -42,7 +42,7 @@ const { title, description, image, date, author, tags } = data.data;
   <div class="flex flex-col justify-between">
     <div>
       <header class="mb-2">
-        <h3 class="text-xl font-bold transition-colors hover:text-gray-500">
+        <h3 class="hover:text-primary text-xl font-bold transition-colors">
           <a href={`/${news_folder}/${data.id}`} class="inline-block">
             {title}
           </a>
@@ -62,7 +62,7 @@ const { title, description, image, date, author, tags } = data.data;
         <!-- Author -->
         <div class="flex items-center">
           <FaUserPen className="mr-2 flex-shrink-0" />
-          <a href={`/people/${slugify(author)}`} class="hover:text-gray-500">
+          <a href={`/people/${slugify(authors)}`} class="hover:text-primary">
             {"ahmad-bukhari"}
           </a>
         </div>
@@ -76,7 +76,7 @@ const { title, description, image, date, author, tags } = data.data;
                 {tags.map((category: string) => (
                   <a
                     href={`/tags/${slugify(category)}`}
-                    class="hover:text-gray-500"
+                    class="hover:text-primary"
                   >
                     {humanize(category)}
                   </a>
@@ -87,9 +87,7 @@ const { title, description, image, date, author, tags } = data.data;
         }
       </div>
 
-      <div
-        class="border-border dark:border-darkmode-border border-t pl-2 md:col-span-1 md:pl-6"
-      >
+      <div class="border-t pl-2 md:col-span-1 md:pl-6">
         <p class="mt-2 mb-4 line-clamp-3">
           {plainify(data.body?.slice(0, Number(summary_length))) + "..."}
         </p>
@@ -97,7 +95,11 @@ const { title, description, image, date, author, tags } = data.data;
     </div>
 
     <div class="space-y-4">
-      <Button variant="outline" href={`/${news_folder}/${data.id}`}>
+      <Button
+        variant="default"
+        href={`/${news_folder}/${data.id}`}
+        className="bg-primary/60"
+      >
         Read More
       </Button>
     </div>

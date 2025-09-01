@@ -1,20 +1,20 @@
 ---
 import { Image } from "astro:assets";
 
-const { image, resolution = 200, loading, isStacked = false } = Astro.props;
+const { image, alt, resolution = 100, loading, size = "sm" } = Astro.props;
 ---
 
 <Image
-  src={image}
+  src={image ? image : "about-us.png"}
   height={resolution}
   width={resolution}
-  alt=""
+  alt={alt ? alt : "Avatar"}
   loading={loading}
   class:list={[
-    "rounded-full bg-black/20 object-cover outline-2 outline-offset-2 outline-inherit",
+    "rounded-full bg-black/20 object-cover outline-2 outline-offset-2 outline-inherit transition-transform duration-300 hover:scale-105",
     {
-      "size-14": isStacked,
-      "size-6": !isStacked,
+      "size-14": size === "lg",
+      "size-6": size === "sm",
     },
   ]}
   aria-hidden="true"

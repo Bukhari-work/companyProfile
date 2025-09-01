@@ -11,6 +11,30 @@ const PEOPLE_FOLDER = "people";
 // Fetch all entries from the 'people' collection
 const people: CollectionEntry<"people">[] = await getSinglePage(PEOPLE_FOLDER);
 
+// Define the desired order for 'responsibility'
+const responsibilityOrder = [
+  "Advisor",
+  "Director",
+  "Executive Secretary",
+  "Office Manager",
+  "Epidemiologist & Statistician",
+  "Program & Training Specialist",
+  "International Collaboration",
+  "Public Relation & Marketing",
+  "Data Management Specialist",
+  "General Affairs",
+];
+
+// Filter the people to show only those with role = "The Team"
+const teamMembers = people.filter((person) => person.data.role === "The Team");
+
+// Sort the filtered team members based on the responsibility order
+const sortedTeamMembers = teamMembers.sort((a, b) => {
+  const aIndex = responsibilityOrder.indexOf(a.data.responsibility || "");
+  const bIndex = responsibilityOrder.indexOf(b.data.responsibility || "");
+  return aIndex - bIndex;
+});
+
 // Attributes for the Main layout
 const content = { title: "About Us - Team" };
 ---
@@ -27,7 +51,11 @@ const content = { title: "About Us - Team" };
         RESEARCHERS
       </h1>
       <div class="not-prose">
-        {people.map((person) => <AuthorCard data={person} className="m-3" />)}
+        {
+          sortedTeamMembers.map((person) => (
+            <AuthorCard data={person} className="m-3" />
+          ))
+        }
       </div>
     </article>
   </section>

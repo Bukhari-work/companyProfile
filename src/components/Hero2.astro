@@ -92,7 +92,7 @@ const content = await Astro.slots.render("content");
         {
           content && (
             <div class="relative mx-auto my-3 w-full flex-nowrap leading-5">
-              <Quote content={content}>
+              <Quote quote={content}>
                 <slot name="content" />
               </Quote>
             </div>

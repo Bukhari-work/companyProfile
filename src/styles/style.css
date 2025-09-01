@@ -11,16 +11,28 @@
   .drawer-backdrop {
     @apply pointer-events-none invisible fixed top-0 right-0 left-0 z-30 h-screen w-screen opacity-0 transition-all duration-200 ease-out;
 
-    &.overlay {
-      @apply pointer-events-auto visible bg-black/50 opacity-90;
-    }
-  }
-
-  .drawer-backdrop {
     background-image: linear-gradient(
       45deg,
       transparent 90%,
       var(--color-secondary) 0%
     );
+    &.overlay {
+      @apply pointer-events-auto visible bg-black/50 opacity-90;
+    }
+  }
+
+  .link {
+    @apply underline decoration-black/20 underline-offset-4 hover:decoration-black dark:decoration-white/50 dark:hover:decoration-white;
+  }
+
+  /* This targets all heading tags, adjust as needed */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* This value should match the height of your fixed nav, e.g., if it's 4rem tall */
+    scroll-margin-top: 5rem;
   }
 }

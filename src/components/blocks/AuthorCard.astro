@@ -1,21 +1,37 @@
 ---
+import config from "@/config.json";
+
 import { Image } from "astro:assets";
 import Social from "@/components/blocks/Social.astro";
 import Avatar from "@/components/ui-astro/Avatar.astro";
 
 import { cn, plainify } from "@/lib/utils.ts";
 
+const {
+  summary_length,
+  people_folder,
+}: { summary_length: number; people_folder: string } = config.settings;
+
 const { data, className } = Astro.props;
-const { name, image, social } = data.data;
+const { name, responsibility, image, social } = data.data;
 ---
 
-<div class={cn("relative w-fit content-center py-4 max-w-3xl", className)}>
-  <div class="flex flex-row items-center gap-3 align-middle">
-    <Avatar image={image} loading="lazy" />
-    <h2 class="text-primary flex text-center text-xl font-bold">
-      <a href={`/teams/${data.id}`}>{name}</a>
-    </h2>
+<div class={cn("relative w-full content-center py-4 max-w-3xl ", className)}>
+  <div class="flex w-fit flex-row items-center gap-3 align-middle">
+    <a href={`/people/${data.id}`}>
+      <Avatar image={image.src} loading="lazy" size="lg" />
+    </a>
+    <div>
+      <h2 class="text-primary flex text-center text-xl font-bold">
+        <a href={`/people/${data.id}`}>{name}</a>
+      </h2>
+      <h3 class="flex text-center font-light">
+        {responsibility}
+      </h3>
+    </div>
   </div>
-  <p class="mt-4 mb-2 font-light">{plainify(data.body?.slice(0, 500))}</p>
+  <p class="mt-4 mb-2 font-light">
+    {plainify(data.body?.slice(0, Number(summary_length)) + "...")}
+  </p>
   <Social socialLinks={social} />
 </div>

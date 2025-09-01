@@ -1,78 +1,63 @@
 ---
+import NewsCard from "@/components/blocks/NewsCard.astro";
+import Pagination from "@/components/blocks/Pagination.astro";
+import config from "@/config.json";
 import Main from "@/layouts/Main.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
-import { getEntry, type CollectionEntry } from "astro:content";
+import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+import PageHeader from "@/components/blocks/PageHeader.astro";
+import PostSidebar from "@/components/blocks/PostSidebar.astro";
 
-import SideBar from "@/components/SideBar.astro";
-import AuthorCard from "@/components/blocks/AuthorCard.astro";
+const NEWS_FOLDER = "news";
+const posts = await getSinglePage(NEWS_FOLDER);
 
-const COLLECTION_FOLDER = "people";
-
-const peopleIndex = (await getEntry(
-  COLLECTION_FOLDER,
-  "-index",
-)) as CollectionEntry<"people">;
-const people = await getSinglePage(COLLECTION_FOLDER);
+const allCategories = await getAllTaxonomy(NEWS_FOLDER, "categories");
+const categories = await getTaxonomy(NEWS_FOLDER, "categories");
+const tags = await getTaxonomy(NEWS_FOLDER, "tags");
+const sortedPosts = sortByDate(posts);
+const totalPages: number = Math.ceil(posts.length / config.settings.pagination);
+const currentPosts = sortedPosts.slice(0, config.settings.pagination);
 
 // Attributes
 const content = { title: "News" };
-
-interface SocialLink {
-  ariaLabel: string;
-  href: string;
-  text?: string; // Make text optional as per your usage in Fragment
-  icon?: string; // Make icon optional if not all links have icons
-}
-
-const socialLinks: SocialLink[] = [
-  {
-    ariaLabel: "Follow us on Twitter",
-    href: "https://twitter.com/yourcompany",
-    icon: "LuTwitter", // Assuming 'twitter' maps to an icon in DynamicIcon
-  },
-  {
-    ariaLabel: "Connect with us on LinkedIn",
-    href: "https://linkedin.com/company/yourcompany",
-    icon: "LuLinkedin",
-  },
-  {
-    ariaLabel: "Visit our GitHub repository",
-    href: "https://github.com/yourcompany",
-    icon: "LuGithub",
-  },
-  {
-    ariaLabel: "Send us an email",
-    href: "mailto:info@yourcompany.com",
-    icon: "LuMail", // You might have an email icon or choose to omit it
-  },
-];
-
-const person = {
-  data: {
-    name: "Nuruddin Zangi",
-    image: "/images/hero.png",
-    social: socialLinks,
-  },
-  body: "Nuruddin Zangi is a national hero born in 2018. He led Indonesia to independence, pioneering one of the first production uses of conflict-free national defense strategy. He's been dreaming about world peace since his small town of Jakarta were Invaded, and is excited to finally have the power and authority to achieve this vision.",
-};
 ---
 
 <Main content={content}>
-  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-6 xl:gap-16">
-    <SideBar class="col-span-5 lg:col-span-1" />
-    <article
-      class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-4"
-    >
-      <h1
-        class="font-lexend text-primary mt-8 mb-2 w-fit scroll-mt-24 text-6xl font-semibold"
-      >
-        THE EXPERTS
-      </h1>
-      <div class="not-prose">
-        <AuthorCard data={person} className="m-3" />
-        <AuthorCard data={person} className="m-3" />
-        <AuthorCard data={person} className="m-3" />
+  <PageHeader title={content.title} />
+
+  <section
+    class="mx-auto grid max-w-7xl grid-cols-1 gap-6 p-6 pb-24 lg:grid-cols-5 xl:gap-16"
+  >
+    <!-- sidebar -->
+    <div class="lg:col-span-1">
+      <PostSidebar
+        categories={categories}
+        tags={tags}
+        allCategories={allCategories}
+        ca
+      />
+    </div>
+    <div class="mx-auto lg:col-span-4">
+      <div class="row gx-5">
+        <!-- News posts -->
+        <div>
+          <div class="row">
+            {
+              currentPosts.map((post) => (
+                <div class="slide-fade-in mb-14">
+                  <NewsCard data={post} />
+                </div>
+              ))
+            }
+          </div>
+          <Pagination
+            section={NEWS_FOLDER}
+            currentPage={1}
+            totalPages={totalPages}
+          />
+        </div>
       </div>
-    </article>
+    </div>
   </section>
 </Main>

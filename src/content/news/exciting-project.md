@@ -6,7 +6,9 @@ image:
   src: /images/hero.png
   alt: Image of a new project launch event
 date: 2025-06-19T10:00:00Z # Example date, adjust as needed. Use ISO 8601 format.
-author: ahmad-bukhari # This should match the slug of an entry in your 'people' collection (e.g., 'john-doe' if the file is 'john-doe.md')
+authors:
+- aulia-khairina-khairil
+- masyitoh
 tags:
   - innovation
   - technology
@@ -18,7 +20,7 @@ draft: false
 
 Today marks a significant milestone for our team as we officially unveil our highly anticipated new project. This endeavor, born from months of dedicated research and development, promises to deliver unprecedented capabilities and redefine the standards within its domain.
 
-**Key Features of the New Project:**
+## Key Features of the New Project:**
 
 * **Innovative Core Technology:** We've integrated cutting-edge algorithms and proprietary solutions to ensure superior performance and efficiency.
 * **User-Centric Design:** Extensive user feedback sessions have shaped an intuitive and accessible interface, prioritizing ease of use.
