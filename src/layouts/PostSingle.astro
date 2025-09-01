@@ -1,0 +1,127 @@
+---
+import { render } from "astro:content";
+
+import Avatar from "@/components/ui-astro/Avatar.astro";
+import NewsCard from "@/components/blocks/NewsCard.astro";
+import Share from "@/components/blocks/Share.astro";
+import PageHeader from "@/components/blocks/PageHeader.astro";
+import ToCBar from "@/components/blocks/ToCBar.astro";
+
+import { getSinglePage } from "@/lib/contentParser.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import similarItems from "@/lib/utils/similarItems";
+import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import { getEntries } from "astro:content";
+
+import { FaArrowLeftLong } from "react-icons/fa6";
+import Button from "@/components/ui-astro/Button.astro";
+
+const { post } = Astro.props;
+const COLLECTION_FOLDER = "news";
+
+// Optimize performance with parallel execution
+const [posts, renderedContent] = await Promise.all([
+  getSinglePage(COLLECTION_FOLDER),
+  render(post),
+]);
+
+const similarPosts = similarItems(post, posts);
+const { title, description, authors, categories, image, date, tags } =
+  post.data;
+const { Content, headings } = renderedContent;
+const people = await getEntries<"people">(authors);
+---
+
+<section class="row justify-center">
+  <PageHeader title="News" />
+
+  <!-- Grid Container -->
+  <div class="mx-auto grid max-w-6xl xl:grid-cols-[3fr_1fr]">
+    <!-- Main Section -->
+    <article class="mx-auto flex flex-col px-2 pt-8 pb-16">
+      <a
+        href={`/news`}
+        class="center link my-5 flex w-fit items-center gap-2 text-sm"
+      >
+        <FaArrowLeftLong />back to News
+      </a>
+      <h1
+        set:html={markdownify(title)}
+        class="font-lexend text-primary mb-4 scroll-mt-24 text-5xl font-semibold"
+      />
+      <div class="ml-2">
+        <ul class="flex flex-row py-3">
+          {
+            people.map((author) => (
+              <li class="mr-6 inline-flex flex-row">
+                <Avatar
+                  image={author.data.image?.src}
+                  alt={author.data.image?.alt}
+                  resolution={128}
+                />
+                <a
+                  class="link ml-2 self-center text-sm"
+                  href={`/people/${slugify(author.id)}`}
+                >
+                  {author.data.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="text-foreground/70 font-mono text-sm">
+          {dateFormat(date)}
+        </div>
+      </div>
+      <hr
+        class="bg-primary/10 dark:bg-primary/40 my-8 !h-px !border-0 border-t"
+      />
+      <div class="prose dark:prose-invert min-w-full">
+        <Content />
+      </div>
+      <div
+        class="border-border mx-auto my-10 flex w-full flex-col justify-between gap-2 rounded-2xl border p-2 md:flex-row"
+      >
+        <div class="flex items-center">
+          <h5 class="mr-3">Tags :</h5>
+          <ul class="flex flex-wrap gap-2">
+            {
+              tags.map((tag: string) => (
+                <li>
+                  <Button variant="outline" size="sm" className="inline-block">
+                    <a href={`/tags/${slugify(tag)}`}>{humanize(tag)}</a>
+                  </Button>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="flex items-center">
+          <h5 class="mr-3">Share :</h5>
+          <Share
+            title={title}
+            description={description}
+            collection={post.collection}
+            slug={post.id}
+          />
+        </div>
+      </div>
+    </article>
+    <!-- ToC -->
+    <ToCBar headings={headings} />
+  </div>
+
+  <!-- Related posts -->
+  <div class="">
+    <h2 class="mb-12 text-center">Related Posts</h2>
+    <div class="row flex flex-col justify-center gap-6 lg:flex-row">
+      {
+        similarPosts.map((post) => (
+          <div class="mb-14 max-w-2xl self-center">
+            <NewsCard data={post} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

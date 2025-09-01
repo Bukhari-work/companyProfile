@@ -1,0 +1,25 @@
+---
+import Main from "@/layouts/Main.astro";
+import PostSingle from "@/layouts/PostSingle.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+
+export async function getStaticPaths() {
+  const NEWS_FOLDER = "news";
+  const posts = await getSinglePage(NEWS_FOLDER);
+
+  const paths = posts.map((post) => ({
+    params: {
+      single: post.id,
+    },
+    props: { post },
+  }));
+  return paths;
+}
+
+const { post } = Astro.props;
+const content = post.data;
+---
+
+<Main content={content}>
+  <PostSingle post={post} />
+</Main>

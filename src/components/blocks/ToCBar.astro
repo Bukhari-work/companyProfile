@@ -1,0 +1,45 @@
+---
+import DynamicIcon from "./DynamicIcon";
+
+export interface Props {
+  headings: {
+    slug: string;
+    text: string;
+  }[];
+}
+
+const { headings } = Astro.props;
+---
+
+<nav class="sticky top-24 mx-auto hidden grow flex-col gap-1 p-2 pt-15 xl:flex">
+  <h2 class="mb-2 flex items-center gap-2 text-sm">
+    <DynamicIcon icon="LuTableOfContents" />
+    On This Page
+  </h2>
+  <ul
+    class="border-offgray-100 dark:border-offgray-600/20 ml-[7px] space-y-1 border-l pl-4"
+  >
+    {
+      headings.map((heading) => (
+        <li style="margin-left: 0px;">
+          <a
+            class="link text-primary inline text-sm underline"
+            href={`#${heading.slug}`}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="dark:shadow-primary/20 mt-6 rounded-sm border p-2.5 shadow-xl">
+    <h2 class="mb-1 flex items-center gap-2 text-sm">
+      <DynamicIcon icon="LuHistory" />
+      What have we done?
+    </h2>
+    <a class="link text-primary inline text-sm underline" href="/experiences"
+      >See our experiences →</a
+    >
+  </div>
+</nav>
