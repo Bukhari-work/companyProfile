@@ -9,7 +9,7 @@ date: 2025-06-19T10:00:00Z # Example date, adjust as needed. Use ISO 8601 format
 authors:
 - aulia-khairina-khairil
 - masyitoh
-tags:
+categories:
   - innovation
   - technology
 relatedPosts:

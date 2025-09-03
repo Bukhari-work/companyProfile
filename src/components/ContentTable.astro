@@ -1,310 +1,226 @@
 ---
+const customersi = [
+  {
+    name: "Kemenkes 1",
+    logo: "/images/about-us.png",
+    category: "Government",
+    href: "#",
+    linkText: "Read story",
+  },
+  {
+    name: "Kemenkes 2",
+    logo: "/images/about-us.png",
+    category: "Hospital",
+    href: "#",
+    linkText: "Read story",
+  },
+  {
+    name: "Kemenkes 3",
+    logo: "/images/about-us.png",
+    category: "Government",
+    href: "#",
+    linkText: "Visit site",
+  },
+  {
+    name: "Kemenkes 4",
+    logo: "/images/about-us.png",
+    category: "Public Health Center",
+    href: "#",
+    linkText: "Read story",
+  },
+  {
+    name: "Kemenkes 5",
+    logo: "/images/about-us.png",
+    category: "Organization",
+    href: "#",
+    linkText: "Read story",
+  },
+  {
+    name: "Kemenkes 6",
+    logo: "/images/about-us.png",
+    category: "Private",
+    href: "#",
+    linkText: "Read story",
+  },
+   {
+     name: "Kemenkes 7",
+     logo: "/images/about-us.png",
+    category: "Government, Public Health Center",
+    href: "#",
+    linkText: "Visit site",
+  },
+  {
+    name: "Kemenkes 8",
+    logo: "/images/about-us.png",
+    category: "Hospital, University",
+    href: "#",
+    linkText: "Read story",
+  },
+  {
+    name: "Kemenkes 9",
+    logo: "/images/about-us.png",
+    category: "Public Health Center, Government",
+    href: "#",
+    linkText: "Read story",
+  },
+];
 
+
+export interface Customer {
+  name: string;
+  logo: string;
+  category: string; // can be multiple categories separated by commas
+  href: string;
+  linkText: string;
+}
+
+interface Props {
+  customers: Customer[];
+  tabs: string[];
+  activeCategory?: string;
+}
+
+const {
+  customers = customersi,
+  tabs = ['Featured', 'University', 'Government', 'Hospital', 'Public Health Center', 'Organization', 'Private'],
+  activeCategory = "Featured",
+} = Astro.props;
 ---
 
-<div
-  id="customers-table"
-  class="LayoutContent_root__ZBUya LayoutContent_size-page__qY_Nc"
->
+<div id="customers-table" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
   <!-- Header -->
-  <div class="Flex_root__DOQCW Flex_align-center__oXK9F Flex_column__eg2kV">
-    <div class="LayoutContent_root__ZBUya LayoutContent_size-3__UZBbC">
-      <h2 class="sc-14eeae68-0 jIZtSC">
-        Powering 15,000+ ambitious product teams of all shapes and sizes
-      </h2>
-    </div><div class="hide-mobile Spacer_root__uoSvA" style="--height: 64px;">
-    </div><div class="show-mobile Spacer_root__uoSvA" style="--height: 32px;">
-    </div><div
-      dir="ltr"
-      data-orientation="horizontal"
-      class="CustomerTable_tabs__Til08"
-    >
-      <div
-        role="tablist"
-        aria-orientation="horizontal"
-        class="CustomerTable_tablist___yrVr utils_hideScrollbars__TzPqp"
-        tabindex="0"
-        data-orientation="horizontal"
-        style="outline: none;"
-      >
-        <button
-          type="button"
-          role="tab"
-          aria-selected="true"
-          aria-controls="radix-:rv:-content-featured"
-          data-state="active"
-          id="radix-:rv:-trigger-featured"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">Featured</span></button
-        ><button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="radix-:rv:-content-saas"
-          data-state="inactive"
-          id="radix-:rv:-trigger-saas"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">SaaS</span></button
-        ><button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="radix-:rv:-content-ai"
-          data-state="inactive"
-          id="radix-:rv:-trigger-ai"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">AI</span></button
-        ><button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="radix-:rv:-content-fintech"
-          data-state="inactive"
-          id="radix-:rv:-trigger-fintech"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">Fintech</span></button
-        ><button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="radix-:rv:-content-consumer"
-          data-state="inactive"
-          id="radix-:rv:-trigger-consumer"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">Consumer</span></button
-        ><button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="radix-:rv:-content-hardware"
-          data-state="inactive"
-          id="radix-:rv:-trigger-hardware"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">Hardware</span></button
-        ><button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="radix-:rv:-content-crypto"
-          data-state="inactive"
-          id="radix-:rv:-trigger-crypto"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">Crypto</span></button
-        ><button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="radix-:rv:-content-healthcare"
-          data-state="inactive"
-          id="radix-:rv:-trigger-healthcare"
-          class="CustomerTable_tab__YphWH reset_reset-button__5vBZ4"
-          tabindex="-1"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          ><span class="sc-14eeae68-0 iUAxbA">Health</span></button
-        >
-      </div>
-    </div>
+  <div class="text-center mb-12 prose dark:prose-invert max-w-full">
+    <h1>
+      CHAMPS continues to empower professionals, foster partnerships, and drive impactful health initiatives.
+    </h1>
   </div>
 
-  <!-- First -->
-  <a
-    class="CustomerTable_row__TBvEg Link_root__cNtak"
-    rel="noopener"
-    href="/customers/openai"
-    ><div
-      class="Grid_root__iRfoa"
-      style='width: 100%; align-items: center; --grid-areas-default: "a a a a a c c c c . d d"; --grid-areas-tablet: "a a a a d d d d"; --grid-areas-mobile: "a a d d";'
-    >
-      <div class="Grid_a__vY7M8">
-        <div
-          class="Flex_root__DOQCW Flex_align-center__oXK9F"
-          style="gap: 16px;"
-        >
-          <div class="CustomerTable_symbol__VvHIz">
-            <img
-              alt="OpenAI logo"
-              data-nosnippet="true"
-              data-loaded="true"
-              loading="lazy"
-              width="56"
-              height="56"
-              decoding="async"
-              data-nimg="1"
-              class="Image_root__UkRqc"
-              src="https://webassets.linear.app/images/ornj730p/production/ae73f1a60bba9e74933fe43829bc084f4dddcacf-56x56.svg?q=95&auto=format&dpr=2"
-              style="color: transparent;"
-            />
-          </div><span class="sc-14eeae68-0 elDVBz">OpenAI</span>
-        </div>
-      </div><div class="hide-tablet Grid_c__Tv5Qw">
-        <span class="sc-14eeae68-0 ikOIDN"><span>AI</span></span>
-      </div><div class="Grid_d__WN1qv" style="justify-self: end;">
-        <span class="sc-14eeae68-0 eTSIlF"
-          ><div
-            class="Flex_root__DOQCW Flex_inline__8Gx2p Flex_center__qqy7h"
-            style="gap: 6px;"
-          >
-            Read story<svg
-              class=""
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              role="img"
-              focusable="false"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              style="--icon-color: currentColor;"
-              ><path
-                d="M5.46967 11.4697C5.17678 11.7626 5.17678 12.2374 5.46967 12.5303C5.76256 12.8232 6.23744 12.8232 6.53033 12.5303L10.5303 8.53033C10.8207 8.23999 10.8236 7.77014 10.5368 7.47624L6.63419 3.47624C6.34492 3.17976 5.87009 3.17391 5.57361 3.46318C5.27713 3.75244 5.27128 4.22728 5.56054 4.52376L8.94583 7.99351L5.46967 11.4697Z"
-              ></path></svg
-            >
-          </div></span
-        >
-      </div>
-    </div></a
-  >
+  <!-- Tabs -->
+  <div id="customer-tabs" class="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
+    {tabs.map((tab, index) => (
+      <button
+        type="button"
+        data-category={tab}
+        class:list={[
+          "customer-tab-trigger px-4 py-2 text-sm md:text-base font-medium rounded-sm border ",
+          tab === activeCategory
+            ? "bg-primary/20 border-primary"
+            : "bg-transparent hover:bg-primary/20 hover:border-primary"
+        ]}
+      >
+        {tab}
+      </button>
+    ))}
+  </div>
 
-  <!-- Second -->
-  <a
-    class="CustomerTable_row__TBvEg Link_root__cNtak"
-    rel="noopener"
-    href="/customers/ramp"
-    ><div
-      class="Grid_root__iRfoa"
-      style='width: 100%; align-items: center; --grid-areas-default: "a a a a a c c c c . d d"; --grid-areas-tablet: "a a a a d d d d"; --grid-areas-mobile: "a a d d";'
-    >
-      <div class="Grid_a__vY7M8">
-        <div
-          class="Flex_root__DOQCW Flex_align-center__oXK9F"
-          style="gap: 16px;"
+  <!-- Customers List -->
+  <div class="relative w-full gap-6 lg:gap-12">
+    {customers.map((customer, index) => {
+      const isExternal = customer.linkText === "Visit site";
+      const patternId = `pattern-${index}`;
+      return (
+        <a
+          class="customer-row group relative isolate flex flex-col items-start justify-between gap-2 rounded border border-transparent p-3 hover:border-primary hover:bg-primary/10 hover:[box-shadow:_var(--sh-alt)] lg:min-h-[42px] lg:flex-row lg:items-center"
+          href={customer.href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          data-category={customer.category}
         >
-          <div class="CustomerTable_symbol__VvHIz">
-            <img
-              alt="Ramp logo"
-              data-nosnippet="true"
-              data-loaded="true"
-              loading="lazy"
-              width="56"
-              height="56"
-              decoding="async"
-              data-nimg="1"
-              class="Image_root__UkRqc"
-              src="https://webassets.linear.app/images/ornj730p/production/e9c3418281b47ca44133dbc5adc2fe87ba365dd8-56x56.svg?q=95&auto=format&dpr=2"
-              style="color: transparent;"
-            />
-          </div><span class="sc-14eeae68-0 elDVBz">Ramp</span>
-        </div>
-      </div><div class="hide-tablet Grid_c__Tv5Qw">
-        <span class="sc-14eeae68-0 ikOIDN"><span>Fintech</span></span>
-      </div><div class="Grid_d__WN1qv" style="justify-self: end;">
-        <span class="sc-14eeae68-0 eTSIlF"
-          ><div
-            class="Flex_root__DOQCW Flex_inline__8Gx2p Flex_center__qqy7h"
-            style="gap: 6px;"
-          >
-            Read story<svg
-              class=""
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              role="img"
-              focusable="false"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              style="--icon-color: currentColor;"
-              ><path
-                d="M5.46967 11.4697C5.17678 11.7626 5.17678 12.2374 5.46967 12.5303C5.76256 12.8232 6.23744 12.8232 6.53033 12.5303L10.5303 8.53033C10.8207 8.23999 10.8236 7.77014 10.5368 7.47624L6.63419 3.47624C6.34492 3.17976 5.87009 3.17391 5.57361 3.46318C5.27713 3.75244 5.27128 4.22728 5.56054 4.52376L8.94583 7.99351L5.46967 11.4697Z"
-              ></path></svg
-            >
-          </div></span
-        >
-      </div>
-    </div></a
-  >
-
-  <!-- Third -->
-  <a
-    class="CustomerTable_row__TBvEg Link_root__cNtak"
-    target="_blank"
-    rel="noopener noreferrer"
-    href="https://www.cursor.com/"
-    ><div
-      class="Grid_root__iRfoa"
-      style='width: 100%; align-items: center; --grid-areas-default: "a a a a a c c c c . d d"; --grid-areas-tablet: "a a a a d d d d"; --grid-areas-mobile: "a a d d";'
-    >
-      <div class="Grid_a__vY7M8">
-        <div
-          class="Flex_root__DOQCW Flex_align-center__oXK9F"
-          style="gap: 16px;"
-        >
-          <div class="CustomerTable_symbol__VvHIz">
-            <img
-              alt="Cursor logo"
-              data-nosnippet="true"
-              data-loaded="true"
-              loading="lazy"
-              width="56"
-              height="56"
-              decoding="async"
-              data-nimg="1"
-              class="Image_root__UkRqc"
-              src="https://webassets.linear.app/images/ornj730p/production/74578d2b40ee00432db7c5a910fbcd9899fdd522-56x56.svg?q=95&auto=format&dpr=2"
-              style="color: transparent;"
-            />
-          </div><span class="sc-14eeae68-0 elDVBz">Cursor</span>
-        </div>
-      </div><div class="hide-tablet Grid_c__Tv5Qw">
-        <span class="sc-14eeae68-0 ikOIDN"><span>AI</span></span>
-      </div><div class="Grid_d__WN1qv" style="justify-self: end;">
-        <span class="sc-14eeae68-0 eTSIlF"
-          ><span class="sc-14eeae68-0 jfdaEz"
-            ><div
-              class="Flex_root__DOQCW Flex_inline__8Gx2p Flex_center__qqy7h"
-              style="gap: 6px;"
-            >
-              Visit site<svg
-                class=""
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                role="img"
-                focusable="false"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                style="--icon-color: currentColor;"
-                ><path
-                  d="M7.184 3.894a.75.75 0 0 0-.136 1.494l2.295.209-4.879 4.878a.75.75 0 0 0 1.061 1.06l4.878-4.878.209 2.295a.75.75 0 1 0 1.494-.136l-.354-3.89a.75.75 0 0 0-.679-.678l-3.889-.354Z"
-                ></path></svg
+          <!-- SVG pattern on hover -->
+          <svg class="pointer-events-none invisible absolute inset-0 [z-index:-1] size-full [mask-image:linear-gradient(to_left,_#ffffffad,_transparent)] text-primary opacity-100 select-none group-hover:visible dark:opacity-80">
+            <defs>
+              <pattern
+                id={patternId}
+                width="4"
+                height="4"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(45)"
               >
-            </div></span
-          ></span
-        >
-      </div>
-    </div></a
-  >
+                <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="1.5"></line>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+          </svg>
+
+          <!-- Logo + Name -->
+          <div class="flex shrink-0 items-center gap-3">
+            <img
+              alt={`${customer.name} logo`}
+              loading="lazy"
+              width="40"
+              height="40"
+              src={customer.logo}
+              class="dark:invert opacity-60 group-hover:opacity-100 overflow-hidden w-9 h-9 rounded"
+              style="color:transparent"
+            />
+            <h2 class="decoration-primary/10 group-hover:decoration-primary underline">
+              {customer.name}
+            </h2>
+          </div>
+
+          <hr class="hidden w-full opacity-80 group-hover:invisible lg:flex" />
+
+          <!-- Categories as tags -->
+          <div class="flex w-full shrink-0 gap-2 lg:w-fit">
+            {customer.category.split(",").map((cat) => (
+              <div class="flex h-[18px] w-fit items-center gap-1.5 rounded-xs border border-dotted px-2 font-mono text-[0.625rem] leading-6 text-primary border-primary bg-primary/5">
+                {cat.trim()}
+              </div>
+            ))}
+          </div>
+
+        <hr class="hidden w-full opacity-80 group-hover:invisible lg:flex" />
+
+          <!-- Link -->
+          <div class="flex w-full shrink-0 items-center gap-2 lg:w-fit">
+
+            <!-- Link + Icon -->
+            <div class="ml-auto inline-flex items-center gap-2  dark:group-hover:text-foreground">
+              <span>{customer.linkText}</span>
+              {isExternal ? (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M7.184 3.894a.75.75 0 0 0-.136 1.494l2.295.209-4.879 4.878a.75.75 0 0 0 1.061 1.06l4.878-4.878.209 2.295a.75.75 0 1 0 1.494-.136l-.354-3.89a.75.75 0 0 0-.679-.678l-3.889-.354Z"></path></svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M5.46967 11.4697C5.17678 11.7626 5.17678 12.2374 5.46967 12.5303C5.76256 12.8232 6.23744 12.8232 6.53033 12.5303L10.5303 8.53033C10.8207 8.23999 10.8236 7.77014 10.5368 7.47624L6.63419 3.47624C6.34492 3.17976 5.87009 3.17391 5.57361 3.46318C5.27713 3.75244 5.27128 4.22728 5.56054 4.52376L8.94583 7.99351L5.46967 11.4697Z"></path></svg>
+              )}
+            </div>
+          </div>
+
+          <hr class="default-border-color flex w-full opacity-60 group-hover:invisible lg:hidden dark:opacity-40" />
+        </a>
+      );
+    })}
+  </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tabContainer = document.getElementById("customer-tabs");
+  if (!tabContainer) return;
+
+  const rows = document.querySelectorAll<HTMLElement>(".customer-row");
+
+    tabContainer.addEventListener("click", (e) => {
+      const clickedTab = (e.target as HTMLElement).closest<HTMLElement>(".customer-tab-trigger");
+      if (!clickedTab) return;
+
+    const category = clickedTab.dataset.category;
+    if (!category) return;
+
+    // Update tab styles
+    tabContainer.querySelectorAll<HTMLElement>(".customer-tab-trigger").forEach((tab) => {
+      tab.classList.remove("bg-primary/20", "bg-transparent", "hover:bg-primary/20", "border-primary", "hover:border-primary");
+      if (tab === clickedTab) {
+        tab.classList.add("bg-primary/20", "border-primary");
+      } else {
+        tab.classList.add("bg-transparent", "hover:bg-primary/20", "hover:border-primary");
+      }
+    });
+
+    // Filter customers
+    rows.forEach((row) => {
+      const categories = row.dataset.category?.split(",").map((c) => c.trim()) ?? [];
+      row.hidden = !(category === "Featured" || categories.includes(category));
+    });
+  });
+});
+</script>

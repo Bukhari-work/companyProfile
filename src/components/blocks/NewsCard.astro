@@ -17,7 +17,7 @@ const { title, description, image, date, authors, tags } = data.data;
 ---
 
 <article
-  class="outline-primary relative grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border-2 p-6 hover:outline-2 md:grid-cols-[1fr_2fr]"
+  class="group outline-primary relative grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border-2 p-6 hover:outline-2 md:grid-rows-[1fr_1fr]"
 >
   <!-- Image Column -->
   {
@@ -43,43 +43,52 @@ const { title, description, image, date, authors, tags } = data.data;
     <div>
       <header class="mb-2">
         <h3 class="hover:text-primary text-xl font-bold transition-colors">
-          <a href={`/${news_folder}/${data.id}`} class="inline-block">
+          <a
+            href={`/${news_folder}/${data.id}`}
+            class="group-hover:text-primary inline-block"
+          >
             {title}
           </a>
         </h3>
       </header>
 
-      <div class="mb-4 flex flex-wrap gap-4 text-sm">
-        <!-- Time -->
-        {
-          date && (
-            <div class="flex items-center">
-              <FaClock className="mr-2 flex-shrink-0" />
-              <time class="flex flex-wrap gap-2">{dateFormat(date)}</time>
-            </div>
-          )
-        }
-        <!-- Author -->
-        <div class="flex items-center">
-          <FaUserPen className="mr-2 flex-shrink-0" />
-          <a href={`/people/${slugify(authors)}`} class="hover:text-primary">
-            {"ahmad-bukhari"}
-          </a>
+      <div class="mb-4 flex flex-col gap-2 text-sm">
+        <!-- Time and Author-->
+        <div class="flex flex-wrap gap-4">
+          {
+            date && (
+              <div class="flex items-center">
+                <FaClock className="mr-2 flex-shrink-0" />
+                <time class="text-2xs flex flex-wrap gap-2 font-mono">
+                  {dateFormat(date)}
+                </time>
+              </div>
+            )
+          }
+          <!-- Author -->
+          <div class="flex items-center">
+            <FaUserPen className="mr-2 flex-shrink-0" />
+            <a href={`/people/${slugify(authors)}`} class="hover:text-primary">
+              {"ahmad-bukhari"}
+            </a>
+          </div>
         </div>
-
         <!-- tags -->
         {
           tags?.length > 0 && (
-            <div class="flex items-center">
+            <div class="flex items-center text-sm">
               <FaFolderClosed className="mr-2 flex-shrink-0" />
-              <div class="flex flex-wrap gap-2">
-                {tags.map((category: string) => (
+              <div class="flex flex-wrap gap-1">
+                {tags.map((category: string, index: number) => (
                   <a
                     href={`/tags/${slugify(category)}`}
                     class="hover:text-primary"
                   >
                     {humanize(category)}
                   </a>
+                  <div>
+    {index < tags.length - 1 && "||"}
+                  </div>
                 ))}
               </div>
             </div>

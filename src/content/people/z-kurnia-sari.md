@@ -1,7 +1,8 @@
 ---
 name: Kurnia Sari, S.E., M.S.E.
 role: Experts
-description: Amila Megraini is a lecturer at the Department of Health Administration and Policy, Faculty of Public Health, Universitas Indonesia.
+description: Kurnia Sari has a background in Public Health as well as Economics, specifically Public Economics. She has since delved more into issues of health financing and economics.
+responsibility: Senior Expert
 expertise:
   - Health Systems
   - Health Empowerment

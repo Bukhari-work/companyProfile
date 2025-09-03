@@ -2,6 +2,7 @@
 name: Rico Kurniawan M.Sc., Ph.D.
 role: Experts
 description: Rico Kurniawan, a Lecturer in Biostatistics and Health Informatics at the Faculty of Public Health, Universitas Indonesia, is a dedicated health informatics specialist bridging the gap between IT development and healthcare applications.
+responsibility: Senior Expert
 expertise:
   - Financial Management
   - Human Resource Management

@@ -2,6 +2,7 @@
 name: Dr. rer. medic. drg. Dwi Gayatri, M.P.H.
 role: Experts
 description: Dwi Gayatri, a Lecturer in Epidemiology at the Faculty of Public Health, Universitas Indonesia. Her research focuses on diverse public health issues, such as mental health determinants among Indonesian youth, the cultural aspects of depression in late-stage cancer patients, and cost- effectiveness analyses of latent tuberculosis infection screening methods.
+responsibility: Senior Expert
 expertise:
   - Financial Management
   - Human Resource Management

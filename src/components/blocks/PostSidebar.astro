@@ -1,59 +1,70 @@
 ---
 import { humanize } from "@/lib/utils/textConverter";
 
-const { tags, categories, allCategories } = Astro.props;
+const { categories, tags, allCategories, allTags, activeCategory, activeTag } =
+  Astro.props;
+
+// Define active link classes (same as SideBar.astro)
+const activeLinkClasses =
+  "border-primary/50 bg-primary/5 dark:border-primary/40 dark:bg-primary/12 text-primary";
 ---
 
-<aside class="lg:col-4">
-  <!-- categories -->
+<nav class="sticky top-24 pt-0">
+  <!-- Categories -->
   <div
-    class="dark:shadow-primary/20 relative overflow-hidden rounded-3xl border-2 p-8 shadow-xl"
+    class="font-trajan text-primary border-b px-0 py-2.5 text-center lg:border-b-0 lg:border-l lg:px-2.5 lg:text-left"
   >
-    <div class="mb-8">
-      <a class="hover:text-primary mb-6" href={`/categories`}>Categories</a>
-      <div class="border-t p-4 pl-2 md:col-span-1 md:pl-6">
-        <ul class="space-y-4">
-          {
-            categories.map((category: any) => {
-              const count = allCategories.filter(
-                (c: any) => c === category,
-              ).length;
-              return (
-                <li>
-                  <a
-                    class="hover:text-primary flex justify-between transition-colors"
-                    href={`/categories/${category}`}
-                  >
-                    {humanize(category)} <span>({count})</span>
-                  </a>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </div>
-    </div>
-    <!-- tags -->
-    <div class="mb-8">
-      <a class="hover:text-primary mb-6" href={`/tags`}>Tags</a>
-      <div class="border-t p-4 pl-2 md:col-span-1 md:pl-6">
-        <ul>
-          {
-            tags.map((tag: any) => {
-              return (
-                <li class="inline-block">
-                  <a
-                    class="hover:text-primary flex justify-between transition-colors"
-                    href={`/tags/${tag}`}
-                  >
-                    {humanize(tag)}
-                  </a>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </div>
-    </div>
+    Categories
   </div>
-</aside>
+  <ul class="flex overflow-x-auto lg:flex-col">
+    {
+      categories.map((category: string) => {
+        const count = allCategories.filter((c: any) => c === category).length;
+        const isActive = category === activeCategory;
+
+        return (
+          <li class="flex w-full flex-1">
+            <a
+              href={`/categories/${category}`}
+              class:list={[
+                "lg-py-1 hover:bg-primary/5 dark:hover:bg-primary/12 flex w-full shrink-0 justify-between border-b p-2.5 text-center text-nowrap focus-visible:[outline-offset:-4px]! lg:border-b-0 lg:border-l lg:px-4 lg:text-left",
+                isActive ? activeLinkClasses : "",
+              ]}
+            >
+              {humanize(category)} <span>({count})</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <!-- Tags -->
+  <div
+    class="font-trajan text-primary mt-6 border-b px-0 py-2.5 text-center lg:border-b-0 lg:border-l lg:px-2.5 lg:text-left"
+  >
+    Tags
+  </div>
+  <ul class="flex overflow-x-auto text-sm lg:flex-col">
+    {
+      tags.map((tag: string) => {
+        const count = allTags.filter((t: any) => t === tag).length;
+        const isActive = tag === activeTag;
+
+        return (
+          <li class="flex w-full flex-1">
+            <a
+              href={`/tags/${tag}`}
+              class:list={[
+                "lg-py-1 hover:bg-primary/5 dark:hover:bg-primary/12 flex w-full shrink-0 justify-between border-b p-2.5 text-center text-nowrap focus-visible:[outline-offset:-4px]! lg:border-b-0 lg:border-l lg:px-4 lg:text-left",
+                isActive ? activeLinkClasses : "",
+              ]}
+            >
+              {humanize(tag)} <span>({count})</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>

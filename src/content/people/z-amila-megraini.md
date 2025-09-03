@@ -2,6 +2,7 @@
 name: Amila Megraini, S.E., M.B.A.
 role: Experts
 description: Amila Megraini is a lecturer at the Department of Health Administration and Policy, Faculty of Public Health, Universitas Indonesia.
+responsibility: Senior Expert
 expertise:
   - Financial Management
   - Human Resource Management

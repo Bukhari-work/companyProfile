@@ -3,6 +3,7 @@ import Main from "@/layouts/Main.astro";
 
 import SideBar from "@/components/SideBar.astro";
 import PageHeader from "@/components/blocks/PageHeader.astro";
+import ContentTable from "@/components/ContentTable.astro";
 
 // Attributes
 const content = { title: "Experiences" };
@@ -10,10 +11,10 @@ const content = { title: "Experiences" };
 
 <Main content={content}>
   <PageHeader title={content.title} />
-  <article class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-6 pb-24 xl:gap-16">
+  <article class="mx-auto flex max-w-6xl flex-col gap-6 p-6 pb-24 xl:gap-16">
     <section
       id="process"
-      class="prose dark:prose-invert col-span-5 flex min-w-full flex-col content-center items-center text-justify font-light lg:col-span-5"
+      class="prose dark:prose-invert flex min-w-full flex-col content-center items-center text-justify font-light lg:col-span-5"
     >
       <div class="mx-auto max-w-3xl text-center">
         <p class="font-lexend mt-4 text-lg">
@@ -81,11 +82,12 @@ const content = { title: "Experiences" };
           </div>
         </div>
       </div>
-      <p class="text-center">
-        Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
-          >champs@ui.ac.id</a
-        >.
-      </p>
     </section>
+    <ContentTable />
+    <p class="text-center">
+      Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
+        >champs@ui.ac.id</a
+      >.
+    </p>
   </article>
 </Main>

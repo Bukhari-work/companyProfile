@@ -22,11 +22,11 @@ const activeLinkClasses =
 <div class="col-span-5 max-w-5xl lg:col-span-1">
   <nav class="sticky top-24 pt-0 lg:pt-10">
     <div
-      class="font-trajan text-primary border-b px-0 py-2.5 text-center text-sm lg:border-b-0 lg:border-l lg:px-2.5 lg:text-left"
+      class="font-trajan text-primary text-md border-b px-0 py-2.5 text-center lg:border-b-0 lg:border-l lg:px-2.5 lg:text-left"
     >
       {site.company}
     </div>
-    <ul class="flex overflow-x-auto text-sm lg:flex-col">
+    <ul class="text-md flex overflow-x-auto lg:flex-col">
       {
         aboutMenu.map((item) => {
           const isActive = currentPath === item.href;
