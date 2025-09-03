@@ -46,11 +46,11 @@ const content = { title: "About Us - Team" };
       class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-4"
     >
       <h1
-        class="font-lexend text-primary mt-8 mb-2 w-fit scroll-mt-24 text-6xl font-semibold"
+        class="font-lexend text-primary mt-0 mb-2 w-fit scroll-mt-24 text-6xl font-semibold lg:mt-8"
       >
         THE TEAM
       </h1>
-      <div class="not-prose">
+      <div class="not-prose w-fit">
         {
           sortedTeamMembers.map((person) => (
             <AuthorCard data={person} className="m-3" />

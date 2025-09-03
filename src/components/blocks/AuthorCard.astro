@@ -16,13 +16,13 @@ const { data, className } = Astro.props;
 const { name, responsibility, description, image, social } = data.data;
 ---
 
-<div class={cn("relative w-full content-center py-4 max-w-3xl ", className)}>
-  <div class="flex w-fit flex-row items-center gap-3 align-middle">
+<div class={cn("relative w-fit content-center py-4", className)}>
+  <div class="flex flex-row items-center gap-3 align-middle">
     <a href={`/people/${data.id}`}>
       <Avatar image={image.src} loading="lazy" size="lg" />
     </a>
-    <div>
-      <h2 class="text-primary flex text-center text-xl font-bold">
+    <div class="flex w-full flex-col text-left">
+      <h2 class="text-primary text-xl font-bold">
         <a href={`/people/${data.id}`}>{name}</a>
       </h2>
       <h3 class="flex text-center font-light">
@@ -30,7 +30,7 @@ const { name, responsibility, description, image, social } = data.data;
       </h3>
     </div>
   </div>
-  <p class="mt-4 mb-2 font-light">
+  <p class="md:text-md mt-4 mb-2 text-sm font-light lg:text-lg">
     <!-- {plainify(data.body?.slice(0, Number(summary_length)) + "...")} -->
     {description}
   </p>

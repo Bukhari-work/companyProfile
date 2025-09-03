@@ -28,7 +28,7 @@ const {
 
 <ComponentWrapper
   id={id}
-  containerClass={`max-w-7xl mx-auto ${isAfterContent ? "pt-0 md:pt-0 lg:pt-0" : ""} ${classes?.container ?? ""}`}
+  containerClass={`max-w-6xl mx-auto ${isAfterContent ? "pt-0 md:pt-0 lg:pt-0" : ""} ${classes?.container ?? ""}`}
   bg={bg}
   flatBackground={flatBackground}
 >
@@ -44,7 +44,7 @@ const {
         "max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400",
     }}
   />
-  <div class="mx-auto max-w-7xl p-4 md:px-8">
+  <div class="mx-auto max-w-3xl p-4 md:px-8">
     <div class={`md:flex ${isReversed ? "md:flex-row-reverse" : ""} md:gap-16`}>
       <div class="self-center md:basis-1/2">
         {content && <div class="mb-12 text-lg" set:html={content} />}
