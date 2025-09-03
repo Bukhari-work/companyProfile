@@ -14,11 +14,36 @@ const {
 
 const { data } = Astro.props;
 const { title, description, image, date, authors, tags } = data.data;
+const patternId = `pattern-${data.id}`;
 ---
 
 <article
-  class="group outline-primary relative grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border-2 p-6 hover:outline-2 md:grid-rows-[1fr_1fr]"
+  class="group hover:border-primary hover:bg-primary/10 relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 hover:[box-shadow:_var(--sh-alt)] md:grid-rows-[1fr_1fr]"
 >
+  <!-- SVG background pattern on hover -->
+  <svg
+    class="text-primary pointer-events-none invisible absolute inset-0 z-[-1] size-full [mask-image:linear-gradient(to_left,_#ffffffad,_transparent)] opacity-100 select-none group-hover:visible dark:opacity-80"
+  >
+    <defs>
+      <pattern
+        id={patternId}
+        width="4"
+        height="4"
+        patternUnits="userSpaceOnUse"
+        patternTransform="rotate(45)"
+      >
+        <line
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="4"
+          stroke="currentColor"
+          stroke-width="1.5"></line>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+  </svg>
+
   <!-- Image Column -->
   {
     image && (
@@ -42,11 +67,8 @@ const { title, description, image, date, authors, tags } = data.data;
   <div class="flex flex-col justify-between">
     <div>
       <header class="mb-2">
-        <h3 class="hover:text-primary text-xl font-bold transition-colors">
-          <a
-            href={`/${news_folder}/${data.id}`}
-            class="group-hover:text-primary inline-block"
-          >
+        <h3 class="group-hover:text-primary text-xl font-bold">
+          <a href={`/${news_folder}/${data.id}`} class="inline-block">
             {title}
           </a>
         </h3>
@@ -80,15 +102,17 @@ const { title, description, image, date, authors, tags } = data.data;
               <FaFolderClosed className="mr-2 flex-shrink-0" />
               <div class="flex flex-wrap gap-1">
                 {tags.map((category: string, index: number) => (
-                  <a
-                    href={`/tags/${slugify(category)}`}
-                    class="hover:text-primary"
-                  >
-                    {humanize(category)}
-                  </a>
-                  <div>
-    {index < tags.length - 1 && "||"}
-                  </div>
+                  <>
+                    <a
+                      href={`/tags/${slugify(category)}`}
+                      class="hover:text-primary"
+                    >
+                      {humanize(category)}
+                    </a>
+                    {index < tags.length - 1 && (
+                      <span class="opacity-60">||</span>
+                    )}
+                  </>
                 ))}
               </div>
             </div>
