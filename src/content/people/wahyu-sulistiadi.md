@@ -11,7 +11,7 @@ social:
     text: wahyus@ui.ac.id
     icon: LuMail
     href: mailto:wahyus@ui.ac.id
-draft: false
+draft: true
 ---
 
 Wahyu Sulistiadi obtained his first degree as a dentist from Universitas Indonesia. His master's and doctoral degrees were also from the University of Indonesia, at the Faculty of Public Health. He has been active in various researches in hospital financing and pricing and is now enganged in the organization of Islamic Hospital organizations, MUKISI (All Indonesia Islamic Health Care Council), as a member of the Sharia hospital division.

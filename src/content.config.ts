@@ -9,7 +9,7 @@ const people = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/people" }),
   schema: z.object({
     name: z.string(),
-    role: z.enum(["Experts", "The Team"]),
+    role: z.enum(["Experts", "Leadership", "Advisors", "The Team"]),
     responsibility: z.string().optional(),
     description: z.string().optional(),
     expertise: z.array(z.string()).optional(),

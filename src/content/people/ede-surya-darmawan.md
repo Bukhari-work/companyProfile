@@ -1,6 +1,6 @@
 ---
 name: Prof. Dr. Ede Surya Darmawan, S.K.M., M.D.M.
-role: The Team
+role: Advisors
 description: Ede Surya Darmawan finished his bachelor's degree at Faculty of Public Health Universitas Indonesia.
 responsibility: Advisor
 expertise:

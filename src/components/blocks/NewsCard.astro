@@ -1,12 +1,15 @@
 ---
 import config from "@/config.json";
+
+import { Image } from "astro:assets";
+
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { FaUserPen, FaClock, FaFolderClosed } from "react-icons/fa6";
-import { Image } from "astro:assets";
 
 import Button from "@/components/ui-astro/Button.astro";
 
+// Properties
 const {
   summary_length,
   news_folder,

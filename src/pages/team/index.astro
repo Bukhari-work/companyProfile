@@ -4,6 +4,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import { getEntry, type CollectionEntry } from "astro:content";
 
 import SideBar from "@/components/SideBar.astro";
+import PeopleDeck from "@/components/PeopleDeck.astro";
 import AuthorCard from "@/components/blocks/AuthorCard.astro";
 
 const PEOPLE_FOLDER = "people";
@@ -26,6 +27,8 @@ const responsibilityOrder = [
 ];
 
 // Filter the people to show only those with role = "The Team"
+const advisors = people.filter((person) => person.data.role === "Advisors");
+const leadership = people.filter((person) => person.data.role === "Leadership");
 const teamMembers = people.filter((person) => person.data.role === "The Team");
 
 // Sort the filtered team members based on the responsibility order
@@ -50,12 +53,41 @@ const content = { title: "About Us - Team" };
       >
         THE TEAM
       </h1>
-      <div class="not-prose w-fit">
-        {
-          sortedTeamMembers.map((person) => (
-            <AuthorCard data={person} className="m-3" />
-          ))
-        }
+      <div class="w-fit">
+        <div>
+          <!-- <h2>Advisors</h2>
+          <div class="not-prose grid h-full lg:grid-cols-2">
+            {
+              advisors.map((person) => (
+                <div class="col-span-1">
+                  <AuthorCard data={person} className="m-3" />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          <h2>The Team</h2>
+          <div class="not-prose grid h-full lg:grid-cols-2">
+            {
+              sortedTeamMembers.map((person) => (
+                <AuthorCard data={person} className="m-3" />
+              ))
+            }
+          </div> -->
+          <h2>Advisors</h2>
+          <div class="not-prose">
+            <PeopleDeck people={advisors} />
+          </div>
+          <h2>Leadership</h2>
+          <div class="not-prose">
+            <PeopleDeck people={leadership} />
+          </div>
+          <h2>Leadership</h2>
+          <div class="not-prose mb-24">
+            <PeopleDeck people={sortedTeamMembers} />
+          </div>
+        </div>
       </div>
     </article>
   </section>

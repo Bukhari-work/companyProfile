@@ -1,5 +1,5 @@
 ---
-name: Aulia Khairina Khairil, S.K.M., M.SC.
+name: Aulia Khairina Khairil, S.K.M., M.Sc.
 role: The Team
 description: Aulia Khairina is a researcher and consultant in the Center of Health Administration and Policy Studies.
 responsibility: Program & Training Specialist

@@ -35,4 +35,19 @@
     /* This value should match the height of your fixed nav, e.g., if it's 4rem tall */
     scroll-margin-top: 5rem;
   }
+
+  .person-slider-pagination {
+    @apply bg-background;
+    .swiper-pagination-bullet {
+      @apply bg-primary h-2.5 w-2.5;
+
+      &-active {
+        @apply bg-primary h-10 w-10 transition-colors duration-1000 ease-in-out;
+      }
+    }
+  }
+
+  .swiper-slide:not(.swiper-slide-active) {
+    pointer-events: none;
+  }
 }

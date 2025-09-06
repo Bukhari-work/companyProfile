@@ -36,7 +36,7 @@ const people = await getEntries<"people">(authors);
   <PageHeader title="News" />
 
   <!-- Grid Container -->
-  <div class="mx-auto grid max-w-6xl xl:grid-cols-[3fr_1fr]">
+  <div class="mx-auto grid max-w-6xl items-start xl:grid-cols-[3fr_1fr]">
     <!-- Main Section -->
     <article class="mx-auto flex flex-col px-2 pt-8 pb-16">
       <a
@@ -50,7 +50,7 @@ const people = await getEntries<"people">(authors);
         class="font-lexend text-primary mb-4 scroll-mt-24 text-5xl font-semibold"
       />
       <div class="ml-2">
-        <ul class="flex flex-row py-3">
+        <ul class="flex flex-col gap-5 py-3 lg:flex-row lg:gap-0">
           {
             people.map((author) => (
               <li class="mr-6 inline-flex flex-row">

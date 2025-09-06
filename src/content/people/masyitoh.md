@@ -1,6 +1,6 @@
 ---
 name: Dr. Drg. Masyitoh, M.A.R.S.
-role: The Team
+role: Advisors
 responsibility: Advisor
 image:
   src: /images/people/masyitoh.png

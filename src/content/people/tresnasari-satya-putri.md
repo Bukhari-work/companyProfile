@@ -1,6 +1,6 @@
 ---
 name: Tresnasari Satya Putri, S.K.M., M.K.M.
-role: The Team
+role: Leadership
 description: Tresnasari Satya is an office manager at CHAMPS FPH UI. She finished her bachelor and master degree at Faculty of Public Health, Universitas Indonesia.
 responsibility: Office Manager
 expertise:

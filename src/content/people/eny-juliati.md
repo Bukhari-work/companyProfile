@@ -1,6 +1,6 @@
 ---
 name: Eny Juliati S.K.M., M.K.M.
-role: The Team
+role: Leadership
 description: Eny Juliati is a senior researcher, consultant, and lecturer at the Department of Health Administration and Policy, Faculty of Public Health, University of Indonesia.
 responsibility: Executive Secretary
 expertise:

@@ -1,8 +1,8 @@
 ---
 name: Dr. Vetty Yulianty Permanasari, S.Si., M.P.H.
-role: The Team
+role: Leadership
 description: Vetty Yulianty obtained her first degree from Faculty of Pharmacy Universitas Indonesia, then gained her Master’s Degree in Public Health majoring in Health Economics and Management from Universiti Kebangsaan Malaysia. She finished her doctoral degree in 2024 from Faculty of Public Health, Universitas Indonesia.
-responsibility: Program & Training Specialist
+responsibility: Director
 expertise:
   - Health Program Planning & Evaluation
   - Logistic Management

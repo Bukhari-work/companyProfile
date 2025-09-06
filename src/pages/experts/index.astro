@@ -1,0 +1,65 @@
+---
+import Main from "@/layouts/Main.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getEntry, type CollectionEntry } from "astro:content";
+
+import SideBar from "@/components/SideBar.astro";
+import PeopleDeck from "@/components/PeopleDeck.astro";
+import AuthorCard from "@/components/blocks/AuthorCard.astro";
+
+const PEOPLE_FOLDER = "people";
+
+// Fetch all entries from the 'people' collection
+const people: CollectionEntry<"people">[] = await getSinglePage(PEOPLE_FOLDER);
+
+// Define the desired order for 'responsibility'
+const responsibilityOrder = ["Senior Expert", "Senior Researcher"];
+
+// Filter the people to show only those with role = "The Team"
+const experts = people.filter((person) => person.data.role === "Experts");
+const seniorExperts = experts.filter(
+  (person) => person.data.responsibility === "Senior Expert",
+);
+const seniorResearchers = experts.filter(
+  (person) => person.data.responsibility === "Senior Researcher",
+);
+
+// Attributes for the Main layout
+const content = { title: "About Us - Experts" };
+---
+
+<Main content={content}>
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-2 xl:gap-16">
+    <SideBar class="col-span-5 lg:col-span-1" />
+    <article
+      class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-4"
+    >
+      <h1
+        class="font-lexend text-primary mt-0 mb-2 w-fit scroll-mt-24 text-6xl font-semibold lg:mt-8"
+      >
+        THE TEAM
+      </h1>
+      <div class="w-fit">
+        <div>
+          <h2>Senior Experts</h2>
+          <!-- <div class="not-prose grid h-full lg:grid-cols-2">
+            {
+              teamMembers.map((person) => (
+                <div class="col-span-1">
+                  <AuthorCard data={person} className="m-3" />
+                </div>
+              ))
+            }
+          </div> -->
+          <div class="not-prose mb-14">
+            <PeopleDeck people={seniorExperts} />
+          </div>
+          <div class="not-prose mb-14">
+            <PeopleDeck people={seniorResearchers} />
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </article>
+  </section>
+</Main>

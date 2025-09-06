@@ -1,0 +1,51 @@
+---
+import Main from "@/layouts/Main.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getEntry, type CollectionEntry } from "astro:content";
+
+import SideBar from "@/components/SideBar.astro";
+import AuthorCard from "@/components/blocks/AuthorCard.astro";
+
+const PEOPLE_FOLDER = "people";
+
+// Fetch all entries from the 'people' collection
+const people: CollectionEntry<"people">[] = await getSinglePage(PEOPLE_FOLDER);
+
+// Define the desired order for 'responsibility'
+const responsibilityOrder = ["Senior Expert", "Senior Researcher"];
+
+// Filter the people to show only those with role = "The Team"
+const teamMembers = people.filter((person) => person.data.role === "Experts");
+
+// Sort the filtered team members based on the responsibility order
+const sortedTeamMembers = teamMembers.sort((a, b) => {
+  const aIndex = responsibilityOrder.indexOf(a.data.responsibility || "");
+  const bIndex = responsibilityOrder.indexOf(b.data.responsibility || "");
+  return aIndex - bIndex;
+});
+
+// Attributes for the Main layout
+const content = { title: "About Us - Team" };
+---
+
+<Main content={content}>
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-2 xl:gap-16">
+    <SideBar class="col-span-5 lg:col-span-1" />
+    <article
+      class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-4"
+    >
+      <h1
+        class="font-lexend text-primary mt-8 mb-2 w-fit scroll-mt-24 text-6xl font-semibold"
+      >
+        EXPERTS
+      </h1>
+      <div class="not-prose">
+        {
+          sortedTeamMembers.map((person) => (
+            <AuthorCard data={person} className="m-3" />
+          ))
+        }
+      </div>
+    </article>
+  </section>
+</Main>

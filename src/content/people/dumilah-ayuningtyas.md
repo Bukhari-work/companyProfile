@@ -1,6 +1,6 @@
 ---
 name: Prof. Dr. Dra. Dumilah Ayuningtyas, M.A.R.S.
-role: The Team
+role: Advisors
 description: Dumilah Ayuningtyas is a lecturer, and researcher from Health Policy and Administration Department, Faculty of Public Health, Universitas Indonesia.
 responsibility: Advisor
 expertise:
