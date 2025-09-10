@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "companyProfile",
-    "company": "CHAMPS",
+    "company": "CHAMPS FKM UI",
     "base_href": "https://bukhari.day",
     "base_path": "/",
     "trailing_slash": false,
@@ -23,12 +23,8 @@
         "href": "/about"
       },
       {
-        "text": "Experiences",
-        "href": "/experiences"
-      },
-      {
-        "text": "Publications",
-        "href": "/publications"
+        "text": "What We Do?",
+        "href": "/what-we-do"
       },
       {
         "text": "News",
@@ -73,13 +69,15 @@
   "metadata": {
     "meta_author": "Ahmad Bukhari",
     "meta_image": "/images/og-image.png",
-    "meta_image_alt": "CHAMPS",
+    "meta_image_alt": "CHAMPS FKM UI",
     "meta_description": "CHAMPS UI Official Website"
   },
 
   "params": {
-    "contact_form_href": "",
-    "copyright": "©2025 Ahmad Bukhari. All rights reserved."
+    "contact_form_url": "https://script.google.com/macros/s/AKfycbzt--3-MoMu2vvNydiKtciRadApd1NI9-dPiJJAQ6Ydqj3Q8howyXO_GPiExpjS4Zxjxw/exec",
+    "copyright": "©2025 Ahmad Bukhari. All rights reserved.",
+    "credit": "Made with [Astro](https://astro.build) using [Astroplate](https://github.com/zeon-studio/astroplate) template",
+    "site_url": "https://champs.fkm.ui.ac.id"
   },
 
   "settings": {
@@ -92,5 +90,71 @@
     "people_folder": "people",
     "news_folder": "news",
     "publications_folder": "publications"
-  }
+  },
+
+  "partners": [
+    {
+      "name": "Kemenkes 1",
+      "logo": "/images/about-us.png",
+      "category": "Government",
+      "href": "#",
+      "linkText": "Read story"
+    },
+    {
+      "name": "Kemenkes 2",
+      "logo": "/images/about-us.png",
+      "category": "Hospital",
+      "href": "#",
+      "linkText": "Read story"
+    },
+    {
+      "name": "Kemenkes 3",
+      "logo": "/images/about-us.png",
+      "category": "Government",
+      "href": "#",
+      "linkText": "Visit site"
+    },
+    {
+      "name": "Kemenkes 4",
+      "logo": "/images/about-us.png",
+      "category": "Public Health Center",
+      "href": "#",
+      "linkText": "Read story"
+    },
+    {
+      "name": "Kemenkes 5",
+      "logo": "/images/about-us.png",
+      "category": "Organization",
+      "href": "#",
+      "linkText": "Read story"
+    },
+    {
+      "name": "Kemenkes 6",
+      "logo": "/images/about-us.png",
+      "category": "Private",
+      "href": "#",
+      "linkText": "Read story"
+    },
+    {
+      "name": "Kemenkes 7",
+      "logo": "/images/about-us.png",
+      "category": "Government, Public Health Center",
+      "href": "#",
+      "linkText": "Visit site"
+    },
+    {
+      "name": "Kemenkes 8",
+      "logo": "/images/about-us.png",
+      "category": "Hospital, University",
+      "href": "#",
+      "linkText": "Read story"
+    },
+    {
+      "name": "Kemenkes 9",
+      "logo": "/images/about-us.png",
+      "category": "Public Health Center, Government",
+      "href": "#",
+      "linkText": "Read story"
+    }
+  ]
 }

@@ -1,101 +1,34 @@
 ---
-const customersi = [
-  {
-    name: "Kemenkes 1",
-    logo: "/images/about-us.png",
-    category: "Government",
-    href: "#",
-    linkText: "Read story",
-  },
-  {
-    name: "Kemenkes 2",
-    logo: "/images/about-us.png",
-    category: "Hospital",
-    href: "#",
-    linkText: "Read story",
-  },
-  {
-    name: "Kemenkes 3",
-    logo: "/images/about-us.png",
-    category: "Government",
-    href: "#",
-    linkText: "Visit site",
-  },
-  {
-    name: "Kemenkes 4",
-    logo: "/images/about-us.png",
-    category: "Public Health Center",
-    href: "#",
-    linkText: "Read story",
-  },
-  {
-    name: "Kemenkes 5",
-    logo: "/images/about-us.png",
-    category: "Organization",
-    href: "#",
-    linkText: "Read story",
-  },
-  {
-    name: "Kemenkes 6",
-    logo: "/images/about-us.png",
-    category: "Private",
-    href: "#",
-    linkText: "Read story",
-  },
-  {
-    name: "Kemenkes 7",
-    logo: "/images/about-us.png",
-    category: "Government, Public Health Center",
-    href: "#",
-    linkText: "Visit site",
-  },
-  {
-    name: "Kemenkes 8",
-    logo: "/images/about-us.png",
-    category: "Hospital, University",
-    href: "#",
-    linkText: "Read story",
-  },
-  {
-    name: "Kemenkes 9",
-    logo: "/images/about-us.png",
-    category: "Public Health Center, Government",
-    href: "#",
-    linkText: "Read story",
-  },
-];
-
-export interface Customer {
+export interface partner {
   name: string;
   logo: string;
-  category: string; // can be multiple categories separated by commas
+  category: string;
   href: string;
   linkText: string;
 }
 
+// MODIFIED: The 'tabs' prop is no longer needed here.
 interface Props {
-  customers: Customer[];
-  tabs: string[];
+  partners: partner[];
   activeCategory?: string;
 }
 
-const {
-  customers = customersi,
-  tabs = [
-    "Featured",
-    "University",
-    "Government",
-    "Hospital",
-    "Public Health Center",
-    "Organization",
-    "Private",
-  ],
-  activeCategory = "Featured",
-} = Astro.props;
+const { partners = [], activeCategory = "Featured" } = Astro.props;
+
+// NEW: Logic to automatically generate tabs from partner data.
+const allCategories = partners.flatMap((partner) =>
+  partner.category.split(",").map((cat) => cat.trim()),
+);
+
+// Create a unique list of categories using a Set.
+const uniqueCategories = [...new Set(allCategories)];
+
+// Create the final tabs array, starting with "Featured".
+const tabs = ["Featured", ...uniqueCategories.sort()];
 ---
 
 <div
-  id="customers-table"
+  id="partners-table"
   class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-20 lg:px-8"
 >
   <!-- Header -->
@@ -108,7 +41,7 @@ const {
 
   <!-- Tabs -->
   <div
-    id="customer-tabs"
+    id="partner-tabs"
     class="mb-10 flex flex-wrap justify-center gap-2 md:gap-3"
   >
     {
@@ -117,7 +50,7 @@ const {
           type="button"
           data-category={tab}
           class:list={[
-            "customer-tab-trigger rounded-sm border px-4 py-2 text-sm font-medium md:text-base",
+            "partner-tab-trigger rounded-sm border px-4 py-2 text-sm font-medium md:text-base",
             tab === activeCategory
               ? "bg-primary/20 border-primary"
               : "hover:bg-primary/20 hover:border-primary bg-transparent",
@@ -129,19 +62,19 @@ const {
     }
   </div>
 
-  <!-- Customers List -->
+  <!-- partners List -->
   <div class="relative w-full gap-6 lg:gap-12">
     {
-      customers.map((customer, index) => {
-        const isExternal = customer.linkText === "Visit site";
+      partners.map((partner, index) => {
+        const isExternal = partner.linkText === "Visit site";
         const patternId = `pattern-${index}`;
         return (
           <a
-            class="customer-row group hover:border-primary hover:bg-primary/10 relative isolate flex flex-col items-start justify-between gap-2 rounded border border-transparent p-3 hover:[box-shadow:_var(--sh-alt)] lg:grid lg:min-h-[42px] lg:grid-cols-[1fr_2fr_1fr] lg:items-center"
-            href={customer.href}
+            class="partner-row group hover:border-primary hover:bg-primary/10 relative isolate flex flex-col items-start justify-between gap-2 rounded border border-transparent p-3 hover:[box-shadow:_var(--sh-alt)] lg:grid lg:min-h-[42px] lg:grid-cols-[1fr_2fr_1fr] lg:items-center"
+            href={partner.href}
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
-            data-category={customer.category}
+            data-category={partner.category}
           >
             {/* SVG pattern on hover */}
             <svg class="text-primary pointer-events-none invisible absolute inset-0 [z-index:-1] size-full [mask-image:linear-gradient(to_left,_#ffffffad,_transparent)] opacity-100 select-none group-hover:visible dark:opacity-80">
@@ -169,16 +102,16 @@ const {
             {/* Logo + Name */}
             <div class="flex shrink-0 grid-cols-[1fr] items-center gap-3">
               <img
-                alt={`${customer.name} logo`}
+                alt={`${partner.name} logo`}
                 loading="lazy"
                 width="40"
                 height="40"
-                src={customer.logo}
+                src={partner.logo}
                 class="h-9 w-9 overflow-hidden rounded opacity-60 group-hover:opacity-100 dark:invert"
                 style="color:transparent"
               />
               <h2 class="decoration-primary/10 group-hover:decoration-primary group-hover:text-primary underline">
-                {customer.name}
+                {partner.name}
               </h2>
             </div>
 
@@ -188,7 +121,7 @@ const {
 
               {/* Categories as tags */}
               <div class="flex w-fit shrink-0 gap-2">
-                {customer.category.split(",").map((cat) => (
+                {partner.category.split(",").map((cat) => (
                   <div class="text-primary border-primary bg-primary/5 flex h-[18px] w-fit items-center gap-1.5 rounded-xs border border-dotted px-2 font-mono text-[0.625rem] leading-6">
                     {cat.trim()}
                   </div>
@@ -201,7 +134,7 @@ const {
             {/* Link + Icon */}
             <div class="flex w-full shrink-0 items-end justify-end gap-2">
               <div class="dark:group-hover:text-primary ml-auto inline-flex items-center gap-2">
-                <span>{customer.linkText}</span>
+                <span>{partner.linkText}</span>
                 {isExternal ? (
                   <svg
                     width="16"
@@ -233,15 +166,16 @@ const {
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabContainer = document.getElementById("customer-tabs");
+  // MODIFIED: Replaced DOMContentLoaded with astro:page-load
+  document.addEventListener("astro:page-load", () => {
+    const tabContainer = document.getElementById("partner-tabs");
     if (!tabContainer) return;
 
-    const rows = document.querySelectorAll<HTMLElement>(".customer-row");
+    const rows = document.querySelectorAll<HTMLElement>(".partner-row");
 
-    tabContainer.addEventListener("click", (e) => {
+    const handleTabClick = (e: Event) => {
       const clickedTab = (e.target as HTMLElement).closest<HTMLElement>(
-        ".customer-tab-trigger",
+        ".partner-tab-trigger",
       );
       if (!clickedTab) return;
 
@@ -250,27 +184,18 @@ const {
 
       // Update tab styles
       tabContainer
-        .querySelectorAll<HTMLElement>(".customer-tab-trigger")
+        .querySelectorAll<HTMLElement>(".partner-tab-trigger")
         .forEach((tab) => {
-          tab.classList.remove(
-            "bg-primary/20",
-            "bg-transparent",
-            "hover:bg-primary/20",
-            "border-primary",
-            "hover:border-primary",
-          );
-          if (tab === clickedTab) {
-            tab.classList.add("bg-primary/20", "border-primary");
-          } else {
-            tab.classList.add(
-              "bg-transparent",
-              "hover:bg-primary/20",
-              "hover:border-primary",
-            );
-          }
+          // A more robust way to toggle classes
+          const isActive = tab === clickedTab;
+          tab.classList.toggle("bg-primary/20", isActive);
+          tab.classList.toggle("border-primary", isActive);
+          tab.classList.toggle("bg-transparent", !isActive);
+          tab.classList.toggle("hover:bg-primary/20", !isActive);
+          tab.classList.toggle("hover:border-primary", !isActive);
         });
 
-      // Filter customers
+      // Filter partners
       rows.forEach((row) => {
         const categories =
           row.dataset.category?.split(",").map((c) => c.trim()) ?? [];
@@ -278,6 +203,17 @@ const {
           category === "Featured" || categories.includes(category)
         );
       });
-    });
+    };
+
+    // A clean-up function to prevent adding multiple listeners
+    if ((window as any).cleanupPartnersTable) {
+      (window as any).cleanupPartnersTable();
+    }
+
+    tabContainer.addEventListener("click", handleTabClick);
+
+    (window as any).cleanupPartnersTable = () => {
+      tabContainer.removeEventListener("click", handleTabClick);
+    };
   });
 </script>

@@ -12,9 +12,6 @@ const PEOPLE_FOLDER = "people";
 // Fetch all entries from the 'people' collection
 const people: CollectionEntry<"people">[] = await getSinglePage(PEOPLE_FOLDER);
 
-// Define the desired order for 'responsibility'
-const responsibilityOrder = ["Senior Expert", "Senior Researcher"];
-
 // Filter the people to show only those with role = "The Team"
 const experts = people.filter((person) => person.data.role === "Experts");
 const seniorExperts = experts.filter(

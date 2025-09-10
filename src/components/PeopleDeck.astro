@@ -7,7 +7,7 @@ const { people } = Astro.props;
 <section class="section">
   <div class="swiper">
     <div
-      class="peopleDeck-slider mx-auto max-w-3xl overflow-hidden rounded-xl border-20 p-4"
+      class="peopleDeck-slider mx-auto max-w-3xl overflow-hidden rounded-xl p-4"
     >
       <div class="swiper-wrapper">
         {
@@ -95,21 +95,21 @@ const { people } = Astro.props;
         // For small screens (default settings)
         0: {
           coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: false,
+            rotate: 0,
+            stretch: 50,
+            depth: 0,
+            modifier: -1,
+            slideShadows: true,
           },
         },
         // For large screens (viewport width >= 1024px)
         1024: {
           coverflowEffect: {
-            rotate: 50,
-            stretch: 100,
-            depth: 150,
-            modifier: 1,
-            slideShadows: false,
+            rotate: 0,
+            stretch: 50,
+            depth: 10,
+            modifier: -1,
+            slideShadows: true,
           },
           navigation: {
             enabled: true,

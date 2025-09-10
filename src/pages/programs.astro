@@ -1,0 +1,253 @@
+---
+import Main from "@/layouts/Main.astro";
+import PageHeader from "@/components/blocks/PageHeader.astro";
+import Button from "@/components/ui-astro/Button.astro";
+import ProgramCard from "@/components/blocks/ProgramCard.astro";
+import Notice from "@/components/blocks/Notice.tsx";
+import Social from "@/components/blocks/Social.astro";
+import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
+import { params } from "@/config.json";
+
+// --- Static Page Data ---
+const content = {
+  title: "Our Programs",
+  meta_title: "Explore Our Programs & Get In Touch",
+  description:
+    "We offer a variety of programs to help you achieve your goals. Contact us for more information.",
+  image: "/images/programs.jpg",
+  messageTitle: "Please fill out the following form",
+  message:
+    "Have a question or a project in mind? I'd love to hear from you. Fill out the form, and let's start a conversation.",
+  messageTwo: "You can also find me on these platforms:",
+};
+
+// Hardcoded list of programs
+const programs = [
+  {
+    slug: "research",
+    title: "Research",
+    description:
+      "Conducting cutting-edge health research and clinical trials tailored to the unique health challenges of Indonesia.",
+    icon: "FaMicroscope",
+  },
+  {
+    slug: "training",
+    title: "Training",
+    description:
+      "Empowering the next generation of Indonesian health professionals with specialized training in clinical research and public health.",
+    icon: "FaGraduationCap",
+  },
+  {
+    slug: "consultation",
+    title: "Consultation",
+    description:
+      "Providing expert consultation for health policy, research methodology, and public health initiatives across Indonesia.",
+    icon: "FaHandshake",
+  },
+  {
+    slug: "assistance",
+    title: "Assistance",
+    description:
+      "Offering hands-on project support and technical assistance to implement and scale health programs and research.",
+    icon: "FaHandHoldingHand",
+  },
+];
+---
+
+<Main content={content}>
+  <PageHeader title={content.title} class="mb-12" />
+
+  <article class="mx-auto max-w-6xl space-y-12 p-6 pb-24">
+    <!-- ROW 1: Intro & Quick Links -->
+    <section id="intro" class="rounded-xl border p-6">
+      <div class="space-y-4">
+        <h2 class="h3 mb-0">About these programs</h2>
+        <p class="text-muted-foreground text-sm">
+          Browse our curated learning tracks. Click a program to see details or
+          use the quick links below to jump to a specific program.
+        </p>
+
+        <div class="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {
+            programs.map((p) => (
+              <a
+                href={`#program-${p.slug}`}
+                class="hover:bg-primary/5 rounded-md border p-3 text-sm transition"
+              >
+                {p.title}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ROW 2: Programs Grid -->
+    <section id="programs">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {programs.map((program) => <ProgramCard data={program} />)}
+      </div>
+    </section>
+
+    <!-- ROW 3: Contact Form + Social -->
+    <section id="contact" class="grid gap-6">
+      <div class="bg-border dark:bg-darkmode-border rounded-xl border p-6">
+        <h3 class="h5 mb-3">{content.messageTitle}</h3>
+
+        <form
+          id="contactForm"
+          method="POST"
+          data-contact-url={params.contact_form_url}
+        >
+          <div class="mb-4">
+            <label for="name" class="form-label"
+              >Full Name <span class="text-red-500">*</span></label
+            >
+            <input
+              id="name"
+              name="name"
+              class="form-input w-full"
+              placeholder="Budi Susanti"
+              type="text"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="mb-4 hidden" aria-hidden="true">
+            <label for="website" class="form-label">Website</label>
+            <input
+              id="website"
+              name="website"
+              class="form-input w-full"
+              placeholder="bukhari-work.github.io"
+              type="text"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="email" class="form-label"
+              >Working e-Mail <span class="text-red-500">*</span></label
+            >
+            <input
+              id="email"
+              name="email"
+              class="form-input w-full"
+              placeholder="budi.susanti@email.com"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="message" class="form-label"
+              >Message <span class="text-red-500">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              class="form-input w-full"
+              placeholder="Message goes here..."
+              rows="6"
+              required></textarea>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <Button id="submitBtn" type="submit"> Submit </Button>
+            <div id="inline-badge" class="inline-block"></div>
+          </div>
+        </form>
+      </div>
+
+      <div class="rounded-xl border p-6">
+        <h5 class="mb-3 font-medium">Connect</h5>
+        <p class="text-muted-foreground mb-3 text-sm">{content.messageTwo}</p>
+        <Social />
+      </div>
+    </section>
+  </article>
+</Main>
+
+<script
+  is:inline
+  src="https://www.google.com/recaptcha/api.js?render=6LdfBfYqAAAAAFIULe8Wl_X3hGIp3WTpcrpUMiO2"
+  async
+  defer></script>
+
+<script is:inline>
+  // Form validation helpers (kept from original)
+  const validateField = (field) => {
+    const isValid = field.checkValidity();
+    field.classList.toggle("is-invalid", !isValid);
+  };
+
+  document
+    .querySelectorAll("input[required], textarea[required]")
+    .forEach((field) => {
+      field.addEventListener("input", () => validateField(field));
+      field.addEventListener("blur", () => validateField(field));
+    });
+
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = document.getElementById("submitBtn");
+      const url = form.dataset.contactUrl;
+      const website = form.website.value.trim();
+      if (website) return;
+      if (typeof grecaptcha === "undefined" || !grecaptcha) {
+        throw new Error("reCaptcha is not loaded. Please try again later.");
+      }
+      try {
+        const token = await new Promise((resolve, reject) => {
+          grecaptcha.ready(() => {
+            grecaptcha
+              .execute("6LdfBfYqAAAAAFIULe8Wl_X3hGIp3WTpcrpUMiO2", {
+                action: "submit",
+              })
+              .then(resolve)
+              .catch(reject);
+          });
+        });
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        if (!name || !email || !message) {
+          throw new Error("All fields are required");
+        }
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+        submitBtn.classList.remove("btn-primary");
+        const response = await fetch(url, {
+          method: "POST",
+          body: new URLSearchParams({
+            name: name,
+            email: email,
+            message: message,
+            recaptchaToken: token,
+          }),
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+        const result = await response.json();
+        if (result.status === "success") {
+          // show success notice inline (simple alert fallback)
+          alert("Message sent — thank you!");
+          form.reset();
+        } else {
+          throw new Error(result.message || "Submission failed");
+        }
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+        submitBtn.classList.add("btn-primary");
+      }
+    });
+</script>

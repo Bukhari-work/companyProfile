@@ -1,18 +1,21 @@
 ---
+import { partners } from "@/config.json";
 import Main from "@/layouts/Main.astro";
 
 import SideBar from "@/components/SideBar.astro";
 import PageHeader from "@/components/blocks/PageHeader.astro";
-import ContentTable from "@/components/ContentTable.astro";
+import PartnersTable from "@/components/PartnersTable.astro";
+
+import ExperiencesPath from "@/components/blocks/ExperiencesPath.astro";
 
 // Attributes
-const content = { title: "Experiences" };
+const content = { title: "What We Do?" };
 ---
 
 <Main content={content}>
   <PageHeader title={content.title} />
-  <article class="mx-auto flex max-w-6xl flex-col gap-6 p-6 pb-24 xl:gap-16">
-    <section
+  <article class="mx-auto flex min-w-full flex-col gap-6 p-6 pb-24 xl:gap-16">
+    <!-- <section
       id="process"
       class="prose dark:prose-invert flex min-w-full flex-col content-center items-center text-justify font-light lg:col-span-5"
     >
@@ -82,9 +85,11 @@ const content = { title: "Experiences" };
           </div>
         </div>
       </div>
-    </section>
-    <ContentTable />
-    <p class="text-center">
+    </section> -->
+    <ExperiencesPath />
+
+    <PartnersTable partners={partners} />
+    <p class="prose dark:prose-invert self-center text-center">
       Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
         >champs@ui.ac.id</a
       >.

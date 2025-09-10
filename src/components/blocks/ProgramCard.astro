@@ -1,0 +1,74 @@
+---
+import { plainify, slugify } from "@/lib/utils/textConverter";
+import Button from "@/components/ui-astro/Button.astro";
+import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
+
+const { data } = Astro.props;
+const { slug, title, description, icon } = data;
+const patternId = `pattern-${slug}`;
+---
+
+<article
+  id={`program-${slug}`}
+  class="group hover:border-primary hover:bg-primary/10 relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 hover:[box-shadow:_var(--sh-alt)]"
+>
+  <!-- SVG background pattern on hover -->
+  <svg
+    class="text-primary pointer-events-none invisible absolute inset-0 z-[-1] size-full [mask-image:linear-gradient(to_left,_#ffffffad,_transparent)] opacity-100 select-none group-hover:visible dark:opacity-80"
+  >
+    <defs>
+      <pattern
+        id={patternId}
+        width="4"
+        height="4"
+        patternUnits="userSpaceOnUse"
+        patternTransform="rotate(45)"
+      >
+        <line
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="4"
+          stroke="currentColor"
+          stroke-width="1.5"></line>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+  </svg>
+
+  <!-- Icon Column -->
+  {
+    icon && (
+      <div class="relative flex h-16 w-16 items-center justify-center rounded-lg bg-white/60 shadow-sm">
+        <DynamicIcon icon={icon} className="text-3xl" />
+      </div>
+    )
+  }
+
+  <!-- Content Column -->
+  <div class="flex flex-col justify-between">
+    <div>
+      <header class="mb-2">
+        <h3 class="group-hover:text-primary text-xl font-bold">
+          <a href={`/programs/${slug}`} class="inline-block">
+            {title}
+          </a>
+        </h3>
+      </header>
+
+      <div class="text-muted-foreground mb-4 text-sm">
+        <p class="line-clamp-3">{plainify(description)}</p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <Button
+        variant="default"
+        href={`/programs/${slug}`}
+        className="bg-primary/60"
+      >
+        Learn More
+      </Button>
+    </div>
+  </div>
+</article>
