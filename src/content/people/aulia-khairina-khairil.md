@@ -13,7 +13,7 @@ image:
   alt: Portrait of Aulia Khairina Khairil
 social:
   - platform: GMail
-    text: auliakhairina.khairil@gmail.com
+    text: auliakhairina@ui.ac.id
     icon: LuMail
     href: mailto:auliakhairina.khairil@gmail.com
 draft: false

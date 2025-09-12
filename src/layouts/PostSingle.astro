@@ -61,7 +61,7 @@ const people = await getEntries<"people">(authors);
                 />
                 <a
                   class="link ml-2 self-center text-sm"
-                  href={`/people/${slugify(author.id)}`}
+                  href={`/people/${author.id}`}
                 >
                   {author.data.name}
                 </a>

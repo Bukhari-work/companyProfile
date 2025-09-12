@@ -1,42 +1,61 @@
 ---
 import Main from "@/layouts/Main.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
-import { getEntry, type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 import SideBar from "@/components/SideBar.astro";
 import PeopleDeck from "@/components/PeopleDeck.astro";
-import AuthorCard from "@/components/blocks/AuthorCard.astro";
+
+import {
+  advisors as advisorsIndex,
+  leadership as leadershipIndex,
+  teamMembers as teamMembersIndex,
+} from "@/config.json";
 
 const PEOPLE_FOLDER = "people";
 
 // Fetch all entries from the 'people' collection
 const people: CollectionEntry<"people">[] = await getSinglePage(PEOPLE_FOLDER);
 
-// Define the desired order for 'responsibility'
-const responsibilityOrder = [
-  "Advisor",
-  "Director",
-  "Executive Secretary",
-  "Office Manager",
-  "Epidemiologist & Statistician",
-  "Program & Training Specialist",
-  "International Collaboration",
-  "Public Relation & Marketing",
-  "Data Management Specialist",
-  "General Affairs",
-];
-
-// Filter the people to show only those with role = "The Team"
+// Filter people into their respective roles
 const advisors = people.filter((person) => person.data.role === "Advisors");
 const leadership = people.filter((person) => person.data.role === "Leadership");
 const teamMembers = people.filter((person) => person.data.role === "The Team");
 
-// Sort the filtered team members based on the responsibility order
-const sortedTeamMembers = teamMembers.sort((a, b) => {
-  const aIndex = responsibilityOrder.indexOf(a.data.responsibility || "");
-  const bIndex = responsibilityOrder.indexOf(b.data.responsibility || "");
-  return aIndex - bIndex;
-});
+/**
+ * A reusable function to sort a list of people based on a predefined index array of objects.
+ * It uses the 'index' property from the object whose 'slug' matches the person's slug.
+ * @param peopleArray The array of people entries to sort.
+ * @param indexArray The array of objects { index: number, slug: string } from config.json.
+ */
+const sortPeopleByIndex = (
+  peopleArray: CollectionEntry<"people">[],
+  indexArray: { index: number; slug: string }[],
+) => {
+  // Create a Map for efficient lookups: { slug => index }
+  // e.g., { "john-doe": 0, "jane-smith": 1 }
+  const slugToIndexMap = new Map(
+    indexArray.map((item) => [item.slug, item.index]),
+  );
+
+  return peopleArray.sort((a, b) => {
+    // Get the predefined sort index from the map
+    const aIndex = slugToIndexMap.get(a.id);
+    const bIndex = slugToIndexMap.get(b.id);
+
+    // If a person isn't in the index map, put them at the end
+    if (aIndex === undefined) return 1;
+    if (bIndex === undefined) return -1;
+
+    // Sort based on the 'index' property from the config file
+    return aIndex - bIndex;
+  });
+};
+
+// Sort all three groups based on the order defined in config.json
+const sortedAdvisors = sortPeopleByIndex(advisors, advisorsIndex);
+const sortedLeadership = sortPeopleByIndex(leadership, leadershipIndex);
+const sortedTeamMembers = sortPeopleByIndex(teamMembers, teamMembersIndex);
 
 // Attributes for the Main layout
 const content = { title: "About Us - Team" };
@@ -55,33 +74,13 @@ const content = { title: "About Us - Team" };
       </h1>
       <div class="w-fit">
         <div>
-          <!-- <h2>Advisors</h2>
-          <div class="not-prose grid h-full lg:grid-cols-2">
-            {
-              advisors.map((person) => (
-                <div class="col-span-1">
-                  <AuthorCard data={person} className="m-3" />
-                </div>
-              ))
-            }
-          </div>
-        </div>
-        <div>
-          <h2>The Team</h2>
-          <div class="not-prose grid h-full lg:grid-cols-2">
-            {
-              sortedTeamMembers.map((person) => (
-                <AuthorCard data={person} className="m-3" />
-              ))
-            }
-          </div> -->
           <h2>Advisors</h2>
           <div class="not-prose">
-            <PeopleDeck people={advisors} />
+            <PeopleDeck people={sortedAdvisors} />
           </div>
           <h2>Leadership</h2>
           <div class="not-prose">
-            <PeopleDeck people={leadership} />
+            <PeopleDeck people={sortedLeadership} />
           </div>
           <h2>Our Team</h2>
           <div class="not-prose mb-24">

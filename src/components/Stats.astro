@@ -23,14 +23,16 @@ const {
 >
   <slot name="bg" slot="bg" />
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <div class="-m-4 flex flex-wrap justify-center text-center">
+  <div class="grid grid-cols-2 gap-x-8 gap-y-0 lg:grid-cols-4 lg:gap-y-8">
     {
       stats &&
         stats.map(({ amount, title, icon }) => (
           <div
             class:list={[
               "intersect-once motion-safe:md:intersect:animate-fade-in intersect-quarter transition-none motion-safe:md:opacity-0",
-              "md:border-primary w-full min-w-[220px] p-4 sm:w-1/2 md:w-1/4 md:border-r md:last:border-none",
+              "p-4",
+              "border-primary border-b last:border-b-0 [&:nth-last-child(2)]:border-b-0",
+              "lg:border-b-0 lg:border-l lg:nth-[4n+1]:border-none",
               "flex flex-col justify-center text-center",
             ]}
           >
@@ -53,7 +55,7 @@ const {
               </div>
             )}
             {title && (
-              <div class="prose dark:prose-invert mx-auto text-sm font-medium tracking-widest uppercase lg:text-base">
+              <div class="prose dark:prose-invert mx-auto text-sm font-medium tracking-widest uppercase">
                 {title}
               </div>
             )}

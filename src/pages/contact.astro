@@ -7,7 +7,7 @@ import DynamicIcon from "@/components/blocks/DynamicIcon";
 const content = { title: "Contact" };
 ---
 
-<Main content={content}>
+<Main content={content} makara>
   <PageHeader title={content.title} />
   <section class="mx-auto grid max-w-6xl grid-cols-6 gap-6 p-2 pb-24 xl:gap-16">
     <div
@@ -24,8 +24,8 @@ const content = { title: "Contact" };
         </p>
       </article>
     </div>
-    <div
-      class="prose dark:prose-invert dark:shadow-primary/20 right-0 col-span-6 mt-6 rounded-xl border p-2.5 px-10 pb-10 font-light shadow-xl lg:col-span-3"
+    <article
+      class="bg-background prose dark:prose-invert dark:shadow-primary/20 right-0 col-span-6 mt-6 rounded-xl border p-2.5 px-10 pb-10 font-light shadow-xl lg:col-span-3"
     >
       <div>
         <h3>Telephone and Facsimile</h3>
@@ -143,6 +143,6 @@ const content = { title: "Contact" };
           </div>
         </div>
       </div>
-    </div>
+    </article>
   </section>
 </Main>

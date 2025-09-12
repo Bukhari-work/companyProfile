@@ -1,5 +1,5 @@
 ---
-name: Dr. Ajeng Tias Endarti S.K.M., M.Commhealth.
+name: Dr. Ajeng Tias Endarti S.K.M., M.CommHealth.
 role: The Team
 description: Ajeng Tias Endarti is an accomplished epidemiologist and lecturer with expertise in modeling HIV estimates and projections at various levels, including national, provincial, and district levels. Her work involves conducting impact analyses of HIV interventions on both incidence and mortality, with funding support from UNAIDS.
 responsibility: Epidemiologist & Statistician

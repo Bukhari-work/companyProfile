@@ -2,11 +2,13 @@
 import config from "@/config.json";
 
 import { Image } from "astro:assets";
+import { getEntries } from "astro:content";
 
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { FaUserPen, FaClock, FaFolderClosed } from "react-icons/fa6";
 
+import Avatar from "@/components/ui-astro/Avatar.astro";
 import Button from "@/components/ui-astro/Button.astro";
 
 // Properties
@@ -18,10 +20,12 @@ const {
 const { data } = Astro.props;
 const { title, description, image, date, authors, tags } = data.data;
 const patternId = `pattern-${data.id}`;
+
+const people = await getEntries<"people">(authors);
 ---
 
 <article
-  class="group hover:border-primary hover:bg-primary/10 relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 hover:[box-shadow:_var(--sh-alt)] md:grid-rows-[1fr_1fr]"
+  class="group hover:border-primary relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 duration-100 hover:-translate-y-3 hover:[box-shadow:_var(--sh-alt)] md:grid-rows-[1fr_1fr]"
 >
   <!-- SVG background pattern on hover -->
   <svg
@@ -51,7 +55,7 @@ const patternId = `pattern-${data.id}`;
   {
     image && (
       <a
-        class="relative h-48 overflow-hidden rounded-lg md:h-56"
+        class="relative h-48 overflow-hidden rounded-lg md:h-64"
         href={`/${news_folder}/${data.id}`}
       >
         <Image
@@ -93,9 +97,13 @@ const patternId = `pattern-${data.id}`;
           <!-- Author -->
           <div class="flex items-center">
             <FaUserPen className="mr-2 flex-shrink-0" />
-            <a href={`/people/${slugify(authors)}`} class="hover:text-primary">
-              {"ahmad-bukhari"}
-            </a>
+            {
+              people.map((author) => (
+                <a class="hover:text-primary" href={`/people/${author.id}`}>
+                  {author.data.name}
+                </a>
+              ))
+            }
           </div>
         </div>
         <!-- tags -->

@@ -18,216 +18,22 @@ const allTags = await getAllTaxonomy(NEWS_FOLDER, "tags");
 const categories = await getTaxonomy(NEWS_FOLDER, "categories");
 const tags = await getTaxonomy(NEWS_FOLDER, "tags");
 const sortedPosts = sortByDate(posts);
-const totalPages: number = Math.ceil(posts.length / config.settings.pagination);
 const currentPosts = sortedPosts.slice(0, config.settings.pagination);
 
 // Attributes
 const content = { title: "News" };
 
 const categoriesi: Category[] = [
-  { name: "All Posts", href: "/blog" },
-  { name: "Featured Posts", href: "/blog/tagged/featured" },
-];
-
-const postsi: Post[] = [
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
-  {
-    href: "/blog/example",
-    title: "Example Post",
-    authors: [{ name: "Bukhari", avatarUrl: "/images/about-us.png" }],
-    tags: [{ name: "Featured" }],
-    date: "Sep 2, 2025",
-  },
+  { name: "All Posts", href: "/news" },
+  { name: "Featured Posts", href: "/news/tagged/featured" },
 ];
 ---
 
-<Main content={content}>
+<Main content={content} makara>
   <PageHeader title={content.title} />
 
-  <!-- News posts -->
-  <div class="mx-auto max-w-6xl p-6 xl:gap-16">
+  <!-- News posts cards -->
+  <section class="mx-auto max-w-6xl p-6 xl:gap-16">
     <div class="grid h-fit gap-4 lg:grid-cols-2">
       {
         currentPosts.map((post) => (
@@ -236,13 +42,9 @@ const postsi: Post[] = [
           </div>
         ))
       }
-      <Pagination
-        section={NEWS_FOLDER}
-        currentPage={1}
-        totalPages={totalPages}
-      />
     </div>
-  </div>
+  </section>
+  <!-- News posts lists -->
   <section
     class="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-2 pb-24 lg:grid-cols-5 xl:gap-16"
   >
@@ -258,7 +60,7 @@ const postsi: Post[] = [
     <!-- News List  -->
     <div class="lg:col-span-4">
       <NewsList
-        posts={postsi}
+        posts={sortedPosts}
         categories={categoriesi}
         activeCategory="All Posts"
       />
