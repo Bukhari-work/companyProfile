@@ -1,0 +1,30 @@
+---
+title: "Global Health Leadership & Diplomacy Training: Shaping Indonesia’s Role in Global Health"
+description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
+subtitle: A groundbreaking initiative pushing the boundaries of technology.
+image:
+  src: /images/hero.png
+  alt: Image of a new project launch event
+date: 2025-06-19T10:00:00Z # Example date, adjust as needed. Use ISO 8601 format.
+authors:
+- putu-mas-dewi-pratiwi
+categories:
+  - innovation
+  - technology
+relatedPosts:
+  - post-about-tech-trends # This should match the slug of an entry in your 'blogs' collection
+  - future-of-innovation # Another example blog post slug
+draft: false
+---
+
+In October 2024, the Center for Health Administration and Policy Studies (CHAMPS), Faculty of Public Health Universitas Indonesia, in collaboration with the Ministry of Health, hosted the Global Health Leadership & Diplomacy (GHLD) Training at The Ritz-Carlton Jakarta. This three-day program brought together Indonesian professionals to strengthen their skills in global health governance, diplomacy, and negotiation, equipping them to play a stronger role in international health leadership.
+
+The training combined expert-led sessions with hands-on exercises. Distinguished speakers, including senior officials from the Ministry of Health and international experts, provided participants with critical insights into global health diplomacy. Core sessions focused on diplomatic etiquette, public diplomacy, and cross-cultural communication competencies essential for representing Indonesia effectively in global forums.
+
+A highlight of the program was the simulation of multilateral negotiations on the Pandemic Treaty, alongside strategic negotiation workshops led by Ambassador Dian Triansyah Djani. These interactive sessions challenged participants to navigate complex negotiation dynamics, build consensus among diverse stakeholders, and align global policies with Indonesia’s national interests. The curriculum also emphasized personal branding, media engagement, and advanced diplomatic etiquette ensuring participants developed as well-rounded leaders ready to represent Indonesia on the world stage.
+
+By the end of the program, participants emerged more confident and prepared to contribute to Indonesia’s growing influence in international arenas such as the G20, ASEAN, and WHO. The GHLD training not only enhanced individual leadership capacity but also marked a significant step in advancing Indonesia’s contributions to global health governance and diplomacy.
+
+Through initiatives like GHLD, CHAMPS reaffirms its commitment to developing the next generation of global health leaders—professionals who can foster collaboration, drive impactful policies, and strengthen health resilience both nationally and globally.
+
+Join us on this journey of shaping global health diplomacy where every voice matters and every partnership strengthens the collective effort for a healthier world.

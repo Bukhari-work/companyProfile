@@ -1,0 +1,105 @@
+---
+import type { partner } from "@/components/PartnersTable.astro"; // Assuming it's in the same folder
+
+export interface Props {
+  partner: partner;
+  index: number;
+}
+
+const { partner, index } = Astro.props;
+
+const isExternal = partner.linkText === "Visit site";
+const patternId = `pattern-${index}`;
+---
+
+<a
+  class="partner-row group hover:border-primary relative isolate flex flex-col items-start justify-between gap-2 rounded border border-transparent p-3 hover:[box-shadow:_var(--sh-alt)] lg:grid lg:min-h-[42px] lg:grid-cols-[1fr_2fr_1fr] lg:items-center"
+  href={partner.href}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+  data-category={partner.category}
+>
+  {/* SVG pattern on hover */}
+  <svg
+    class="text-primary pointer-events-none invisible absolute inset-0 [z-index:-1] size-full [mask-image:linear-gradient(to_left,_#ffffffad,_transparent)] opacity-100 select-none group-hover:visible dark:opacity-80"
+  >
+    <defs>
+      <pattern
+        id={patternId}
+        width="4"
+        height="4"
+        patternUnits="userSpaceOnUse"
+        patternTransform="rotate(45)"
+      >
+        <line
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="4"
+          stroke="currentColor"
+          stroke-width="1.5"></line>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+  </svg>
+
+  {/* Logo + Name */}
+  <div class="flex shrink-0 grid-cols-[1fr] items-center gap-3">
+    <img
+      alt={`${partner.name} logo`}
+      loading="lazy"
+      width="40"
+      height="40"
+      src={partner.logo}
+      class="h-9 w-9 overflow-hidden rounded opacity-60 group-hover:opacity-100 dark:invert"
+      style="color:transparent"
+    />
+    <h2
+      class="decoration-primary/10 group-hover:decoration-primary group-hover:text-primary underline"
+    >
+      {partner.name}
+    </h2>
+  </div>
+
+  {/* Tags + Divider */}
+  <div class="flex w-full shrink-0 grid-cols-[2fr] items-center gap-3">
+    <hr class="bg-primary/20 hidden w-full group-hover:invisible lg:flex" />
+    {/* Categories as tags */}
+    <div class="flex w-fit shrink-0 gap-2">
+      {
+        partner.category
+          .split(",")
+          .map((cat) => (
+            <div class="text-primary border-primary bg-primary/5 my-2 flex h-[18px] w-fit items-center gap-1.5 rounded-xs border border-dotted px-2 font-mono text-[0.625rem] leading-6">
+              {cat.trim()}
+            </div>
+          ))
+      }
+    </div>
+    <hr class="bg-primary/20 hidden w-full group-hover:invisible lg:flex" />
+  </div>
+
+  {/* Link + Icon */}
+  <div class="flex w-full shrink-0 items-end justify-end gap-2">
+    <div
+      class="dark:group-hover:text-primary ml-auto inline-flex items-center gap-2"
+    >
+      <span>{partner.linkText}</span>
+      {
+        isExternal ? (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M7.184 3.894a.75.75 0 0 0-.136 1.494l2.295.209-4.879 4.878a.75.75 0 0 0 1.061 1.06l4.878-4.878.209 2.295a.75.75 0 1 0 1.494-.136l-.354-3.89a.75.75 0 0 0-.679-.678l-3.889-.354Z" />
+          </svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M5.46967 11.4697C5.17678 11.7626 5.17678 12.2374 5.46967 12.5303C5.76256 12.8232 6.23744 12.8232 6.53033 12.5303L10.5303 8.53033C10.8207 8.23999 10.8236 7.77014 10.5368 7.47624L6.63419 3.47624C6.34492 3.17976 5.87009 3.17391 5.57361 3.46318C5.27713 3.75244 5.27128 4.22728 5.56054 4.52376L8.94583 7.99351L5.46967 11.4697Z" />
+          </svg>
+        )
+      }
+    </div>
+  </div>
+
+  <hr
+    class="default-border-color flex w-full opacity-60 group-hover:invisible lg:hidden dark:opacity-40"
+  />
+</a>

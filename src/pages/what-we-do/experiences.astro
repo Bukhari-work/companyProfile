@@ -1,0 +1,39 @@
+---
+import { partners } from "@/config.json";
+import Main from "@/layouts/Main.astro";
+
+import SideBar from "@/components/SideBar.astro";
+import PageHeader from "@/components/blocks/PageHeader.astro";
+import PartnersTable from "@/components/PartnersTable.astro";
+
+import ExperiencesPath from "@/components/ExperiencesPath.astro";
+
+// Attributes
+const content = { title: "What We Do?" };
+---
+
+<Main content={content}>
+  <PageHeader title={content.title} />
+  <article class="mx-auto flex min-w-full flex-col gap-6 p-6 pb-24 xl:gap-16">
+    <section
+      id="process"
+      class="prose dark:prose-invert flex min-w-full flex-col content-center items-center text-justify font-light lg:col-span-5"
+    >
+      <p class="font-lexend mx-auto mt-4 max-w-3xl text-center text-lg">
+        We follow a structured, collaborative process to ensure the final
+        product perfectly aligns with your vision and goals.
+      </p>
+
+      <div class="not-prose">
+        <ExperiencesPath />
+      </div>
+    </section>
+
+    <PartnersTable partners={partners} />
+    <p class="prose dark:prose-invert self-center text-center">
+      Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
+        >champs@ui.ac.id</a
+      >.
+    </p>
+  </article>
+</Main>

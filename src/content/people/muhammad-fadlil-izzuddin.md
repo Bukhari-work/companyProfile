@@ -1,0 +1,9 @@
+---
+name: Muhammad Fadlil Izzuddin S.I.A , M.M
+role: The Team
+responsibility: Administration
+image:
+  src: /images/people/muhammad-fadhil-izuddin.png
+  alt: Portrait of Muhammad Fadlil Izzuddin
+draft: false
+---
