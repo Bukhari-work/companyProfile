@@ -2,7 +2,7 @@
 import { render } from "astro:content";
 
 import Avatar from "@/components/ui-astro/Avatar.astro";
-import NewsCard from "@/components/blocks/NewsCard.astro";
+import NewsCardSm from "@/components/blocks/NewsCardSm.astro";
 import Share from "@/components/blocks/Share.astro";
 import PageHeader from "@/components/blocks/PageHeader.astro";
 import ToCBar from "@/components/blocks/ToCBar.astro";
@@ -112,13 +112,13 @@ const people = await getEntries<"people">(authors);
   </div>
 
   <!-- Related posts -->
-  <div class="">
+  <div class="mx-auto max-w-6xl p-6 xl:gap-16">
     <h2 class="mb-12 text-center">Related Posts</h2>
-    <div class="row flex flex-col justify-center gap-6 lg:flex-row">
+    <div class="grid h-fit gap-4 lg:grid-cols-3">
       {
         similarPosts.map((post) => (
-          <div class="mb-14 max-w-2xl self-center">
-            <NewsCard data={post} />
+          <div class="slide-fade-in col-span-1 mb-6 lg:mb-14">
+            <NewsCardSm data={post} />
           </div>
         ))
       }

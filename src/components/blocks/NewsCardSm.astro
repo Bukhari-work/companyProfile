@@ -1,0 +1,121 @@
+---
+import config from "@/config.json";
+
+import { Image } from "astro:assets";
+import { getEntries } from "astro:content";
+
+import dateFormat from "@/lib/utils/dateFormat";
+import { humanize, slugify, plainify } from "@/lib/utils/textConverter";
+import { FaClock } from "react-icons/fa6";
+
+import Button from "@/components/ui-astro/Button.astro";
+
+// Properties
+const {
+  summary_length,
+  news_folder,
+}: { summary_length: number; news_folder: string } = config.settings;
+
+const { data } = Astro.props;
+const { title, description, image, date, authors, tags } = data.data;
+const patternId = `pattern-sm-${data.id}`;
+
+const people = await getEntries<"people">(authors);
+---
+
+<article
+  class="group hover:border-primary relative isolate flex flex-col gap-3 overflow-hidden rounded-lg border p-4 duration-100 hover:-translate-y-2 hover:[box-shadow:_var(--sh-alt)]"
+>
+  <!-- SVG background pattern on hover -->
+  <svg
+    class="text-primary pointer-events-none invisible absolute inset-0 z-[-1] size-full [mask-image:linear-gradient(to_left,_#ffffffad,_transparent)] opacity-100 select-none group-hover:visible dark:opacity-80"
+  >
+    <defs>
+      <pattern
+        id={patternId}
+        width="4"
+        height="4"
+        patternUnits="userSpaceOnUse"
+        patternTransform="rotate(45)"
+      >
+        <line
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="4"
+          stroke="currentColor"
+          stroke-width="1.5"></line>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+  </svg>
+
+  <!-- Image -->
+  {
+    image && (
+      <a
+        class="relative h-32 overflow-hidden rounded-md"
+        href={`/${news_folder}/${data.id}`}
+      >
+        <Image
+          class="h-full w-full object-cover"
+          src={image?.src}
+          alt={title}
+          width={320}
+          height={180}
+          format="webp"
+        />
+      </a>
+    )
+  }
+
+  <!-- Content -->
+  <div class="flex flex-col gap-2">
+    <header>
+      <h3 class="group-hover:text-primary line-clamp-2 text-base font-semibold">
+        <a href={`/${news_folder}/${data.id}`}>{title}</a>
+      </h3>
+    </header>
+
+    <div
+      class="flex flex-col flex-wrap items-start gap-3 text-xs text-gray-500 dark:text-gray-200"
+    >
+      {
+        date && (
+          <div class="flex items-center gap-1">
+            <FaClock />
+            <time>{dateFormat(date)}</time>
+          </div>
+        )
+      }
+      {
+        people.length > 0 && (
+          <span>
+            {people.map((author, idx) => (
+              <>
+                <a class="hover:text-primary" href={`/people/${author.id}`}>
+                  {author.data.name}
+                </a>
+                {idx < people.length - 1 && ", "}
+              </>
+            ))}
+          </span>
+        )
+      }
+    </div>
+
+    <p class="line-clamp-2 text-sm">
+      {plainify(data.body?.slice(0, Number(summary_length))) + "..."}
+    </p>
+  </div>
+
+  <div class="mt-auto pt-2">
+    <Button
+      variant="default"
+      href={`/${news_folder}/${data.id}`}
+      className="bg-primary/60 px-3 py-1 text-xs"
+    >
+      Read More
+    </Button>
+  </div>
+</article>

@@ -23,15 +23,13 @@ const content = {
 
 <Main content={content} makara>
   <PageHeader title={content.title} class="mb-12" />
-
   <article class="mx-auto max-w-6xl space-y-12 p-6 pb-24">
     <!-- ROW 1: Intro & Quick Links -->
     <section id="intro" class="rounded-xl border p-6">
       <div class="space-y-4">
         <h2 class="h3 mb-0">About these programmes</h2>
         <p class="text-muted-foreground text-sm">
-          Browse our curated learning tracks. Click a program to see details or
-          use the quick links below to jump to a specific program.
+          Use the quick links below to jump to a specific program.
         </p>
 
         <div class="mt-4 grid gap-4 sm:grid-cols-2">
@@ -51,7 +49,7 @@ const content = {
 
     <!-- ROW 2: Programmes Grid -->
     <section id="programmes">
-      <div class="grid gap-6">
+      <div class="flex flex-col gap-6">
         {programmes.map((program) => <ProgramCard data={program} />)}
       </div>
     </section>
@@ -126,12 +124,6 @@ const content = {
             <div id="inline-badge" class="inline-block"></div>
           </div>
         </form>
-      </div>
-
-      <div class="rounded-xl border p-6">
-        <h5 class="mb-3 font-medium">Connect</h5>
-        <p class="text-muted-foreground mb-3 text-sm">{content.messageTwo}</p>
-        <Social />
       </div>
     </section>
   </article>

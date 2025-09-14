@@ -50,7 +50,7 @@ const news = defineCollection({
     date: z.coerce.date().optional(),
     categories: z.array(z.string()).default(["others"]),
     tags: z.array(z.string()).default(["others"]),
-    relatedPosts: z.array(reference("blogs")),
+    relatedPosts: z.array(reference("blogs")).optional(),
     draft: z.boolean().optional(),
   }),
 });

@@ -9,11 +9,7 @@ date: 2025-06-19T10:00:00Z # Example date, adjust as needed. Use ISO 8601 format
 authors:
 - aulia-khairina-khairil
 categories:
-  - innovation
-  - technology
-relatedPosts:
-  - post-about-tech-trends # This should match the slug of an entry in your 'blogs' collection
-  - future-of-innovation # Another example blog post slug
+  - Report
 draft: false
 ---
 

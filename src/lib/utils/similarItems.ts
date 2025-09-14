@@ -4,12 +4,12 @@ const similarItems = (currentItem: any, allItems: any[]) => {
   let tags: string[] = [];
 
   // set categories
-  if (currentItem.data.categories.length > 0) {
+  if (currentItem.data.categories && currentItem.data.categories.length > 0) {
     categories = currentItem.data.categories;
   }
 
   // set tags
-  if (currentItem.data.tags.length > 0) {
+  if (currentItem.data.tags && currentItem.data.tags.length > 0) {
     tags = currentItem.data.tags;
   }
 
@@ -31,7 +31,8 @@ const similarItems = (currentItem: any, allItems: any[]) => {
     (product) => product.id !== currentItem.id,
   );
 
-  return filterBySlug;
+  // Return at most 3 items from the filtered list
+  return filterBySlug.slice(0, 3);
 };
 
 export default similarItems;

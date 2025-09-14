@@ -5,14 +5,14 @@ subtitle: A groundbreaking initiative pushing the boundaries of technology.
 image:
   src: /images/hero.png
   alt: Image of a new project launch event
-date: 2024-08-30T20:00:00+08:00
+date: 2025-09-30T20:00:00+08:00
 authors:
 - aulia-khairina-khairil
 categories:
-  - ICHA
-relatedPosts:
-  - post-about-tech-trends # This should match the slug of an entry in your 'blogs' collection
-  - future-of-innovation # Another example blog post slug
+- Report
+- Training
+tags:
+- ICHA
 draft: false
 ---
 

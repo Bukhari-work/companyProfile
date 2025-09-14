@@ -11,11 +11,16 @@ export interface Tag {
   name: string;
 }
 
+export interface Category {
+  name: string;
+}
+
 export interface Data {
   href: string;
   title: string;
   authors: Author[];
   tags: Tag[];
+  categories: Category[];
   date: Date;
 }
 export interface Post {
@@ -34,11 +39,11 @@ interface Props {
   activeCategory?: string;
 }
 
-const { posts, categories, activeCategory = "All Posts" } = Astro.props;
+const { posts, activeCategory = "All Posts" } = Astro.props;
 ---
 
 <!-- Blog Post List -->
-<div class="relative w-full gap-6 lg:gap-16 lg:pt-10">
+<div class="relative w-full gap-6 lg:gap-16">
   {
     posts.map((post, index) => {
       const patternId = `pattern-${index}`;
@@ -71,11 +76,12 @@ const { posts, categories, activeCategory = "All Posts" } = Astro.props;
           </svg>
           {/* Post Title and Authors */}
           <div class="flex shrink-0 flex-col items-start gap-2 lg:flex-row lg:items-center">
-            <h2 class="group-hover:text-primary decoration-foreground/20 dark:decoration-foreground/40 group-hover:decoration-primary dark:group-hover:decoration-primary underline underline-offset-2">
-              {post.data.title.length > 65
-                ? `${post.data.title.slice(0, 65)} ...`
+            <h2 class="group-hover:text-primary decoration-foreground/20 dark:decoration-foreground/40 group-hover:decoration-primary dark:group-hover:decoration-primary line-clamp-1 underline underline-offset-2">
+              {post.data.title.length > 80
+                ? `${post.data.title.slice(0, 80)} ...`
                 : post.data.title}
             </h2>
+            {/* Authors for desktop*/}
             {post.data.authors.length > 0 && (
               <div class="hidden -space-x-1.5 hover:space-x-2 lg:flex">
                 {post.data.authors.map((author) => (
@@ -94,8 +100,8 @@ const { posts, categories, activeCategory = "All Posts" } = Astro.props;
             )}
           </div>
           <hr class="hidden w-full opacity-80 group-hover:invisible lg:flex" />
-          {/* Tags and Date */}
           <div class="flex w-full shrink-0 items-center gap-1 lg:w-fit">
+            {/* Authors for mobile */}
             {post.data.authors.length > 0 && (
               <div class="flex -space-x-1.5 lg:hidden">
                 {post.data.authors.map((author) => (
@@ -106,7 +112,7 @@ const { posts, categories, activeCategory = "All Posts" } = Astro.props;
                       width="20"
                       height="20"
                       class="size-5 shrink-0 cursor-help overflow-hidden rounded-full"
-                      src={author.avatarUrl}
+                      src={`/images/people/${author.id}.png`}
                     />
                   </div>
                 ))}
@@ -115,18 +121,18 @@ const { posts, categories, activeCategory = "All Posts" } = Astro.props;
             {post.data.authors.length > 0 && (
               <span class="flex opacity-15 lg:hidden">|</span>
             )}
-
-            {post.data.tags.length > 0 && (
+            {/* Categories and Date */}
+            {post.data.categories.length > 0 && (
               <div class="flex flex-wrap gap-2">
-                {post.data.tags.map((tag) => (
+                {post.data.categories.map((category) => (
                   <div class="text-primary border-primary bg-primary/5 flex h-[18px] w-fit shrink-0 items-center gap-1.5 rounded-xs border border-dotted px-1 font-mono text-[0.625rem] leading-6">
-                    {tag.name}
+                    {category}
                   </div>
                 ))}
               </div>
             )}
 
-            {post.data.tags.length > 0 && (
+            {post.data.categories.length > 0 && (
               <span class="hidden opacity-15 lg:flex">|</span>
             )}
 
@@ -134,7 +140,7 @@ const { posts, categories, activeCategory = "All Posts" } = Astro.props;
               {dateFormat(post.data.date)}
             </p>
           </div>
-          <hr class="default-border-color flex w-full opacity-60 group-hover:invisible lg:hidden dark:opacity-40" />
+          <hr class="flex w-full opacity-60 group-hover:invisible lg:hidden dark:opacity-40" />
         </a>
       );
     })

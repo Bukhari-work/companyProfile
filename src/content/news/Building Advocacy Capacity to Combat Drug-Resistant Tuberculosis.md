@@ -7,13 +7,9 @@ image:
   alt: Image of a new project launch event
 date: 2025-06-19T10:00:00Z
 authors:
-- aulia-khairina-khairil
+  - aulia-khairina-khairil
 categories:
-  - innovation
-  - technology
-relatedPosts:  # This should match the slug of an entry in your 'blogs' collection
-  - post-about-tech-trends
-  - future-of-innovation
+  - Report
 draft: false
 ---
 

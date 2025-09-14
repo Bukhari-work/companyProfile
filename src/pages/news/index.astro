@@ -22,11 +22,6 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
 
 // Attributes
 const content = { title: "News" };
-
-const categoriesi: Category[] = [
-  { name: "All Posts", href: "/news" },
-  { name: "Featured Posts", href: "/news/tagged/featured" },
-];
 ---
 
 <Main content={content} makara>
@@ -37,7 +32,7 @@ const categoriesi: Category[] = [
     <div class="grid h-fit gap-4 lg:grid-cols-2">
       {
         currentPosts.map((post) => (
-          <div class="slide-fade-in col-span-1 mb-6 lg:mb-14">
+          <div class="slide-fade-in col-span-1 mb-6">
             <NewsCard data={post} />
           </div>
         ))
@@ -49,21 +44,17 @@ const categoriesi: Category[] = [
     class="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-2 pb-24 lg:grid-cols-5 xl:gap-16"
   >
     <!-- sidebar -->
-    <div class="lg:col-span-1">
+    <!-- <div class="lg:col-span-1">
       <PostSidebar
         categories={categories}
         tags={tags}
         allCategories={allCategories}
         allTags={allTags}
       />
-    </div>
+    </div> -->
     <!-- News List  -->
-    <div class="lg:col-span-4">
-      <NewsList
-        posts={sortedPosts}
-        categories={categoriesi}
-        activeCategory="All Posts"
-      />
+    <div class="lg:col-span-5">
+      <NewsList posts={sortedPosts} />
     </div>
   </section>
 </Main>
