@@ -1,5 +1,4 @@
 ---
-import { programmes } from "@/config.json";
 import Main from "@/layouts/Main.astro";
 import PageHeader from "@/components/blocks/PageHeader.astro";
 import Button from "@/components/ui-astro/Button.astro";
@@ -15,17 +14,124 @@ const content = {
     "We offer a variety of programmes to help you achieve your goals. Contact us for more information.",
   image: "/images/programmes.jpg",
   messageTitle: "Please fill out the following form",
-  message:
-    "Have a question or a project in mind? I'd love to hear from you. Fill out the form, and let's start a conversation.",
-  messageTwo: "You can also find me on these platforms:",
 };
+
+// --- New Categorized Programmes Data with Icons ---
+const programmeCategories = [
+  {
+    category: "Research",
+    description:
+      "At CHAMPS, research is at the core of our mission to strengthen health systems, policies, and services. We generate evidence-based insights that guide governments, healthcare institutions, and communities in making informed decisions.",
+    programmes: [
+      {
+        title: "Health Policy & Governance",
+        description:
+          "Services include policy analysis, review, and health programme evaluation.",
+        icon: "FaScaleBalanced",
+      },
+      {
+        title: "Healthcare Administration & Management",
+        description:
+          "Services include hospital master plan development, feasibility studies, and business planning.",
+        icon: "FaHospital",
+      },
+      {
+        title: "Health Financing & Economics",
+        description:
+          "Expertise in tariff/unit cost studies and patient ability/willingness-to-pay research.",
+        icon: "FaHandHoldingDollar",
+      },
+      {
+        title: "Quality & Ethics in Healthcare",
+        description:
+          "Providing research ethics advisory and excellent service assessments.",
+        icon: "FaShieldHalved",
+      },
+    ],
+  },
+  {
+    category: "Capacity Building & Training",
+    description:
+      "CHAMPS develops comprehensive training programs that strengthen the skills of government officials, healthcare providers, and health leaders, equipping them to address today’s complex health challenges.",
+    programmes: [
+      {
+        title: "Policy & Governance Excellence",
+        description:
+          "Training to craft stronger health policies, measure impact, and build advocacy skills.",
+        icon: "FaChalkboardUser",
+      },
+      {
+        title: "Leadership & Strategic Growth",
+        description:
+          "Training in Global Health Leadership, future-ready strategies, and scientific writing.",
+        icon: "FaUsers",
+      },
+      {
+        title: "Healthcare & Hospital Management",
+        description:
+          "Courses on optimizing primary care, hospital operations, data management, and lean methods.",
+        icon: "IoBed",
+      },
+    ],
+  },
+  {
+    category: "Consultation & Technical Assistance",
+    description:
+      "CHAMPS provides expert guidance to governments, health institutions, and hospitals in designing and implementing effective health systems, strategies, and programs.",
+    programmes: [
+      {
+        title: "Policy Analysis & Advocacy",
+        description:
+          "Assistance with health policy analysis, regulation impact analysis, and policy influence.",
+        icon: "FaMagnifyingGlass",
+      },
+      {
+        title: "Strategic Planning",
+        description:
+          "Guidance for health organizations and hospitals to develop robust strategic plans.",
+        icon: "FaCheckDouble",
+      },
+      {
+        title: "Quality, Risk & Safety Management",
+        description:
+          "Implementing systems to advance quality standards and patient safety in institutions.",
+        icon: "FaLifeRing",
+      },
+      {
+        title: "Frontline Leadership & Lean Management",
+        description:
+          "Transforming service delivery through frontline leadership skills and patient-centered care.",
+        icon: "FaHandshakeAngle",
+      },
+    ],
+  },
+  {
+    category: "Strategic Advisory Services",
+    description:
+      "CHAMPS provides high-level advisory support to strengthen leadership capacity and guide the long-term growth of health organizations.",
+    programmes: [
+      {
+        title: "Strategic Plan Development",
+        description:
+          "Develop a clear, evidence-based roadmap to achieve measurable growth and sustainability.",
+        icon: "FaCompass",
+      },
+      {
+        title: "Leadership & Learning Organization Development",
+        description:
+          "Evolve your organization into an agile, learning-driven institution ready for a changing health landscape.",
+        icon: "FaBrain",
+      },
+    ],
+  },
+];
 ---
 
 <Main content={content} makara>
   <PageHeader title={content.title} class="mb-12" />
-  <article class="mx-auto max-w-6xl space-y-12 p-6 pb-24">
+  <div class="mx-auto max-w-6xl space-y-12 p-6 pb-24">
     <!-- ROW 1: Intro & Quick Links -->
-    <section id="intro" class="rounded-xl border p-6">
+    <section id="intro" class="bg-background rounded-xl border p-6">
       <div class="space-y-4">
         <h2 class="h3 mb-0">About these programmes</h2>
         <p class="text-muted-foreground text-sm">
@@ -34,24 +140,37 @@ const content = {
 
         <div class="mt-4 grid gap-4 sm:grid-cols-2">
           {
-            programmes.map((p) => (
+            programmeCategories.map((category) => (
               <a
-                href={`#program-${p.slug}`}
+                href={`#category-${category.category}`}
                 class="hover:bg-primary/5 rounded-md border p-3 text-sm transition"
               >
-                {p.title}
+                {category.category}
               </a>
             ))
           }
         </div>
       </div>
     </section>
-
-    <!-- ROW 2: Programmes Grid -->
-    <section id="programmes">
-      <div class="flex flex-col gap-6">
-        {programmes.map((program) => <ProgramCard data={program} />)}
-      </div>
+    <section id="programmes" class="grid grid-cols-2 gap-4 space-y-12">
+      {
+        programmeCategories.map((category) => (
+          <article
+            class="bg-background rounded-xl border p-6 shadow-xl"
+            id={`category-${category.category}`}
+          >
+            <h2 class="text-primary mb-2 border-b pb-2 text-center text-2xl font-bold">
+              {category.category}
+            </h2>
+            <p class="text-muted-foreground mb-6">{category.description}</p>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {category.programmes.map((program) => (
+                <ProgramCard data={program} />
+              ))}
+            </div>
+          </article>
+        ))
+      }
     </section>
 
     <!-- ROW 3: Contact Form + Social -->
@@ -126,7 +245,7 @@ const content = {
         </form>
       </div>
     </section>
-  </article>
+  </div>
 </Main>
 
 <script

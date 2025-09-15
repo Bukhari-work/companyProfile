@@ -35,11 +35,11 @@ export interface Category {
 
 interface Props {
   posts: Post[];
-  categories: Category[];
+  categories?: Category[];
   activeCategory?: string;
 }
 
-const { posts, activeCategory = "All Posts" } = Astro.props;
+const { posts, categories, activeCategory = "All Posts" } = Astro.props;
 ---
 
 <!-- Blog Post List -->

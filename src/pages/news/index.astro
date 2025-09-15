@@ -10,6 +10,8 @@ import PageHeader from "@/components/blocks/PageHeader.astro";
 import PostSidebar from "@/components/blocks/PostSidebar.astro";
 import NewsList from "@/components/blocks/NewsList.astro";
 
+import { type Post } from "@/components/blocks/NewsList.astro";
+
 const NEWS_FOLDER = "news";
 const posts = await getSinglePage(NEWS_FOLDER);
 
@@ -17,7 +19,7 @@ const allCategories = await getAllTaxonomy(NEWS_FOLDER, "categories");
 const allTags = await getAllTaxonomy(NEWS_FOLDER, "tags");
 const categories = await getTaxonomy(NEWS_FOLDER, "categories");
 const tags = await getTaxonomy(NEWS_FOLDER, "tags");
-const sortedPosts = sortByDate(posts);
+const sortedPosts: Post[] = sortByDate(posts);
 const currentPosts = sortedPosts.slice(0, config.settings.pagination);
 
 // Attributes

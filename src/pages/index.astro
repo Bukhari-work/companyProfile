@@ -1,5 +1,12 @@
 ---
+import config from "@/config.json";
 import Main from "@/layouts/Main.astro";
+
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+import { cn } from "@/lib/utils";
+
+import { MarqueePartners } from "@/components/blocks/MarqueePartners.tsx";
 
 // Component imports
 import Hero from "@/components/Hero.astro";
@@ -8,7 +15,14 @@ import Features from "@/components/Features.astro";
 import Steps from "@/components/Steps.astro";
 import NumberedList from "@/components/NumberedList.astro";
 import Content from "@/components/Content.astro";
+import NewsCardSm from "@/components/blocks/NewsCardSm.astro";
 // Attributes
+const NEWS_FOLDER = "news";
+const posts = await getSinglePage(NEWS_FOLDER);
+
+const sortedPosts = sortByDate(posts);
+const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+
 const content = { title: "Home" };
 ---
 
@@ -51,7 +65,9 @@ const content = { title: "Home" };
       an effective, efficient, equitable, and sustainable manner.
     </Fragment>
   </Hero>
-  <div class="bg-blue h-50 w-200"></div>
+  <section class="mx-auto max-w-6xl">
+    <MarqueePartners client:load />
+  </section>
   <Stats
     title="CHAMPS UI IN NUMBERS in \n \n2024"
     subtitle="16 Research, Training, Workshops, Strategic Plans, and Satisfaction Surveys Proposal Developed"
@@ -67,6 +83,23 @@ const content = { title: "Home" };
     ]}
   />
 
+  <div class="bg-primary/5 w-full border-t"></div>
+  <!-- News posts cards -->
+  <section class="mx-auto my-20 max-w-6xl p-6 xl:gap-16">
+    <header class="mb-4 flex flex-wrap items-baseline justify-between">
+      <p class="text-3xl font-bold">Latest News</p>
+      <p class="link">All Posts</p>
+    </header>
+    <div class="grid h-fit gap-4 lg:grid-cols-2">
+      {
+        currentPosts.map((post) => (
+          <div class="slide-fade-in col-span-1 mb-6">
+            <NewsCardSm data={post} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
   <!-- <Steps
     title="LeChamps"
     items={[
@@ -97,8 +130,8 @@ const content = { title: "Home" };
       src: "https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
       alt: "Steps image",
     }}
-  />
-  <Steps
+  /> -->
+  <!-- <Steps
     id="experience"
     title="Work experience"
     items={[
@@ -116,9 +149,9 @@ const content = { title: "Home" };
       },
     ]}
     classes={{ container: "max-w-3xl" }}
-  />
+  /> -->
 
-  <Features
+  <!-- <Features
     title="We are leChamps"
     subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
     columns={3}
@@ -161,9 +194,9 @@ const content = { title: "Home" };
         icon: "LuUser",
       },
     ]}
-  />
+  /> -->
 
-  <Content
+  <!-- <Content
     isReversed
     tagline="We are leChamps!"
     title="Research, Training, and Development"
@@ -201,8 +234,8 @@ const content = { title: "Home" };
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
-  <NumberedList
+  </Content> -->
+  <!-- <NumberedList
     title="Achievements"
     subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
     isReversed={true}

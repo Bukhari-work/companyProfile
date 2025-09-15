@@ -4,12 +4,13 @@ import Button from "@/components/ui-astro/Button.astro";
 import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
 
 const { data } = Astro.props;
-const { slug, title, description, icon } = data;
-const patternId = `pattern-${slug}`;
+const { title, description, icon } = data;
+const patternId = `pattern-${slugify(title)}`;
+console.log(patternId);
 ---
 
 <article
-  id={`program-${slug}`}
+  id={`program-${title}`}
   class="group hover:border-primary bg-background relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 hover:[box-shadow:_var(--sh-alt)]"
 >
   <!-- SVG background pattern on hover -->
@@ -49,7 +50,7 @@ const patternId = `pattern-${slug}`;
   <div class="flex flex-col justify-between">
     <div>
       <header class="mb-2">
-        <h3 class="group-hover:text-primary text-xl font-bold">
+        <h3 class="group-hover:text-primary font-bold">
           <div class="inline-block">
             {title}
           </div>
