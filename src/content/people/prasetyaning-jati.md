@@ -8,7 +8,7 @@ expertise:
   - Health Management & Administration
   - Health Policy
 image:
-  src: /images/people/prasetyaning-jati.png
+  src: /images/people/prasetyaning-jati.webp
   alt: Portrait of Prasetyaning Jati
 social:
   - platform: GMail

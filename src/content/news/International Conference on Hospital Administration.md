@@ -3,14 +3,13 @@ title: International Conference on Hospital Administration (ICHA)
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of technology.
 image:
-  src: /images/hero.png
-  alt: Image of a new project launch event
+  src: '/images/news/International Conference on Hospital Administration (ICHA) 1.png'
+  alt: Image of ICHA
 date: 2025-09-30T20:00:00+08:00
 authors:
 - aulia-khairina-khairil
 categories:
 - Report
-- Training
 tags:
 - ICHA
 draft: false

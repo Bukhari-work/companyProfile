@@ -3,8 +3,8 @@ title: "Efforts to Improve Financial Independence of PUBLIC Hospitals: Recommend
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of technology.
 image:
-  src: /images/hero.png
-  alt: Image of a new project launch event
+  src: '/images/news/Efforts to Improve Financial Independence of PUBLIC Hospitals 3.png'
+  alt: Image of the Event
 date: 2025-06-19T10:00:00Z
 authors:
 - putu-mas-dewi-pratiwi

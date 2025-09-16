@@ -8,7 +8,7 @@ expertise:
   - Health Management and Administration
   - One Health
 image:
-  src: /images/people/putu-mas-dewi-pratiwi.png
+  src: /images/people/putu-mas-dewi-pratiwi.webp
   alt: Portrait of Putu Mas Dewi Pratiwi
 social:
   - platform: GMail

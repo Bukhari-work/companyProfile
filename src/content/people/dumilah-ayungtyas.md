@@ -14,7 +14,7 @@ expertise:
   - Community Empowerment
   - Research Methodology
 image:
-  src: /images/people/dumilah-ayuningtyas.png
+  src: /images/people/dumilah-ayuningtyas.webp
   alt: Portrait of Dumilah Ayuningtyas
 social:
   - platform: GMail

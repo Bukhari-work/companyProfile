@@ -9,7 +9,7 @@ expertise:
   - Human Resource Management
   - Community Empowerment and Health Financing
 image:
-  src: /images/people/aulia-khairina-khairil.png
+  src: /images/people/aulia-khairina-khairil.webp
   alt: Portrait of Aulia Khairina Khairil
 social:
   - platform: GMail

@@ -1,0 +1,42 @@
+---
+import { partners } from "@/config.json";
+import Main from "@/layouts/Main.astro";
+
+import SideBar2 from "@/components/SideBar2.astro";
+import PageHeader from "@/components/blocks/PageHeader.astro";
+import PartnersTable from "@/components/PartnersTable.astro";
+
+import ExperiencesPath from "@/components/ExperiencesPath.astro";
+
+// Attributes
+const content = { title: "Our Partners" };
+---
+
+<Main content={content}>
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-2 pb-24 xl:gap-16">
+    <SideBar2 class="col-span-5 lg:col-span-1" />
+    <article
+      class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-4"
+    >
+      <h1
+        class="font-lexend text-primary mt-8 mb-6 w-fit scroll-mt-24 text-6xl font-semibold"
+      >
+        Our Partners
+      </h1>
+      <div class="max-w-3xl">
+        <p>
+          We follow a structured, collaborative process to ensure the final
+          product perfectly aligns with your vision and goals.
+        </p>
+      </div>
+      <div class="not-prose">
+        <PartnersTable partners={partners} />
+      </div>
+      <p class="prose dark:prose-invert self-center text-center">
+        Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
+          >champs@ui.ac.id</a
+        >.
+      </p>
+    </article>
+  </section>
+</Main>

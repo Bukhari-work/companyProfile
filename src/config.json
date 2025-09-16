@@ -23,7 +23,7 @@
         "href": "/about"
       },
       {
-        "text": "What We Do?",
+        "text": "What We Do",
         "href": "/what-we-do"
       },
       {
@@ -56,6 +56,20 @@
       {
         "text": "Experts",
         "href": "/experts"
+      }
+    ],
+    "whatWeDoMenu": [
+      {
+        "text": "What We Do",
+        "href": "/what-we-do"
+      },
+      {
+        "text": "Experiences",
+        "href": "/what-we-do/experiences"
+      },
+      {
+        "text": "Our Partners",
+        "href": "/what-we-do/partners"
       }
     ]
   },

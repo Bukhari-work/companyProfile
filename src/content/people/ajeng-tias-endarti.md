@@ -9,7 +9,7 @@ expertise:
   - Infectious Diseases
   - Statistics
 image:
-  src: /images/people/ajeng-tias-endarti.png
+  src: /images/people/ajeng-tias-endarti.webp
   alt: Portrait of Ajeng Tias Endarti
 social:
   - platform: GMail

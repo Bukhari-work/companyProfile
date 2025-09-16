@@ -3,9 +3,9 @@ title: "Global Health Leadership & Diplomacy Training: Shaping Indonesia’s Rol
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of technology.
 image:
-  src: /images/hero.png
-  alt: Image of a new project launch event
-date: 2025-06-19T10:00:00Z # Example date, adjust as needed. Use ISO 8601 format.
+  src: /images/news/Global Health Leadership & Diplomacy Training 2.png
+  alt: Image of the Event
+date: 2025-06-19T10:00:00Z
 authors:
 - putu-mas-dewi-pratiwi
 categories:

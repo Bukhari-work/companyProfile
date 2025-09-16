@@ -9,7 +9,7 @@ expertise:
   - Health Promotion
   - Health Human Resource Management
 image:
-  src: /images/people/sheila-rizkia-anjari.png
+  src: /images/people/sheila-rizkia-anjari.webp
   alt: Portrait of Sheila Rizkia Anjari
 social:
   - platform: GMail

@@ -24,16 +24,13 @@ const uniqueCategories = [...new Set(allCategories)];
 const tabs = ["Featured", ...uniqueCategories.sort()];
 ---
 
-<div
-  id="partners-table"
-  class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-20 lg:px-8"
->
-  <div class="prose dark:prose-invert mb-12 max-w-full text-center">
+<div id="partners-table" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+  <!-- <div class="prose dark:prose-invert mb-12 max-w-full text-center">
     <h1>
       CHAMPS continues to empower professionals, foster partnerships, and drive
       impactful health initiatives.
     </h1>
-  </div>
+  </div> -->
 
   <div
     id="partner-tabs"
@@ -59,7 +56,6 @@ const tabs = ["Featured", ...uniqueCategories.sort()];
 
   <div class="relative w-full gap-6 lg:gap-12">
     {
-      // MODIFIED: The loop now renders the PartnerCard component
       partners.map((partner, index) => (
         <PartnerCard partner={partner} index={index} />
       ))

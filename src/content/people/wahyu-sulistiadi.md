@@ -4,7 +4,7 @@ role: The Team
 description: He has been active in various researches in hospital financing and pricing and is now enganged in the organization of Islamic Hospital organizations, MUKISI (All Indonesia Islamic Health Care Council), as a member of the Sharia hospital division.
 responsibility: Advisor
 image:
-  src: /images/people/wahyu-sulistiadi.png
+  src: /images/people/wahyu-sulistiadi.webp
   alt: Portrait of Wahyu Sulistiadi
 social:
   - platform: GMail

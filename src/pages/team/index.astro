@@ -62,7 +62,7 @@ const content = { title: "About Us - Team" };
 ---
 
 <Main content={content}>
-  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-2 xl:gap-16">
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-2 pb-24 xl:gap-16">
     <SideBar class="col-span-5 lg:col-span-1" />
     <article
       class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-4"
@@ -72,17 +72,17 @@ const content = { title: "About Us - Team" };
       >
         THE TEAM
       </h1>
-      <div class="w-fit">
+      <div class="w-full">
         <div>
-          <h2>Advisors</h2>
+          <h2 class="text-3xl">Advisors</h2>
           <div class="not-prose">
             <PeopleDeck people={sortedAdvisors} />
           </div>
-          <h2>Leadership</h2>
+          <h2 class="text-3xl">Leadership</h2>
           <div class="not-prose">
             <PeopleDeck people={sortedLeadership} />
           </div>
-          <h2>Our Team</h2>
+          <h2 class="text-3xl">Our Team</h2>
           <div class="not-prose mb-24">
             <PeopleDeck people={sortedTeamMembers} />
           </div>

@@ -10,7 +10,7 @@ expertise:
   - One Health
   - Data Management & Visualization
 image:
-  src: /images/people/ira-gustina.png
+  src: /images/people/ira-gustina.webp
   alt: Portrait of Ira Gustina
 social:
   - platform: GMail

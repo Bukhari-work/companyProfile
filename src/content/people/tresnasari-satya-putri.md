@@ -11,7 +11,7 @@ expertise:
   - Healthcare Services Management
   - Office Management
 image:
-  src: /images/people/tresnasari-satya-putri.png
+  src: /images/people/tresnasari-satya-putri.webp
   alt: Portrait of Tresnasari Satya Putri
 social:
   - platform: GMail

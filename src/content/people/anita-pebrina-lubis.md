@@ -9,7 +9,7 @@ expertise:
   - Strategic Planning
   - Community Satisfaction Surveys
 image:
-  src: /images/people/anita-p-lubis.png
+  src: /images/people/anita-p-lubis.webp
   alt: Portrait of Anita P. Lubis
 social:
   - platform: GMail

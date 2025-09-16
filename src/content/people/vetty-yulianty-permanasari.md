@@ -12,7 +12,7 @@ expertise:
   - Policy Action
   - Community Empowerment
 image:
-  src: /images/people/vetty-yulianty-permanasari.png
+  src: /images/people/vetty-yulianty-permanasari.webp
   alt: Portrait of Vetty Yulianty Permanasari
 social:
   - platform: GMail

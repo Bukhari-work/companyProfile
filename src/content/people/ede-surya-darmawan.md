@@ -15,7 +15,7 @@ expertise:
   - Healthcare
   - Services Management
 image:
-  src: /images/people/ede-surya-darmawan.png
+  src: /images/people/ede-surya-darmawan.webp
   alt: Portrait of Ede Surya Darmawan
 social:
   - platform: GMail

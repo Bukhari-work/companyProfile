@@ -1,0 +1,51 @@
+---
+import config from "@/config.json";
+import type { HTMLAttributes } from "astro/types";
+
+interface NavigationLink extends HTMLAttributes<"a"> {
+  text: string;
+  hasChildren?: boolean;
+  children?: HTMLAttributes<"a">;
+}
+
+const { site } = config;
+const { whatWeDoMenu }: { whatWeDoMenu: NavigationLink[] } = config.menu;
+
+// Get the current page's path to determine the active link
+const currentPath = Astro.url.pathname;
+
+// Define classes for the active link state
+const activeLinkClasses =
+  "border-primary/50 bg-primary/5  dark:border-primary/40 dark:bg-primary/12 text-primary";
+---
+
+<div class="col-span-5 max-w-5xl lg:col-span-1">
+  <nav class="sticky top-24 pt-0 lg:pt-10">
+    <div
+      class="font-trajan text-primary text-md border-b px-0 py-2.5 text-center lg:border-b-0 lg:border-l lg:px-2.5 lg:text-left"
+    >
+      {site.company}
+    </div>
+    <ul class="lg:text-md flex overflow-x-auto text-sm lg:flex-col">
+      {
+        whatWeDoMenu.map((item) => {
+          const isActive = currentPath === item.href;
+
+          return (
+            <li class="flex w-full flex-1">
+              <a
+                href={item.href}
+                class:list={[
+                  "lg-py-1 hover:bg-primary/5 dark:hover:bg-primary/12 w-full shrink-0 border-b p-2.5 text-center text-nowrap focus-visible:[outline-offset:-4px]! lg:border-b-0 lg:border-l lg:px-4 lg:text-left",
+                  `${isActive ? activeLinkClasses : ""}`,
+                ]}
+              >
+                {item.text}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</div>

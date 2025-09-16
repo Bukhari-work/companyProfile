@@ -10,7 +10,7 @@ expertise:
   - Strategic Planning
   - Healthsystems
 image:
-  src: /images/people/eny-juliati.png
+  src: /images/people/eny-juliati.webp
   alt: Portrait of Eny Jualiati
 social:
   - platform: Yahoo Mail

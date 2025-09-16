@@ -11,7 +11,7 @@ expertise:
   - Health Policy
   - Health Insurance
 image:
-  src: /images/people/syarif-rahman-hasibuan.png
+  src: /images/people/syarif-rahman-hasibuan.webp
   alt: Portrait of Syarif Rahman Hasibuan
 social:
   - platform: GMail

@@ -3,7 +3,7 @@ name: Dr. Drg. Masyitoh, M.A.R.S.
 role: Advisors
 responsibility: Advisor
 image:
-  src: /images/people/masyitoh.png
+  src: /images/people/masyitoh.webp
   alt: Portrait of Masyitoh
 social:
   - platform: GMail

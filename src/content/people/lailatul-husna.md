@@ -11,7 +11,7 @@ expertise:
   - Strategic Planning, Customer Satisfaction Surveys
   - Health Service Quality
 image:
-  src: /images/people/lailatul-husna.png
+  src: /images/people/lailatul-husna.webp
   alt: Portrait of Lailatul Husna
 social:
   - platform: GMail

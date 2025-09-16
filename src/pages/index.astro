@@ -44,7 +44,7 @@ const content = { title: "Home" };
       },
     ]}
     imageBg={{
-      src: "/images/hero-bg.jpeg",
+      src: "/images/hero-bg.webp",
       height: 512,
       width: 1024,
       alt: "AstroWind Hero Image",
@@ -65,7 +65,12 @@ const content = { title: "Home" };
       an effective, efficient, equitable, and sustainable manner.
     </Fragment>
   </Hero>
-  <section class="mx-auto max-w-6xl">
+  <section
+    class={cn(
+      "intersect-once intersect-quarter intercept-no-queue motion-safe:md:intersect:animate-fade-in motion-safe:md:opacity-0",
+      "mx-auto mb-20 p-6 xl:gap-16",
+    )}
+  >
     <MarqueePartners client:load />
   </section>
   <Stats
@@ -79,16 +84,21 @@ const content = { title: "Home" };
       { title: "Community Empowerment", amount: "2" },
       { title: "Audience with Higher Stakeholders", amount: "1" },
       { title: "Conferences and Public Engagement", amount: "1" },
-      { title: "Training/Workshop Modules Developed", amount: "2" },
+      { title: "Training/ Workshop Modules Developed", amount: "2" },
     ]}
   />
 
   <div class="bg-primary/5 w-full border-t"></div>
   <!-- News posts cards -->
-  <section class="mx-auto my-20 max-w-6xl p-6 xl:gap-16">
+  <section
+    class={cn(
+      "intersect-once intersect-quarter intercept-no-queue motion-safe:md:intersect:animate-fade-in motion-safe:md:opacity-0",
+      "mx-auto my-20 max-w-6xl p-6 xl:gap-16",
+    )}
+  >
     <header class="mb-4 flex flex-wrap items-baseline justify-between">
       <p class="text-3xl font-bold">Latest News</p>
-      <p class="link">All Posts</p>
+      <a class="link" href="/news">All Posts</a>
     </header>
     <div class="grid h-fit gap-4 lg:grid-cols-2">
       {

@@ -2,38 +2,46 @@
 import { partners } from "@/config.json";
 import Main from "@/layouts/Main.astro";
 
-import SideBar from "@/components/SideBar.astro";
+import SideBar2 from "@/components/SideBar2.astro";
 import PageHeader from "@/components/blocks/PageHeader.astro";
 import PartnersTable from "@/components/PartnersTable.astro";
 
 import ExperiencesPath from "@/components/ExperiencesPath.astro";
 
 // Attributes
-const content = { title: "What We Do?" };
+const content = { title: "Experiences" };
 ---
 
 <Main content={content}>
-  <PageHeader title={content.title} />
-  <article class="mx-auto flex min-w-full flex-col gap-6 p-6 pb-24 xl:gap-16">
-    <section
-      id="process"
-      class="prose dark:prose-invert flex min-w-full flex-col content-center items-center text-justify font-light lg:col-span-5"
+  <section class="mx-auto grid max-w-6xl grid-cols-5 gap-6 p-2 pb-24 xl:gap-16">
+    <SideBar2 class="col-span-5 lg:col-span-1" />
+    <article
+      class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-4"
     >
-      <p class="font-lexend mx-auto mt-4 max-w-3xl text-center text-lg">
-        We follow a structured, collaborative process to ensure the final
-        product perfectly aligns with your vision and goals.
-      </p>
-
-      <div class="not-prose">
-        <ExperiencesPath />
+      <h1
+        class="font-lexend text-primary mt-8 mb-6 w-fit scroll-mt-24 text-6xl font-semibold"
+      >
+        Our Experiences
+      </h1>
+      <div class="max-w-3xl">
+        <p>
+          We follow a structured, collaborative process to ensure the final
+          product perfectly aligns with your vision and goals.
+        </p>
       </div>
-    </section>
-
-    <PartnersTable partners={partners} />
-    <p class="prose dark:prose-invert self-center text-center">
-      Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
-        >champs@ui.ac.id</a
-      >.
-    </p>
-  </article>
+      <section
+        id="process"
+        class="flex min-w-full flex-col content-center items-center text-justify font-light lg:col-span-5"
+      >
+        <div class="not-prose">
+          <ExperiencesPath />
+        </div>
+      </section>
+      <p class="prose dark:prose-invert self-center text-center">
+        Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
+          >champs@ui.ac.id</a
+        >.
+      </p>
+    </article>
+  </section>
 </Main>

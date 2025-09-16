@@ -43,7 +43,7 @@ const { posts, categories, activeCategory = "All Posts" } = Astro.props;
 ---
 
 <!-- Blog Post List -->
-<div class="relative w-full gap-6 lg:gap-16">
+<div class="relative w-full gap-6 p-6 lg:gap-16">
   {
     posts.map((post, index) => {
       const patternId = `pattern-${index}`;
