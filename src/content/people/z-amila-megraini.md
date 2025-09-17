@@ -8,7 +8,7 @@ expertise:
   - Human Resource Management
   - Quality Management
 image:
-  src: /images/people/z-Amila.png
+  src: /images/people/z-Amila.webp
   alt: Portrait of Amila Megraini
 social:
   - platform: GMail

@@ -14,7 +14,7 @@ expertise:
   - Community Empowerment
   - Research Methodology
 image:
-  src: /images/people/z-wiku-b-b-adisasmito.png
+  src: /images/people/z-wiku-b-b-adisasmito.webp
   alt: Portrait of Wiku Bakti Bawono Adisasmito
 social:
   - platform: GMail

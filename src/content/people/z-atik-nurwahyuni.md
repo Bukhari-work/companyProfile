@@ -8,7 +8,7 @@ expertise:
   - Health Insurance
   - Health Economy
 image:
-  src: /images/people/z-atik-nurwahyuni.png
+  src: /images/people/z-atik-nurwahyuni.webp
   alt: Portrait of Atik Nurwahyuni
 draft: false
 ---

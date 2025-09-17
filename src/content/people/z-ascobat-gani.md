@@ -7,7 +7,7 @@ expertise:
   - Financial Management
   - Service Administration
 image:
-  src: /images/people/ascobat-gani.png
+  src: /images/people/ascobat-gani.webp
   alt: Portrait of Ascobat Gani
 draft: false
 ---

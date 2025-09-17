@@ -7,7 +7,7 @@ expertise:
   - Nutrition
   - Child & AdolescentHealth
 image:
-  src: /images/people/z-zakiah.png
+  src: /images/people/z-zakiah.webp
   alt: Portrait of Zakiah
 draft: false
 ---

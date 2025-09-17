@@ -6,7 +6,7 @@ expertise:
   - Human Resources Management
   - Strategic Management
 image:
-  src: /images/people/z-puput-oktamianti.png
+  src: /images/people/z-puput-oktamianti.webp
   alt: Portrait of Puput Oktamianti
 social:
   - platform: GMail

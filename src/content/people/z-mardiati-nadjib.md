@@ -7,7 +7,7 @@ expertise:
   - Health Program Planning
   - Economic and Health Policy
 image:
-  src: /images/people/z-mardiati-nadjib.png
+  src: /images/people/z-mardiati-nadjib.webp
   alt: Portrait of Mardiati Nadjib
 social:
   - platform: GMail

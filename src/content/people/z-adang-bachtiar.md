@@ -8,7 +8,7 @@ expertise:
   - Quality Assurance
   - Human Resources Management
 image:
-  src: /images/people/z-adang-bachtiar.png
+  src: /images/people/z-adang-bachtiar.webp
   alt: Portrait of Adang Bachtiar
 draft: false
 ---

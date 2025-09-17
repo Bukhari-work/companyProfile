@@ -8,7 +8,7 @@ expertise:
   - Human Resource Management
   - Quality Management
 image:
-  src: /images/people/z-dwi-Gayatri.png
+  src: /images/people/z-dwi-Gayatri.webp
   alt: Portrait of Dwi Gayatri
 social:
   - platform: GMail

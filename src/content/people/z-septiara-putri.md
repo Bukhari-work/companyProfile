@@ -7,7 +7,7 @@ expertise:
   - Health Economics
   - Health Technology Assessment
 image:
-  src: /images/people/z-septiara-putri.png
+  src: /images/people/z-septiara-putri.webp
   alt: Portrait of Dr. Septiara Putri
 draft: false
 ---

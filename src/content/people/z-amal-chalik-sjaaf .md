@@ -7,7 +7,7 @@ expertise:
   - Health Services Administration
   - Financial Management
 image:
-  src: /images/people/z-amal-chalik-sjaaf.png
+  src: /images/people/z-amal-chalik-sjaaf.webp
   alt: Portrait of Adang Bachtiar
 draft: false
 ---

@@ -8,7 +8,7 @@ expertise:
   - JPKM/Managed Care
   - Social Economy
 image:
-  src: /images/people/z-budi-hidayat.png
+  src: /images/people/z-budi-hidayat.webp
   alt: Portrait of Budi Hidayat
 draft: false
 ---

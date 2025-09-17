@@ -6,7 +6,7 @@ expertise:
   - Risk & Quality Management
   - Health care Management
 image:
-  src: /images/people/z-indah-rosana-alpisahar.png
+  src: /images/people/z-indah-rosana-alpisahar.webp
   alt: Portrait of Indah Rosana Alpisahar
 draft: false
 ---

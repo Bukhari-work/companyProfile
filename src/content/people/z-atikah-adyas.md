@@ -9,7 +9,7 @@ expertise:
   - Health Development
   - Health Financing
 image:
-  src: /images/people/z-atikah-adyas.png
+  src: /images/people/z-atikah-adyas.webp
   alt: Portrait of Atikah Adyas
 draft: false
 ---

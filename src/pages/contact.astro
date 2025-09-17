@@ -234,7 +234,7 @@ const content = {
     if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
       const recaptchaScript = document.createElement("script");
       recaptchaScript.src =
-        "https://www.google.com/recaptcha/api.js?render=6LdfBfYqAAAAAFIULe8Wl_X3hGIp3WTpcrpUMiO2";
+        "https://www.google.com/recaptcha/api.js?render=6LckcswrAAAAAD9Y9Erk6tzAOWtdZXGiUKpNc_dh";
       recaptchaScript.async = true;
       recaptchaScript.defer = true;
       document.head.appendChild(recaptchaScript);
@@ -270,7 +270,7 @@ const content = {
 
         try {
           const token = await grecaptcha.execute(
-            "6LdfBfYqAAAAAFIULe8Wl_X3hGIp3WTpcrpUMiO2",
+            "6LckcswrAAAAAD9Y9Erk6tzAOWtdZXGiUKpNc_dh",
             { action: "submit" },
           );
 

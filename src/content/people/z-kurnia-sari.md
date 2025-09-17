@@ -8,7 +8,7 @@ expertise:
   - Health Empowerment
   - Economic Evaluation in The Health Sector
 image:
-  src: /images/people/z-kurnia-sari.png
+  src: /images/people/z-kurnia-sari.webp
   alt: Portrait of Kurnia Sari
 social:
   - platform: GMail

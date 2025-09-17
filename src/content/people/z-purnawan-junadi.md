@@ -8,7 +8,7 @@ expertise:
   - Primary Care
   - Strategic Leadership
 image:
-  src: /images/people/z-purnawan-Junadi.png
+  src: /images/people/z-purnawan-Junadi.webp
   alt: Portrait of Purnawan Junadi
 draft: false
 ---

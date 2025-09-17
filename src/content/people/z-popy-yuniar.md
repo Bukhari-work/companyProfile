@@ -7,7 +7,7 @@ expertise:
   - Organization and Management
   - Pharmaco Economics
 image:
-  src: /images/people/z-popy-yuniar.png
+  src: /images/people/z-popy-yuniar.webp
   alt: Portrait of Popy Yuniar
 draft: false
 ---

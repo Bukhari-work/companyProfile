@@ -1,14 +1,9 @@
 ---
 import Main from "@/layouts/Main.astro";
 import PageHeader from "@/components/blocks/PageHeader.astro";
-import AuthorCard from "@/components/blocks/AuthorCard.astro";
-import Social from "@/components/blocks/Social.astro";
+import AuthorCardLg from "@/components/blocks/AuthorCardLg.astro"; // Import the new component
 
-import { Image } from "astro:assets";
 import { getSinglePage } from "@/lib/contentParser.astro";
-import { slugify } from "@/lib/utils/textConverter";
-import { render } from "astro:content";
-import Button from "@/components/ui-astro/Button.astro";
 
 // get all static paths for people
 export async function getStaticPaths() {
@@ -25,140 +20,17 @@ export async function getStaticPaths() {
 }
 
 const { person } = Astro.props;
-const {
-  name,
-  role,
-  description,
-  responsibility,
-  expertise,
-  image,
-  social,
-  draft,
-} = person.data;
-const { Content } = await render(person);
+const { name, role } = person.data;
 
 // Attributes
 const content = { title: name };
 ---
 
-<Main content={content}>
+<Main content={content} makara>
   <PageHeader title={role} />
-  <!-- Main Section -->
-  <article class="mx-auto flex max-w-6xl flex-col px-2 py-16">
-    <!-- Card Section -->
-    <div
-      class="bg-primary/5 dark:bg-primary/10 container mx-auto overflow-hidden rounded-xl border-20"
-    >
-      <!-- Card's grid -->
-      <div
-        class="relative grid h-max grid-cols-1 gap-2 p-2 lg:grid-cols-[1fr_2fr]"
-      >
-        <!-- Background for the Header -->
-        <div
-          class="bg-primary/10 dark:bg-primary/20 absolute h-50 w-full bg-linear-60"
-        >
-        </div>
-        <!-- Left Section -->
-        <div class="relative flex flex-col pt-20 text-center lg:col-1 lg:pb-20">
-          <div class="mt-10 flex flex-col items-center space-y-4">
-            {
-              image && (
-                <div class="relative mb-2 size-28 h-[200px] w-[200px] overflow-hidden rounded-md lg:h-[300px] lg:w-[300px]">
-                  <Image
-                    class="h-full w-full object-cover"
-                    src={image.src}
-                    width={250}
-                    height={250}
-                    alt={name}
-                    loading="eager"
-                    format="webp"
-                  />
-                </div>
-              )
-            }
-            <div class="flex flex-col items-center space-y-2 lg:mb-8"></div>
-          </div>
-          <Social
-            socialLinks={social}
-            className="mx-auto my-5 flex-wrap gap-1 rounded-xl"
-            childClassName="bg-primary/10 self-center font-light"
-          />
-        </div>
-        <!-- Right Section -->
-        <div
-          class="prose dark:prose-invert mb-10 flex min-w-full flex-col lg:col-2"
-        >
-          <div
-            class="mb-0 flex flex-col items-baseline justify-center lg:h-50 lg:max-h-50"
-          >
-            <h1 class="text-primary mb-0">{name}</h1>
-            <h2 class="text-primary mt-4 font-normal">
-              {responsibility}
-            </h2>
-          </div>
-          <div class="relative lg:m-2 lg:mr-6 lg:border-l-2 lg:pl-4">
-            <div
-              id="contentBox"
-              class="overflow-hidden transition-[max-height] duration-500 ease-in-out"
-              style="max-height: 200px"
-            >
-              <Content />
-              <!-- Gradient overlay to create the fade-out effect at the bottom -->
-              <div
-                id="fadeOverlay"
-                class="from-primary/5 absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t to-transparent transition-opacity duration-500 ease-in-out"
-              >
-              </div>
-            </div>
-            <!-- Button to toggle the content -->
-            <div class="flex w-full justify-center p-8">
-              <Button
-                class="z-10 mx-auto"
-                id="toggleButton"
-                onclick="toggleContent()"
-                variant="outline"
-              >
-                Read more
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
+  <section class="mx-auto flex max-w-6xl flex-col px-2 py-16">
+    <AuthorCardLg person={person} />
+  </section>
 
-  <div class="row justify-center pt-14 pb-16">
-    <!-- {
-      postFilterByAuthor.map((post) => (
-        <div class="col-10 mb-12 lg:col-8">
-          <BlogCard data={post} />
-        </div>
-      ))
-    } -->
-  </div>
-
-  <script is:inline>
-    function toggleContent() {
-      const contentBox = document.getElementById("contentBox");
-      const toggleButton = document.getElementById("toggleButton");
-      const fadeOverlay = document.getElementById("fadeOverlay");
-
-      const isExpanded = contentBox.classList.contains("expanded");
-
-      if (!isExpanded) {
-        // Expand
-        const scrollHeight = contentBox.scrollHeight + "px";
-        contentBox.style.maxHeight = scrollHeight;
-        contentBox.classList.add("expanded");
-        toggleButton.textContent = "Read less";
-        fadeOverlay.classList.add("opacity-0"); // Fade out
-      } else {
-        // Collapse
-        contentBox.style.maxHeight = "200px";
-        contentBox.classList.remove("expanded");
-        toggleButton.textContent = "Read more";
-        fadeOverlay.classList.remove("opacity-0"); // Fade in
-      }
-    }
-  </script>
+  <div class="row justify-center pt-14 pb-16"></div>
 </Main>

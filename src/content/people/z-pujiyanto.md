@@ -6,7 +6,7 @@ expertise:
   - Health Economics
   - Health Insurance
 image:
-  src: /images/people/z-pujiyanto.png
+  src: /images/people/z-pujiyanto.webp
   alt: Portrait of Dr. Pujiyanto
 draft: false
 ---

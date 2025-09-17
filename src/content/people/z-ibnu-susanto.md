@@ -7,7 +7,7 @@ expertise:
   - Sustainable Energy
   - Environmental Evaluation
 image:
-  src: /images/people/z-ibnu-susanto.png
+  src: /images/people/z-ibnu-susanto.webp
   alt: Portrait of Ibnu Susanto
 draft: false
 ---

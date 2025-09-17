@@ -7,7 +7,7 @@ expertise:
   - Strategic Planning
   - Quality & Risk Management
 image:
-  src: /images/people/z-novita-dwi-istanti.png
+  src: /images/people/z-novita-dwi-istanti.webp
   alt: Portrait of Novita Dwi Istanti
 draft: false
 ---

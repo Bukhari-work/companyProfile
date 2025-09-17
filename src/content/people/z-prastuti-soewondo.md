@@ -8,7 +8,7 @@ expertise:
   - Costing for Health Sector
   - Health System
 image:
-  src: /images/people/z-prastuti-soewondo.png
+  src: /images/people/z-prastuti-soewondo.webp
   alt: Portrait of Prastuti Soewondo
 draft: false
 ---

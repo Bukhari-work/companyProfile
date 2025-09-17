@@ -5,7 +5,7 @@ responsibility: Senior Expert
 expertise:
   - Infectious Diseases Management
 image:
-  src: /images/people/z-anna-rozaliyani.png
+  src: /images/people/z-anna-rozaliyani.webp
   alt: Portrait of Anna Rozaliyani
 draft: false
 ---

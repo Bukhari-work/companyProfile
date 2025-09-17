@@ -7,7 +7,7 @@ expertise:
   - Maternal and Child Health
   - Adolescent Reproductive Health
 image:
-  src: /images/people/z-agustin-kusumayati.png
+  src: /images/people/z-agustin-kusumayati.webp
   alt: Portrait of Agustin Kusumayati
 draft: false
 ---

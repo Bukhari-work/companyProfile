@@ -6,7 +6,7 @@ expertise:
   - Health Personnel Management
   - Health Insurance
 image:
-  src: /images/people/z-jaslis-ilyas.png
+  src: /images/people/z-jaslis-ilyas.webp
   alt: Portrait of Jaslis Ilyas
 draft: false
 ---

@@ -8,7 +8,7 @@ expertise:
   - Human Resource Management
   - Quality Management
 image:
-  src: /images/people/z-rico-kurniawan.png
+  src: /images/people/z-rico-kurniawan.webp
   alt: Portrait of Rico Kurniawan
 draft: false
 ---

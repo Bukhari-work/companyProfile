@@ -6,7 +6,7 @@ expertise:
   - Financial Management
   - Hospital Management
 image:
-  src: /images/people/z-budi-hartono.png
+  src: /images/people/z-budi-hartono.webp
   alt: Portrait of Dr. Budi Hartono
 draft: false
 ---
