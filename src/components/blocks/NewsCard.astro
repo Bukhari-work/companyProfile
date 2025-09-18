@@ -100,33 +100,34 @@ const people = await getEntries<"people">(authors);
         }
       </header>
 
-      <!-- Time and Author-->
-      <div class="my-4 flex  flex-col flex-wrap gap-1 text-sm">
-        <!-- Time -->
+      <!-- Author and Date -->
+      <div class="my-4 flex flex-col flex-wrap gap-1 text-sm">
+        <!-- Author -->
+        <div class="flex flex-row items-center">
+          {
+            people.map((author) => (
+              <>
+                <FaUserPen className="mr-2 flex-shrink-0" />
+                <a class="hover:text-primary" href={`/people/${author.id}`}>
+                  {author.data.name}
+                </a>
+              </>
+            ))
+          }
+        </div>
+        <!-- Date -->
         {
           date && (
-            <div class="flex items-center">
-              <FaClock className="mr-2 flex-shrink-0" />
+            <div class="text-foreground/70 flex items-center">
               <time class="text-2xs flex flex-wrap gap-2 font-mono">
                 {dateFormat(date)}
               </time>
             </div>
           )
         }
-        <!-- Author -->
-        <div class="flex flex-row items-center">
-          {
-            people.map((author) => (
-                     <FaUserPen className="mr-2 flex-shrink-0" />
-              <a class="hover:text-primary" href={`/people/${author.id}`}>
-                {author.data.name}
-              </a>
-            ))
-          }
-        </div>
       </div>
 
-      <div class="border-t pl-2 md:col-span-1 md:pl-6">
+      <div class="border-t sm:pl-6 md:col-span-1">
         <p class="mt-2 mb-4 line-clamp-3">
           {plainify(data.body?.slice(0, Number(summary_length))) + "..."}
         </p>

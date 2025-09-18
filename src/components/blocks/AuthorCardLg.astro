@@ -28,6 +28,7 @@ const patternId = `pattern-${uniqueId}`;
     "group hover:border-primary bg-background relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 duration-100  hover:shadow-xl dark:shadow-primary/20",
     className,
   )}
+  transition:name={`person-card-${person.id}`}
 >
   <div class="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-8">
     <!-- Left Grid -->
@@ -47,6 +48,7 @@ const patternId = `pattern-${uniqueId}`;
               width={445}
               height={230}
               format="webp"
+              transition:name={`person-image-${person.id}`}
             />
           </a>
         )
@@ -55,10 +57,15 @@ const patternId = `pattern-${uniqueId}`;
       <header class="mb-4">
         <h2 class="group-hover:text-primary text-xl font-bold">
           <a href={`/${people_folder}/${person.id}`} class="inline-block">
-            {name}
+            <span transition:name={`person-name-${person.id}`}>{name}</span>
           </a>
         </h2>
-        <h3 class="text-text/80 mt-1 text-sm font-light">{responsibility}</h3>
+        <h3
+          class="text-text/80 mt-1 text-sm font-light"
+          transition:name={`person-role-${person.id}`}
+        >
+          {responsibility}
+        </h3>
       </header>
       <Social
         socialLinks={social}
