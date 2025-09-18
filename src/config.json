@@ -54,6 +54,14 @@
         "href": "/team"
       },
       {
+        "text": "Team Lebar",
+        "href": "/team/lebar"
+      },
+      {
+        "text": "Team Lebar Bayang",
+        "href": "/team/lebar-bayangan"
+      },
+      {
         "text": "Experts",
         "href": "/experts"
       }

@@ -4,7 +4,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import type { CollectionEntry } from "astro:content";
 
 import SideBar from "@/components/SideBar.astro";
-import PeopleDeck from "@/components/PeopleDeck.astro";
+import PeopleDeck from "@/components/PeopleDeckBayangan.astro";
 
 import {
   advisors as advisorsIndex,
@@ -62,7 +62,7 @@ const content = { title: "About Us - Team" };
 ---
 
 <Main content={content}>
-  <section class="mx-auto grid max-w-7xl grid-cols-5 gap-6 p-2 pb-24 xl:gap-16">
+  <section class="mx-auto grid max-w-dvw grid-cols-5 gap-6 p-2 pb-24 xl:gap-16">
     <SideBar class="col-span-5 lg:col-span-1" />
     <article
       class="prose dark:prose-invert col-span-5 min-w-full text-justify font-light lg:col-span-3"
