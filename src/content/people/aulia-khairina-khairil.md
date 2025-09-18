@@ -2,7 +2,7 @@
 name: Aulia Khairina Khairil, S.K.M., M.Sc.
 role: The Team
 description: Aulia Khairina is a researcher and consultant in the Center of Health Administration and Policy Studies.
-responsibility: Program & Training Specialist
+responsibility: Project Management
 expertise:
   - Health Policy Development and Analysis
   - Healthcare Management
@@ -13,7 +13,7 @@ image:
   alt: Portrait of Aulia Khairina Khairil
 social:
   - platform: GMail
-    text: auliakhairina@ui.ac.id
+    text: aulia.khairina@ui.ac.id
     icon: LuMail
     href: mailto:auliakhairina.khairil@gmail.com
 draft: false

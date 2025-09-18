@@ -2,7 +2,7 @@
 name: Syarif Rahman Hasibuan, S.K.M., M.K.M
 role: The Team
 description: Syarif Rahman Hasibuan is a dedicated researcher and academic with a strong background in public health, public policy, health informatics, and financing.
-responsibility: Public Relation & Marketing
+responsibility: Big Data Analyst
 expertise:
   - Health Policy
   - Health Informatic Systems

@@ -2,7 +2,7 @@
 name: Prasetyaning Jati, S.K.M.
 role: The Team
 description: Prasetyaning Jati is a dedicated public health professional and emerging expert in human resources management, currently pursuing a Master of Management in Human Resources Management at the University of Indonesia.
-responsibility: Epidemiologist & Statistician
+responsibility: Project Management
 expertise:
   - Human Resources for Health (HRH) Management
   - Health Management & Administration

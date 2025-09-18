@@ -4,15 +4,15 @@ import { Marquee } from "@/components/magicui/marquee.tsx";
 const reviews = [
   {
     name: "Event 1",
-    img: "/images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 1.png",
+    img: "/images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 1.webp",
   },
   {
     name: "Event 2",
-    img: "/images/news/Building Advocacy Capacity to Combat Drug-Resistant Tuberculosis 1.png",
+    img: "/images/news/Building Advocacy Capacity to Combat Drug-Resistant Tuberculosis 1.webp",
   },
   {
     name: "Event 3",
-    img: "/images/news/International Conference on Hospital Administration (ICHA) 3.png",
+    img: "/images/news/International Conference on Hospital Administration (ICHA) 3.webp",
   },
 ];
 

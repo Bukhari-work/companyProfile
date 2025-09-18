@@ -3,7 +3,7 @@ title: "Global Health Leadership & Diplomacy Training: Shaping Indonesia’s Rol
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of technology.
 image:
-  src: /images/news/Global Health Leadership & Diplomacy Training 2.png
+  src: /images/news/Global Health Leadership & Diplomacy Training 2.webp
   alt: Image of the Event
 date: 2025-06-19T10:00:00Z
 authors:

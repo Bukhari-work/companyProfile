@@ -21,7 +21,6 @@ const patternId = `pattern-${data.id}`;
     "group hover:border-primary bg-background relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 hover:[box-shadow:_var(--sh-alt)] hover:-translate-y-3 duration-100",
     className,
   )}
-  transition:name={`person-card-${data.id}`}
 >
   <svg
     class="text-primary pointer-events-none invisible absolute inset-0 z-[-1] size-full [mask-image:linear-gradient(to_left,_#ffffffad,_transparent)] opacity-100 select-none group-hover:visible dark:opacity-80"
@@ -59,7 +58,6 @@ const patternId = `pattern-${data.id}`;
           width={445}
           height={230}
           format="webp"
-          transition:name={`person-image-${data.id}`}
         />
       </a>
     )
@@ -70,13 +68,10 @@ const patternId = `pattern-${data.id}`;
       <header class="mb-2">
         <h2 class="group-hover:text-primary text-xl font-bold">
           <a href={`/${people_folder}/${data.id}`} class="inline-block">
-            <span transition:name={`person-name-${data.id}`}>{name}</span>
+            <span>{name}</span>
           </a>
         </h2>
-        <h3
-          class="text-text/80 mt-1 text-sm font-light"
-          transition:name={`person-role-${data.id}`}
-        >
+        <h3 class="text-text/80 mt-1 text-sm font-light">
           {responsibility}
         </h3>
       </header>

@@ -3,7 +3,7 @@ title: Building Advocacy Capacity to Combat Drug-Resistant Tuberculosis
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of health.
 image:
-  src: '/images/news/Building Advocacy Capacity to Combat Drug-Resistant Tuberculosis 4.png'
+  src: '/images/news/Building Advocacy Capacity to Combat Drug-Resistant Tuberculosis 4.webp'
   alt: Image of the Event
 date: 2025-06-19T10:00:00Z
 authors:
