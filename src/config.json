@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "companyProfile",
-    "company": "CHAMPS FKM UI",
+    "company": "CHAMPS",
     "base_href": "https://bukhari.day",
     "base_path": "/",
     "trailing_slash": false,
@@ -37,7 +37,7 @@
     ],
     "aboutMenu": [
       {
-        "text": "About",
+        "text": "Vision",
         "href": "/about"
       },
       {
@@ -52,14 +52,6 @@
       {
         "text": "Team",
         "href": "/team"
-      },
-      {
-        "text": "Team Lebar",
-        "href": "/team/lebar"
-      },
-      {
-        "text": "Team Lebar Bayang",
-        "href": "/team/lebar-bayangan"
       },
       {
         "text": "Experts",

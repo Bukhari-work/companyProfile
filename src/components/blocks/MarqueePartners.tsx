@@ -29,7 +29,7 @@ const ReviewCard = ({ name, img }: { name: string; img: string }) => {
       )}
     >
       <img
-        className="h-[45dvh] w-[75dvw] rounded-xl border-2 object-cover"
+        className="h-[60dvh] w-[75dvw] rounded-xl border-2 object-cover"
         alt=""
         src={img}
       />
