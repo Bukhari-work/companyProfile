@@ -2,7 +2,7 @@
   "site": {
     "title": "companyProfile",
     "company": "CHAMPS",
-    "base_href": "https://bukhari.day",
+    "base_href": "https://www.champs-ui.org",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.svg",
