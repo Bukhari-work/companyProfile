@@ -40,7 +40,7 @@ const ReviewCard = ({ name, img }: { name: string; img: string }) => {
 export function MarqueePartners() {
   return (
     <div className="bg-background relative flex h-full w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="px-8 [--duration:40s]">
+      <Marquee pauseOnHover className="px-8 [--duration:60s]">
         {reviews.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}

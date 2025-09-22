@@ -3,6 +3,7 @@ import DynamicIcon from "./DynamicIcon";
 
 export interface Props {
   headings: {
+    depth: number; // It's good practice to include depth
     slug: string;
     text: string;
   }[];
@@ -17,13 +18,15 @@ const { headings } = Astro.props;
     On This Page
   </h2>
   <ul
+    id="toc-list"
     class="border-offgray-100 dark:border-offgray-600/20 ml-[7px] space-y-1 border-l pl-4"
   >
     {
       headings.map((heading) => (
-        <li style="margin-left: 0px;">
+        <li>
           <a
             class="link text-primary inline text-sm underline"
+            data-slug-ref={heading.slug}
             href={`#${heading.slug}`}
           >
             {heading.text}
@@ -43,3 +46,42 @@ const { headings } = Astro.props;
     >
   </div>
 </nav>
+
+<script>
+  // This script runs on the client to handle active link highlighting.
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const { target, isIntersecting } = entry;
+          const slug = target.id;
+          const link = document.querySelector(
+            `a.toc-link[data-slug-ref="${slug}"]`,
+          );
+          if (link) {
+            if (isIntersecting) {
+              // Set the current one to active
+              link.setAttribute("data-active", "true");
+              // Also add aria-current for accessibility
+              link.setAttribute("aria-current", "location");
+            } else {
+              // Remove active state when it's not intersecting
+              link.removeAttribute("data-active");
+              link.removeAttribute("aria-current");
+            }
+          }
+        }
+      },
+      {
+        rootMargin: "-40% 0px -60% 0px", // Triggers when a heading is in the middle of the screen
+        threshold: 0,
+      },
+    );
+
+    // Observe all the heading elements on the page
+    const headings = document.querySelectorAll(
+      "h1[id], h2[id], h3[id], h4[id]",
+    );
+    headings.forEach((h) => observer.observe(h));
+  });
+</script>

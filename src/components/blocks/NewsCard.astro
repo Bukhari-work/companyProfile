@@ -103,18 +103,18 @@ const people = await getEntries<"people">(authors);
       <!-- Author and Date -->
       <div class="my-4 flex flex-col flex-wrap gap-1 text-sm">
         <!-- Author -->
-        <div class="flex flex-row items-center">
+        <!-- <div class="flex flex-row items-center">
           {
             people.map((author) => (
               <>
                 <FaUserPen className="mr-2 flex-shrink-0" />
                 <a class="hover:text-primary" href={`/people/${author.id}`}>
-                  {author.data.name}
+                  {humanize(author.id)}
                 </a>
               </>
             ))
           }
-        </div>
+        </div> -->
         <!-- Date -->
         {
           date && (

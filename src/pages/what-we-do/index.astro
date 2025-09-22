@@ -6,6 +6,9 @@ import ProgramCard from "@/components/blocks/ProgramCard.astro";
 import Social from "@/components/blocks/Social.astro";
 import SideBar2 from "@/components/SideBar2.astro";
 
+// --- ADDED: Import the new component ---
+import TableOfContents from "@/components/blocks/TableOfContents.astro";
+
 // --- Static Page Data ---
 const content = {
   title: "What We Do",
@@ -136,29 +139,6 @@ const programmeCategories = [
       >
         What We Do
       </h1>
-      <!-- ROW 1: Intro & Quick Links -->
-      <section id="intro" class="bg-background not-prose rounded-xl border p-6">
-        <div class="space-y-4">
-          <h2 class="h3 mb-0">About these programmes</h2>
-          <p class="text-muted-foreground text-sm">
-            Use the quick links below to jump to a specific program.
-          </p>
-
-          <div class="mt-4 grid gap-4 sm:grid-cols-2">
-            {
-              programmeCategories.map((category) => (
-                <a
-                  href={`#category-${category.category}`}
-                  class="hover:bg-primary/5 rounded-md border p-3 text-sm transition"
-                >
-                  {category.category}
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-      <!-- ROW 2: Program Categories -->
       <section
         id="programmes"
         class="not-prose grid grid-cols-1 gap-4 space-y-12"
@@ -183,5 +163,6 @@ const programmeCategories = [
         }
       </section>
     </article>
+    <TableOfContents programmes={programmeCategories} className="col-span-1" />
   </section>
 </Main>

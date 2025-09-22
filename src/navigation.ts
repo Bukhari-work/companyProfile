@@ -18,29 +18,28 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: "Programs",
+      title: "About Us",
       links: [
-        { text: "Research", href: "#" },
-        { text: "Workshop", href: "#" },
-        { text: "Consultation", href: "#" },
+        { text: "Vision", href: "/about" },
+        { text: "Mission", href: "/mission" },
+        { text: "Values", href: "/values" },
+        { text: "Team", href: "/team" },
+        { text: "Experts", href: "/experts" },
       ],
     },
     {
-      title: "Support",
+      title: "What We Do",
       links: [
-        { text: "Docs", href: "#" },
-        { text: "Community Forum", href: "#" },
-        { text: "Professional Services", href: "#" },
-        { text: "Skills", href: "#" },
-        { text: "Status", href: "#" },
+        { text: "Our Programmes", href: "/what-we-do" },
+        { text: "Experiences", href: "/what-we-do/experiences" },
+        { text: "Partners", href: "/what-we-do/partners" },
       ],
     },
     {
       title: "Contact",
       links: [
-        { text: "021 786 7370", href: "tel:62217867370" },
         {
-          text: "+62 813 2409 6624",
+          text: "WhatsApp",
           href: "https://wa.me/6281324096624",
           target: "_blank",
           rel: "noopener noreferrer",
@@ -52,7 +51,7 @@ export const footerData = {
   ],
   secondaryLinks: [
     {
-      text: "Fakultas Kesehatan Masyarakat</br>\
+      text: "Faculty of Public Health</br>\
       Universitas Indonesia<br/>",
       href: "https://maps.app.goo.gl/7TDV2YcWJNLNM9o37",
     },

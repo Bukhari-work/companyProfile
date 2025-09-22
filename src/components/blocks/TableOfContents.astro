@@ -1,0 +1,58 @@
+---
+import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
+import { cn } from "@/lib/utils";
+
+// Helper function to create URL-friendly IDs (slugs)
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+};
+
+// Your component still accepts the 'categories' prop
+const { programmes, className } = Astro.props;
+
+// We transform the data into the {slug, text} format used by the new style
+const headings = programmes.map((category: any) => ({
+  slug: slugify(category.category),
+  text: category.category,
+}));
+---
+
+<div class={cn(className)}>
+  <nav class="sticky top-24 mx-auto hidden grow flex-col gap-1 pt-15 xl:flex">
+    <h2 class="mb-2 flex items-center gap-2 text-sm font-semibold">
+      <DynamicIcon icon="LuTableOfContents" />
+      On This Page
+    </h2>
+
+    <ul class="ml-[7px] space-y-1 border-l pl-4">
+      {
+        programmes.map((program: any) => (
+          <li>
+            <a
+              class="link text-primary inline text-sm underline"
+              href={`#category-${program.category}`}
+            >
+              {program.category}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="dark:shadow-primary/20 mt-6 rounded-sm border p-2 shadow-xl">
+      <h2 class="mb-1 flex items-center gap-2 text-sm font-semibold">
+        <DynamicIcon icon="LuHistory" />
+        What have we done?
+      </h2>
+      <a class="link text-primary inline text-sm underline" href="/what-we-do"
+        >See What We Do →</a
+      >
+    </div>
+  </nav>
+</div>

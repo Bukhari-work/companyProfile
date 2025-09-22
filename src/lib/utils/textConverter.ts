@@ -58,3 +58,21 @@ const htmlEntityDecoder = (htmlWithEntities: string) => {
   );
   return htmlWithoutEntities;
 };
+
+// Format Name
+export const formatName = (fullName: string) => {
+  if (!fullName) return ""; // Handle cases where the name is empty
+
+  const words = fullName.split(" ").slice(0, 2);
+
+  const formattedWords = words.map((word) => {
+    // Rule 2: If the word is a single character, capitalize it and add a period.
+    if (word.length < 2) {
+      return word.toUpperCase() + ".";
+    }
+    // Rule 1: Otherwise, just capitalize the first letter.
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+
+  return formattedWords.join(" ");
+};

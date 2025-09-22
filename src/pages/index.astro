@@ -16,12 +16,13 @@ import Steps from "@/components/Steps.astro";
 import NumberedList from "@/components/NumberedList.astro";
 import Content from "@/components/Content.astro";
 import NewsCardSm from "@/components/blocks/NewsCardSm.astro";
+import Quote from "@/components/ui-astro/Quote.astro";
 // Attributes
 const NEWS_FOLDER = "news";
 const posts = await getSinglePage(NEWS_FOLDER);
 
 const sortedPosts = sortByDate(posts);
-const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+const currentPosts = sortedPosts.slice(0, 3);
 
 const content = { title: "Home" };
 ---
@@ -59,11 +60,11 @@ const content = { title: "Home" };
         Bridging Research, Policy, and Practice for Tomorrow’s Healthcare
       </span>
     </Fragment>
-    <Fragment slot="content">
+    <!-- <Fragment slot="content">
       The foundation of health development must be based on policy
       considerations that encourage the fulfilment of society's health needs in
       an effective, efficient, equitable, and sustainable manner.
-    </Fragment>
+    </Fragment> -->
   </Hero>
   <section
     class={cn(
@@ -73,6 +74,14 @@ const content = { title: "Home" };
   >
     <MarqueePartners client:load />
   </section>
+  <div
+    class="via-primary/30 h-px w-full bg-gradient-to-r from-transparent to-transparent"
+  >
+  </div>
+  <Quote
+    className="relative my-3 w-full flex-nowrap text-lg leading-5"
+    quote={`The foundation of health development must be based on policy considerations that encourage the fulfilment of society's health needs in an effective, efficient, equitable, and sustainable manner.`}
+  />
   <Stats
     title="CHAMPS UI IN NUMBERS in \n \n2024"
     subtitle="16 Research, Training, Workshops, Strategic Plans, and Satisfaction Surveys Proposal Developed"
@@ -88,7 +97,11 @@ const content = { title: "Home" };
     ]}
   />
 
-  <div class="bg-primary/5 w-full border-t"></div>
+  <div
+    class="via-primary/30 h-px w-full bg-gradient-to-r from-transparent to-transparent"
+  >
+  </div>
+
   <!-- News posts cards -->
   <section
     class={cn(
@@ -100,7 +113,7 @@ const content = { title: "Home" };
       <p class="text-3xl font-bold">Latest News</p>
       <a class="link" href="/news">All Posts</a>
     </header>
-    <div class="grid h-fit gap-4 lg:grid-cols-2">
+    <div class="grid h-fit gap-4 lg:grid-cols-3">
       {
         currentPosts.map((post) => (
           <div class="slide-fade-in col-span-1 mb-6">
