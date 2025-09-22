@@ -1,7 +1,7 @@
 ---
 name: Lailatul Husna S.K.M.
 role: The Team
-description: Anita P. Lubis is a researcher at the Center for Health Administration and Policy Studies (CHAMPS UI). She earned a Bachelor's degree in Public Health in 2014 and a Master's degree in Social Welfare Economics in 2021 from the University of Indonesia.
+description: Lailatul Husna earned her bachelor’s degree in Public Health at Universitas Indonesia and is currently pursuing a master’s degree specializing in Health Service Quality,
 responsibility: Data Management
 expertise:
   - Healthcare Management
