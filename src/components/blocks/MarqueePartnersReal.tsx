@@ -19,16 +19,8 @@ const reviews = [
     img: "/images/marquee/Home - Foto Berjalan 4.webp",
   },
   {
-    name: "Event 5",
+    name: "Event 4",
     img: "/images/marquee/Home - Foto Berjalan 5.webp",
-  },
-  {
-    name: "Event 6",
-    img: "/images/marquee/Home - Foto Berjalan 6.webp",
-  },
-  {
-    name: "Event 7",
-    img: "/images/marquee/Home - Foto Berjalan 7.webp",
   },
 ];
 
@@ -41,7 +33,7 @@ const ReviewCard = ({ name, img }: { name: string; img: string }) => {
       )}
     >
       <img
-        className="h-[60dvh] w-[75dvw] rounded-xl border-2 object-cover"
+        className="h-[100px] w-[100px] rounded-lg border-2 object-cover"
         alt=""
         src={img}
       />
@@ -49,10 +41,10 @@ const ReviewCard = ({ name, img }: { name: string; img: string }) => {
   );
 };
 
-export function MarqueePartners() {
+export function MarqueePartnersReal() {
   return (
     <div className="bg-background relative flex h-full w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="px-8 [--duration:60s]">
+      <Marquee pauseOnHover className="px-8 [--duration:5s]">
         {reviews.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}
