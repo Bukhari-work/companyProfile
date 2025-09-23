@@ -37,18 +37,18 @@ const { people } = Astro.props;
         <!-- Navigation buttons -->
         <div
           class:list={[
-            "swiper-button-prev",
-            "left-1/4",
-            "bg-primary/10 absolute bottom-2 z-10 mx-10 hidden h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full text-xl select-none hover:bg-black/60 md:flex dark:hover:bg-white/60",
+            "swiper-button-prev flex",
+            "absolute left-1/4 z-10 mx-10 h-11 w-11",
+            "bg-primary/10 transform cursor-pointer items-center justify-center rounded-full text-xl select-none hover:bg-black/60 dark:hover:bg-white/60",
           ]}
         >
           &#10094;
         </div>
         <div
           class:list={[
-            "swiper-button-next",
-            "right-1/4",
-            "bg-primary/10 absolute bottom-2 z-10 mx-10 hidden h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full text-xl select-none hover:bg-black/60 md:flex dark:hover:bg-white/60",
+            "swiper-button-next flex",
+            "absolute right-1/4 z-10 mx-10 h-11 w-11",
+            "bg-primary/10 transform cursor-pointer items-center justify-center rounded-full text-xl select-none hover:bg-black/60 dark:hover:bg-white/60",
           ]}
         >
           &#10095;

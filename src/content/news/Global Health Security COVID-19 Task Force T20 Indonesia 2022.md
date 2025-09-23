@@ -2,9 +2,15 @@
 title: Global Health Security & COVID-19 Task Force T20 Indonesia 2022
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of technology.
-image:
-  src: /images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 1.webp
-  alt: Image of the Event
+images:
+  - src: /images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 1.webp
+    alt: Image of the Event
+  - src: /images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 2.webp
+    alt: Image of the Event
+  - src: /images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 3.webp
+    alt: Image of the Event
+  - src: /images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 4.webp
+    alt: Image of the Event
 date: 2025-06-19T10:00:00Z
 authors:
 - aulia-khairina-khairil

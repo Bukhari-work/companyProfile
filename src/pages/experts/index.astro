@@ -39,12 +39,16 @@ const content = { title: "About Us - Experts" };
       <div class="w-full">
         <div>
           <h2 class="text-3xl">Senior Experts</h2>
-          <div class="not-prose">
-            <PeopleDeck people={seniorExperts} />
+          <div
+            class="not-prose grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
+            {seniorExperts.map((person) => <AuthorCard data={person} />)}
           </div>
           <h2 class="text-3xl">Senior Researchers</h2>
-          <div class="not-prose mb-24">
-            <PeopleDeck people={seniorResearchers} />
+          <div
+            class="not-prose mb-24 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
+            {seniorResearchers.map((person) => <AuthorCard data={person} />)}
           </div>
         </div>
       </div>

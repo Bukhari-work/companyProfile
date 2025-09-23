@@ -6,7 +6,7 @@ import { getEntries } from "astro:content";
 
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
-import { FaUserPen, FaClock, FaFolderClosed } from "react-icons/fa6";
+import { FaUserPen } from "react-icons/fa6";
 
 import Button from "@/components/ui-astro/Button.astro";
 
@@ -17,9 +17,11 @@ const {
 }: { summary_length: number; news_folder: string } = config.settings;
 
 const { data } = Astro.props;
-const { title, description, image, categories, date, authors, tags } =
+const { title, description, images, categories, date, authors, tags } =
   data.data;
 const patternId = `pattern-${data.id}`;
+
+const firstImage = images && images.length > 0 ? images[0] : null;
 
 const people = await getEntries<"people">(authors);
 ---
@@ -53,15 +55,16 @@ const people = await getEntries<"people">(authors);
 
   <!-- Image Column -->
   {
-    image && (
+    // 3. Check for the existence of 'firstImage' before trying to render it.
+    firstImage && (
       <a
         class="relative h-48 overflow-hidden rounded-lg md:h-64"
         href={`/${news_folder}/${data.id}`}
       >
         <Image
           class="h-full w-full object-cover"
-          src={image?.src}
-          alt={title}
+          src={firstImage.src}
+          alt={firstImage.alt || title}
           width={445}
           height={230}
           format="webp"

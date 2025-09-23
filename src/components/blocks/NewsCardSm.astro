@@ -17,9 +17,10 @@ const {
 }: { summary_length: number; news_folder: string } = config.settings;
 
 const { data } = Astro.props;
-const { title, description, image, date, authors, tags } = data.data;
+const { title, description, images, date, authors, tags } = data.data;
 const patternId = `pattern-sm-${data.id}`;
 
+const firstImage = images && images.length > 0 ? images[0] : null;
 const people = await getEntries<"people">(authors);
 ---
 
@@ -52,14 +53,14 @@ const people = await getEntries<"people">(authors);
 
   <!-- Image -->
   {
-    image && (
+    firstImage && (
       <a
         class="relative h-32 overflow-hidden rounded-md"
         href={`/${news_folder}/${data.id}`}
       >
         <Image
           class="h-full w-full object-cover"
-          src={image?.src}
+          src={firstImage?.src}
           alt={title}
           width={320}
           height={180}

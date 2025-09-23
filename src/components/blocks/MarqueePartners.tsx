@@ -4,19 +4,23 @@ import { Marquee } from "@/components/magicui/marquee.tsx";
 const reviews = [
   {
     name: "Event 1",
-    img: "/images/news/Global Health Security COVID-19 Task Force T20 Indonesia 2022 1.webp",
+    img: "/images/marquee/Home - Foto Berjalan 1.webp",
   },
   {
     name: "Event 2",
-    img: "/images/news/Policy Dialogue Closing The Gap 6.webp",
+    img: "/images/marquee/Home - Foto Berjalan 2.webp",
   },
   {
     name: "Event 3",
-    img: "/images/news/Global Health Leadership & Diplomacy Training 2.webp",
+    img: "/images/marquee/Home - Foto Berjalan 3.webp",
   },
   {
     name: "Event 4",
-    img: "/images/news/Efforts to Improve Financial Independence of PUBLIC Hospitals 1.webp",
+    img: "/images/marquee/Home - Foto Berjalan 4.webp",
+  },
+  {
+    name: "Event 4",
+    img: "/images/marquee/Home - Foto Berjalan 5.webp",
   },
 ];
 

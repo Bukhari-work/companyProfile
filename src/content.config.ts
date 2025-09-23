@@ -41,11 +41,13 @@ const news = defineCollection({
     authors: z.array(reference("people").default("champs-ui")),
     description: z.string().optional(),
     subtitle: z.string().optional(),
-    image: z
-      .object({
-        src: z.string(),
-        alt: z.string(),
-      })
+    images: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+        }),
+      )
       .optional(),
     date: z.coerce.date().optional(),
     categories: z.array(z.string()).default(["others"]),

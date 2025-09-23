@@ -2,9 +2,15 @@
 title: "Policy Dialogue: Closing the Gap in Thyroid Screening in Indonesia"
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of technology.
-image:
-  src: /images//news/Policy Dialogue Closing The Gap 2.webp
-  alt: Image of the Event
+images:
+  - src: /images//news/Policy Dialogue Closing The Gap 1.webp
+    alt: Image of the Event
+  - src: /images//news/Policy Dialogue Closing The Gap 2.webp
+    alt: Image of the Event
+  - src: /images//news/Policy Dialogue Closing The Gap 3.webp
+    alt: Image of the Event
+  - src: /images//news/Policy Dialogue Closing The Gap 4.webp
+    alt: Image of the Event
 date: 2025-06-19T10:00:00Z
 authors:
 - prasetyaning-jati
