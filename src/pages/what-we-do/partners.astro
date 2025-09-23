@@ -3,11 +3,57 @@ import { partners } from "@/config.json";
 import Main from "@/layouts/Main.astro";
 
 import SideBar2 from "@/components/SideBar2.astro";
-import PageHeader from "@/components/blocks/PageHeader.astro";
-import PartnersTable from "@/components/PartnersTable.astro";
 import { MarqueePartnersReal } from "@/components/blocks/MarqueePartnersReal.tsx";
 
-import ExperiencesPath from "@/components/ExperiencesPath.astro";
+const SECONDS_PER_ITEM = 5;
+
+// Initialize imagesGovernment
+const imagesGovernment = await import.meta.glob(
+  "public/images/partners/government/*.{jpeg,jpg,png,webp,svg}",
+);
+const imagePathsGovernment = Object.keys(imagesGovernment).map((path) =>
+  path.replace("/public", ""),
+);
+
+// Initialize imagesHospitals
+const imagesHospitals = await import.meta.glob(
+  "public/images/partners/hospitals/*.{jpeg,jpg,png,webp,svg}",
+);
+const imagePathsHospitals = Object.keys(imagesHospitals).map((path) =>
+  path.replace("/public", ""),
+);
+
+// Initialize imagesOrganizations
+const imagesOrganizations = await import.meta.glob(
+  "public/images/partners/organizations/*.{jpeg,jpg,png,webp,svg}",
+);
+const imagePathsOrganizations = Object.keys(imagesOrganizations).map((path) =>
+  path.replace("/public", ""),
+);
+
+// Initialize imagesPublicHealthCenters
+const imagesPublicHealthCenters = await import.meta.glob(
+  "public/images/partners/public-health-centers/*.{jpeg,jpg,png,webp,svg}",
+);
+const imagePathsPublicHealthCenters = Object.keys(
+  imagesPublicHealthCenters,
+).map((path) => path.replace("/public", ""));
+
+// Initialize imagesPrivate
+const imagesPrivate = await import.meta.glob(
+  "public/images/partners/private/*.{jpeg,jpg,png,webp,svg}",
+);
+const imagePathsPrivate = Object.keys(imagesPrivate).map((path) =>
+  path.replace("/public", ""),
+);
+
+// Initialize imagesUniversities
+const imagesUniversities = await import.meta.glob(
+  "public/images/partners/universities/*.{jpeg,jpg,png,webp,svg}",
+);
+const imagePathsUniversities = Object.keys(imagesUniversities).map((path) =>
+  path.replace("/public", ""),
+);
 
 // Attributes
 const content = { title: "Our Partners" };
@@ -30,11 +76,72 @@ const content = { title: "Our Partners" };
           product perfectly aligns with your vision and goals.
         </p>
       </div>
-      <div class="not-prose">
-        <!-- <PartnersTable partners={partners} /> -->
-        <MarqueePartnersReal />
+      <div class="not-prose mt-16 space-y-16">
+        <section>
+          <h2 class="font-lexend text-primary mb-4 text-3xl font-semibold">
+            Government
+          </h2>
+          <MarqueePartnersReal
+            imagePaths={imagePathsGovernment}
+            duration="60"
+            client:visible
+          />
+        </section>
+
+        <section>
+          <h2 class="font-lexend text-primary mb-4 text-3xl font-semibold">
+            Hospitals
+          </h2>
+          <MarqueePartnersReal
+            imagePaths={imagePathsHospitals}
+            duration="60"
+            client:visible
+            reverse={true}
+            }
+          />
+        </section>
+
+        <section>
+          <h2 class="font-lexend text-primary mb-4 text-3xl font-semibold">
+            Public Health Centers
+          </h2>
+          <MarqueePartnersReal
+            imagePaths={imagePathsPublicHealthCenters}
+            duration="20"
+            client:visible
+          />
+        </section>
+
+        <section>
+          <h2 class="font-lexend text-primary mb-4 text-3xl font-semibold">
+            Organizations
+          </h2>
+          <MarqueePartnersReal
+            imagePaths={imagePathsOrganizations}
+            client:visible
+            reverse={true}
+          />
+        </section>
+
+        <section>
+          <h2 class="font-lexend text-primary mb-4 text-3xl font-semibold">
+            Private Sector
+          </h2>
+          <MarqueePartnersReal imagePaths={imagePathsPrivate} client:visible />
+        </section>
+
+        <section>
+          <h2 class="font-lexend text-primary mb-4 text-3xl font-semibold">
+            Universities
+          </h2>
+          <MarqueePartnersReal
+            imagePaths={imagePathsUniversities}
+            client:visible
+            reverse={true}
+          />
+        </section>
       </div>
-      <p class="prose dark:prose-invert self-center text-center">
+      <p class="prose dark:prose-invert mt-16 self-center text-center">
         Want to work with us? contact us at <a href="mailto:champs@ui.ac.id"
           >champs@ui.ac.id</a
         >.
