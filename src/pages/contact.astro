@@ -233,95 +233,86 @@ const content = {
 </Main>
 
 <script is:inline>
-  function setupContactPage() {
-    // Part 1: Programmatically load the reCAPTCHA script
-    // This ensures the script is loaded every time the user navigates to this page.
-    // We check if the script already exists to avoid loading it multiple times.
-    if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
-      const recaptchaScript = document.createElement("script");
-      recaptchaScript.src =
-        "https://www.google.com/recaptcha/api.js?render=6LckcswrAAAAAD9Y9Erk6tzAOWtdZXGiUKpNc_dh";
-      recaptchaScript.async = true;
-      recaptchaScript.defer = true;
-      document.head.appendChild(recaptchaScript);
-    }
-
-    // Part 2: Set up the form, just like before
+  function setupContactForm() {
     const form = document.getElementById("contactForm");
-    if (!form) {
-      return; // Exit if the form isn't on the current page
+    if (!form) return; // Exit if form doesn't exist
+
+    // Prevent multiple initializations on the same form
+    if (form.dataset.initialized) return;
+    form.dataset.initialized = "true";
+
+    const submitBtn = document.getElementById("submitBtn");
+    const recaptchaSiteKey = "6LckcswrAAAAAD9Y9Erk6tzAOWtdZXGiUKpNc_dh"; // Your reCAPTCHA Site Key
+
+    // Dynamically load the reCAPTCHA script if it's not already present
+    if (!window.grecaptcha) {
+      const script = document.createElement("script");
+      script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
     }
-
-    // --- Start of existing form logic ---
-    const validateField = (field) => {
-      const isValid = field.checkValidity();
-      field.classList.toggle("is-invalid", !isValid);
-    };
-
-    form
-      .querySelectorAll("input[required], textarea[required]")
-      .forEach((field) => {
-        field.addEventListener("input", () => validateField(field));
-        field.addEventListener("blur", () => validateField(field));
-      });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const submitBtn = document.getElementById("submitBtn");
 
-      grecaptcha.ready(async () => {
-        const url = form.dataset.contactUrl;
-        const website = form.website.value.trim();
-        if (website) return;
+      const url = form.dataset.contactUrl;
+      const honeypot = form.website.value.trim();
 
-        try {
-          const token = await grecaptcha.execute(
-            "6LckcswrAAAAAD9Y9Erk6tzAOWtdZXGiUKpNc_dh",
-            { action: "submit" },
-          );
+      // Honeypot check for bots
+      if (honeypot) {
+        console.log("Bot detected!");
+        return;
+      }
 
-          const name = form.name.value.trim();
-          const email = form.email.value.trim();
-          const message = form.message.value.trim();
-          if (!name || !email || !message) {
-            throw new Error("All fields are required");
-          }
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Submitting...";
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
+      try {
+        // Wait for reCAPTCHA to be ready
+        grecaptcha.ready(async () => {
+          const token = await grecaptcha.execute(recaptchaSiteKey, {
+            action: "submit",
+          });
+
+          const formData = new FormData(form);
+          formData.append("recaptchaToken", token);
 
           const response = await fetch(url, {
             method: "POST",
-            body: new URLSearchParams({
-              name: name,
-              email: email,
-              message: message,
-              recaptchaToken: token,
-            }),
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
+            body: formData, // Send as FormData, which Apps Script handles well
           });
 
+          if (!response.ok) {
+            throw new Error(
+              `Network response was not ok: ${response.statusText}`,
+            );
+          }
+
           const result = await response.json();
+
           if (result.status === "success") {
-            // The 'message' variable is already available from the outer scope
             alert(
-              `Thank you, ${name}!\nWe'll respond to ${email} within 24 hours.\n\nYour message:\n"${message}"`,
+              `Thank you, ${form.name.value.trim()}! Your message has been sent.`,
             );
             form.reset();
           } else {
-            throw new Error(result.message || "Submission failed");
+            // Use the error message from the server if available
+            throw new Error(result.message || "An unknown error occurred.");
           }
-        } catch (error) {
-          alert(error.message);
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Submit";
-        }
-      });
+        });
+      } catch (error) {
+        console.error("Submission Error:", error);
+        alert(`Submission failed: ${error.message}`);
+      } finally {
+        // Re-enable button regardless of outcome
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+      }
     });
   }
 
-  // Run the setup function on initial page load and after every client-side navigation
-  document.addEventListener("astro:page-load", setupContactPage);
+  // Set up the form on initial load and after Astro's page transitions
+  document.addEventListener("astro:page-load", setupContactForm);
 </script>
