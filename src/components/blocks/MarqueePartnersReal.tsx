@@ -21,7 +21,7 @@ const ReviewCard = ({ name, img }: { name: string; img: string }) => {
 export function MarqueePartnersReal({
   imagePaths,
   reverse = false,
-  duration = "30",
+  duration = "20",
   // secondsPerItem = 1,
 }: {
   imagePaths: string[];
@@ -29,17 +29,6 @@ export function MarqueePartnersReal({
   duration?: string;
   // secondsPerItem?: number;
 }) {
-  // If there are no images, don't render anything.
-  if (!imagePaths || imagePaths.length === 0) {
-    return null;
-  }
-
-  // Calculate duration based on the ORIGINAL number of items for consistent speed.
-  // const duration = imagePaths.length * secondsPerItem;
-
-  // Create an extended array to ensure the content always overflows.
-  const extendedImagePaths = [...imagePaths, ...imagePaths];
-
   return (
     <div className="bg-background relative flex h-full w-full flex-col items-center justify-center overflow-hidden">
       <Marquee
@@ -48,7 +37,7 @@ export function MarqueePartnersReal({
         className={`px-8 [--duration:${duration}s]`}
       >
         {/* Map over the new, longer array for rendering */}
-        {extendedImagePaths.map((path, index) => (
+        {imagePaths.map((path, index) => (
           <ReviewCard
             // Use the index for the key as paths are now duplicated
             key={index}

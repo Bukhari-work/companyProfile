@@ -84,7 +84,7 @@ const content = { title: "Our Partners" };
           <MarqueePartnersReal
             imagePaths={imagePathsGovernment}
             duration="60"
-            client:visible
+            client:load
           />
         </section>
 
@@ -96,7 +96,7 @@ const content = { title: "Our Partners" };
             imagePaths={imagePathsHospitals}
             duration="60"
             reverse={true}
-            client:visible
+            client:load
           />
         </section>
 
@@ -107,7 +107,7 @@ const content = { title: "Our Partners" };
           <MarqueePartnersReal
             imagePaths={imagePathsPublicHealthCenters}
             duration="20"
-            client:visible
+            client:load
           />
         </section>
 
@@ -118,7 +118,7 @@ const content = { title: "Our Partners" };
           <MarqueePartnersReal
             imagePaths={imagePathsOrganizations}
             reverse={true}
-            client:visible
+            client:load
           />
         </section>
 
@@ -126,7 +126,7 @@ const content = { title: "Our Partners" };
           <h2 class="font-lexend text-primary mb-4 text-3xl font-semibold">
             Private Sector
           </h2>
-          <MarqueePartnersReal imagePaths={imagePathsPrivate} client:visible />
+          <MarqueePartnersReal imagePaths={imagePathsPrivate} client:load />
         </section>
 
         <section>
@@ -136,7 +136,7 @@ const content = { title: "Our Partners" };
           <MarqueePartnersReal
             imagePaths={imagePathsUniversities}
             reverse={true}
-            client:visible
+            client:load
           />
         </section>
       </div>
