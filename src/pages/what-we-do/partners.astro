@@ -5,8 +5,6 @@ import Main from "@/layouts/Main.astro";
 import SideBar2 from "@/components/SideBar2.astro";
 import { MarqueePartnersReal } from "@/components/blocks/MarqueePartnersReal.tsx";
 
-const SECONDS_PER_ITEM = 5;
-
 // Initialize imagesGovernment
 const imagesGovernment = await import.meta.glob(
   "public/images/partners/government/*.{jpeg,jpg,png,webp,svg}",
@@ -107,7 +105,6 @@ const content = { title: "Our Partners" };
           <MarqueePartnersReal
             imagePaths={imagePathsPublicHealthCenters}
             duration="20"
-            client:load
           />
         </section>
 
