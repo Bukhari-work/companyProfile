@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils.ts";
 import { Marquee } from "@/components/magicui/marquee.tsx";
+import type { PathShape } from "canvas-confetti";
 
 const ReviewCard = ({ name, img }: { name: string; img: string }) => {
   return (
