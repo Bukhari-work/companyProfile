@@ -7,7 +7,7 @@ import { MarqueePartnersReal } from "@/components/blocks/MarqueePartnersReal.tsx
 
 // Initialize imagesGovernment
 const imagesGovernment = await import.meta.glob(
-  "public/images/partners/governments/*.{jpeg,jpg,png,webp,svg}",
+  "public/images/partners/governments-partner/*.{jpeg,jpg,png,webp,svg}",
 );
 const imagePathsGovernment = Object.keys(imagesGovernment).map((path) =>
   path.replace("/public", ""),
@@ -15,7 +15,7 @@ const imagePathsGovernment = Object.keys(imagesGovernment).map((path) =>
 
 // Initialize imagesHospitals
 const imagesHospitals = await import.meta.glob(
-  "public/images/partners/hospitals/*.{jpeg,jpg,png,webp,svg}",
+  "public/images/partners/hospitals-partner/*.{jpeg,jpg,png,webp,svg}",
 );
 const imagePathsHospitals = Object.keys(imagesHospitals).map((path) =>
   path.replace("/public", ""),
@@ -23,7 +23,7 @@ const imagePathsHospitals = Object.keys(imagesHospitals).map((path) =>
 
 // Initialize imagesOrganizations
 const imagesOrganizations = await import.meta.glob(
-  "public/images/partners/organizations/*.{jpeg,jpg,png,webp,svg}",
+  "public/images/partners/organizations-partner/*.{jpeg,jpg,png,webp,svg}",
 );
 const imagePathsOrganizations = Object.keys(imagesOrganizations).map((path) =>
   path.replace("/public", ""),
@@ -31,7 +31,7 @@ const imagePathsOrganizations = Object.keys(imagesOrganizations).map((path) =>
 
 // Initialize imagesPublicHealthCenters
 const imagesPublicHealthCenters = await import.meta.glob(
-  "public/images/partners/public-health-centers/*.{jpeg,jpg,png,webp,svg}",
+  "public/images/partners/public-health-centers-partner/*.{jpeg,jpg,png,webp,svg}",
 );
 const imagePathsPublicHealthCenters = Object.keys(
   imagesPublicHealthCenters,
@@ -39,7 +39,7 @@ const imagePathsPublicHealthCenters = Object.keys(
 
 // Initialize imagesPrivate
 const imagesPrivate = await import.meta.glob(
-  "public/images/partners/private/*.{jpeg,jpg,png,webp,svg}",
+  "public/images/partners/private-partner/*.{jpeg,jpg,png,webp,svg}",
 );
 const imagePathsPrivate = Object.keys(imagesPrivate).map((path) =>
   path.replace("/public", ""),
@@ -47,7 +47,7 @@ const imagePathsPrivate = Object.keys(imagesPrivate).map((path) =>
 
 // Initialize imagesUniversities
 const imagesUniversities = await import.meta.glob(
-  "public/images/partners/universities/*.{jpeg,jpg,png,webp,svg}",
+  "public/images/partners/universities-partner/*.{jpeg,jpg,png,webp,svg}",
 );
 const imagePathsUniversities = Object.keys(imagesUniversities).map((path) =>
   path.replace("/public", ""),
