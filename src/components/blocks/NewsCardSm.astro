@@ -65,6 +65,7 @@ const people = await getEntries<"people">(authors);
           width={320}
           height={180}
           format="webp"
+          loading="lazy"
         />
       </a>
     )
@@ -89,20 +90,6 @@ const people = await getEntries<"people">(authors);
           </div>
         )
       }
-      <!-- {
-        people.length > 0 && (
-          <span>
-            {people.map((author, idx) => (
-              <>
-                <a class="hover:text-primary" href={`/people/${author.id}`}>
-                  {author.data.name}
-                </a>
-                {idx < people.length - 1 && ", "}
-              </>
-            ))}
-          </span>
-        )
-      } -->
     </div>
 
     <p class="line-clamp-2 text-sm">
