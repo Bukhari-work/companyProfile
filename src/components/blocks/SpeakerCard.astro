@@ -1,23 +1,25 @@
 ---
-import config from "@/config.json";
-
 import { Image } from "astro:assets";
-
 import { cn } from "@/lib/utils.ts";
 
-import Social from "@/components/blocks/Social.astro";
-import Button from "@/components/ui-astro/Button.astro";
+// Props
+const { name, title, image, href, className } = Astro.props;
 
-// Properties
-const { people_folder }: { people_folder: string } = config.settings;
+// Generate a unique ID for the SVG pattern based on the name
+const sanitizedName = name
+  .toLowerCase()
+  .replace(/[^a-z0-9\s]/g, "")
+  .replace(/\s+/g, "-");
+const patternId = `pattern-speaker-${sanitizedName}`;
 
-const { data, className } = Astro.props;
-const { name, responsibility, description, image, social } = data.data;
-const patternId = `pattern-${data.id}`;
+// Use <a> tag only if href is provided
+const ImageWrapper = href ? "a" : "div";
+const TitleWrapper = href ? "a" : "span";
 ---
 
 <article
   class={cn(
+    // Base styles and hover effects from AuthorCard
     "group hover:border-primary bg-background relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-xl border-2 p-6 hover:[box-shadow:_var(--sh-alt)] hover:-translate-y-3 transition-transform duration-100",
     className,
   )}
@@ -47,47 +49,34 @@ const patternId = `pattern-${data.id}`;
 
   {
     image && (
-      <a
-        class="relative h-72 overflow-hidden rounded-lg md:h-64"
-        href={`/${people_folder}/${data.id}`}
+      <ImageWrapper
+        class="relative h-64 overflow-hidden rounded-lg md:h-48"
+        href={href}
       >
         <Image
           class="size-full object-cover"
           src={image.src}
-          alt={name}
+          alt={image.alt ?? name}
           width={445}
           height={230}
           format="webp"
         />
-      </a>
+      </ImageWrapper>
     )
   }
 
-  <div class="flex flex-col justify-between text-left">
+  <div class="flex flex-col justify-between text-center">
     <div>
       <header class="mb-2">
-        <h2 class="group-hover:text-primary text-xl font-bold">
-          <a href={`/${people_folder}/${data.id}`} class="inline-block">
+        <h2 class="group-hover:text-primary text-md font-bold">
+          <TitleWrapper href={href} class="inline-block">
             <span>{name}</span>
-          </a>
+          </TitleWrapper>
         </h2>
-        <h3 class="mt-1 text-sm font-light">
-          {responsibility}
+        <h3 class="mt-2 border-t pt-2 text-sm font-light">
+          {title}
         </h3>
       </header>
-
-      <div class="border-t pt-2">
-        <p class="mt-2 mb-4 line-clamp-3">{description}</p>
-      </div>
-      <Social socialLinks={social} />
     </div>
-
-    <Button
-      variant="default"
-      href={`/${people_folder}/${data.id}`}
-      className="bg-primary/60 mt-4"
-    >
-      View Profile
-    </Button>
   </div>
 </article>

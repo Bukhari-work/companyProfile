@@ -2,19 +2,49 @@
 import Breadcrumbs from "@/components/ui-astro/Breadcrumbs.astro";
 import { humanize } from "@/lib/utils/textConverter";
 
-const { title = "" }: { title?: string } = Astro.props;
+// Define the component's props with a TypeScript interface for better type safety.
+interface Props {
+  title?: string;
+  headtitle?: string;
+  subtitle?: string;
+  breadcrumbs?: boolean;
+}
+
+const {
+  title = "",
+  headtitle,
+  subtitle,
+  breadcrumbs = true,
+}: Props = Astro.props;
 ---
 
 <section>
   <div class="mx-auto text-center">
     <div class="bg-primary/10 items-center py-8">
-      <div class="flex flex-col items-center justify-center">
+      <div class="flex flex-col items-center justify-center px-4">
+        <!-- Conditionally render the subtitle if it's provided -->
+        {
+          headtitle && (
+            <p class="mt-3 text-lg text-gray-700 lg:text-xl dark:text-gray-300">
+              {headtitle}
+            </p>
+          )
+        }
         <h1
           class="font-lexend text-primary my-4 w-fit scroll-mt-24 text-3xl font-semibold lg:text-6xl"
           set:text={humanize(title)}
         />
+        <!-- Conditionally render the subtitle if it's provided -->
+        {
+          subtitle && (
+            <p class="border-primary max-w-3xl border-b p-2 text-xl text-gray-700 lg:text-3xl dark:text-gray-300">
+              {subtitle}
+            </p>
+          )
+        }
       </div>
-      <Breadcrumbs className="not-prose mt-6" />
+      <!-- Conditionally render the Breadcrumbs component based on the prop -->
+      {breadcrumbs && <Breadcrumbs className="not-prose mt-6" />}
     </div>
   </div>
 </section>
