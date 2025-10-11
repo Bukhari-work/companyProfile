@@ -39,6 +39,12 @@ export const footerData = {
       title: "Contact",
       links: [
         {
+          text: "YouTube",
+          href: "https://youtube.com/@champsfphui?si=uADFIoR8DUT7m-RV",
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+        {
           text: "WhatsApp",
           href: "https://wa.me/6281324096624",
           target: "_blank",
@@ -75,6 +81,11 @@ export const footerData = {
     {
       ariaLabel: "WhatsApp",
       icon: "FaWhatsapp",
+      href: "https://wa.me/6281324096624",
+    },
+    {
+      ariaLabel: "YouTube",
+      icon: "LuYoutube",
       href: "https://wa.me/6281324096624",
     },
   ],
