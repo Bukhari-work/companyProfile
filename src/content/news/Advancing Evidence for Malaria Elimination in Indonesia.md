@@ -15,18 +15,6 @@ images:
     alt: Image of the Event
   - src: '/images/news/Advancing Evidence for Malaria Elimination in Indonesia 6.webp'
     alt: Image of the Event
-  - src: '/images/news/Advancing Evidence for Malaria Elimination in Indonesia 7.webp'
-    alt: Image of the Event
-  - src: '/images/news/Advancing Evidence for Malaria Elimination in Indonesia 8.webp'
-    alt: Image of the Event
-  - src: '/images/news/Advancing Evidence for Malaria Elimination in Indonesia 9.webp'
-    alt: Image of the Event
-  - src: '/images/news/Advancing Evidence for Malaria Elimination in Indonesia 10.webp'
-    alt: Image of the Event
-  - src: '/images/news/Advancing Evidence for Malaria Elimination in Indonesia 11.webp'
-    alt: Image of the Event
-  - src: '/images/news/Advancing Evidence for Malaria Elimination in Indonesia 12.webp'
-    alt: Image of the Event
 date: 2025-06-19T10:00:00Z
 authors:
   - putu-mas-dewi-pratiwi

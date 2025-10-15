@@ -15,6 +15,18 @@ images:
     alt: Image of the Event
   - src: '/images/news/National Health Seminar 2025 6.webp'
     alt: Image of the Event
+  - src: '/images/news/National Health Seminar 2025 7.webp'
+    alt: Image of the Event
+  - src: '/images/news/National Health Seminar 2025 8.webp'
+    alt: Image of the Event
+  - src: '/images/news/National Health Seminar 2025 9.webp'
+    alt: Image of the Event
+  - src: '/images/news/National Health Seminar 2025 10.webp'
+    alt: Image of the Event
+  - src: '/images/news/National Health Seminar 2025 11.webp'
+    alt: Image of the Event
+  - src: '/images/news/National Health Seminar 2025 12.webp'
+    alt: Image of the Event
 date: 2025-06-19T10:00:00Z
 authors:
   - putu-mas-dewi-pratiwi

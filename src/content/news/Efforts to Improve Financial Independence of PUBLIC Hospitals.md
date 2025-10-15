@@ -1,5 +1,5 @@
 ---
-title: "Efforts to Improve Financial Independence of PUBLIC Hospitals: Recommendations for Policy Improvement"
+title: "Efforts to Improve Financial Independence of Public Hospitals: Recommendations for Policy Improvement"
 description: We're thrilled to announce the launch of our latest innovative project, set to revolutionize the industry.
 subtitle: A groundbreaking initiative pushing the boundaries of technology.
 images:
