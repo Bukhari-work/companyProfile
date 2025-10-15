@@ -9,59 +9,60 @@ import QrCode from "@/assets/qr-code.jpg";
 import { Image } from "astro:assets";
 
 // Import speaker images
-import TjandraImage from "@/assets/speaker-1.webp";
-import AgustinImage from "@/assets/speaker-2.webp";
-import RadityaImage from "@/assets/speaker-3.webp";
+import Speaker1Image from "@/assets/speaker-ai-1.webp";
+import Speaker2Image from "@/assets/speaker-ai-2.webp";
+import Speaker3Image from "@/assets/speaker-ai-3.webp";
 
 // Content for SEO and Header
 const content = {
-  title: "Workshop on Global Health Leadership and Diplomacy",
+  title: "Workshop Literasi AI Data Sampel BPJS Kesehatan",
   description:
-    "A foundational workshop on global health diplomacy, negotiation, and leadership organized by CHAMPS FKM UI.",
+    "Workshop ini dirancang untuk memperkenalkan peserta pada konsep dasar literasi AI, teknik pengolahan data sampel BPJS Kesehatan, serta strategi menyusun publikasi ilmiah yang relevan.",
 };
 
 // Speaker data array
 const speakers = [
   {
-    name: "Prof. Tjandra Yoga Aditama",
-    title:
-      "Former Regional Coordinator of Health Security and Emergency Response, WHO SEARO",
+    name: "Prof. Dr. Dra. Dumilah Ayuningtyas, M.A.R.S.",
+    title: "Guru Besar dan Dosen FKM Universitas Indonesia",
     image: {
-      src: TjandraImage,
-      alt: "Prof. dr. Tjandra Yoga Aditama",
+      src: Speaker1Image,
+      alt: "Prof. Dr. Dra. Dumilah Ayuningtyas, M.A.R.S.",
     },
   },
   {
-    name: "Dr. Agustin Kusumayati",
+    name: "dr. R.A.A. Koesoema Wijaya, M.Sc.",
     title:
-      "President of the Asia Pacific Academic Consortium for Public Health (APACPH)",
+      "Dokter Ahli Muda & Kepala Satuan Pengawas Internal Puskesmas Kep. Seribu Utara",
     image: {
-      src: AgustinImage,
-      alt: "Dr. Agustin Kusumayati",
+      src: Speaker2Image,
+      alt: "dr. R.A.A. Koesoema Wijaya, M.Sc.",
     },
   },
   {
-    name: "Dr. Raditya M. Kusumaningprang",
-    title:
-      "Counsellor at the Ministry of Foreign Affairs, Republic of Indonesia",
+    name: "Syarif Rahman Hasibuan, S.K.M., M.K.M.",
+    title: "Dosen FK UPN Veteran Jakarta & Peneliti CHAMPS UI",
     image: {
-      src: RadityaImage,
-      alt: "Raditya M. Kusumaningprang",
+      src: Speaker3Image,
+      alt: "Syarif Rahman Hasibuan, S.K.M., M.K.M.",
     },
   },
 ];
 
 // Data for enhanced sections
 const takeaways = [
-  "Understand the fundamentals of global health diplomacy and negotiation.",
-  "Explore how shifting geopolitical power affects global health governance.",
-  "Strengthen leadership, communication, and consensus-building skills in health contexts.",
+  "Memahami dasar-dasar literasi AI dan etika data kesehatan.",
+  "Mempelajari langkah-langkah mengakses dan mengolah Data Sampel BPJS Kesehatan.",
+  "Mengetahui strategi penyusunan publikasi ilmiah berbasis data sekunder.",
+  "Meningkatkan kemampuan analisis dan interpretasi data untuk riset berkualitas tinggi.",
+  "Membangun jejaring dengan peneliti, akademisi, dan praktisi kesehatan.",
 ];
 
 const audience = [
-  "University students (minimum D3/D4/S1) or early-career professionals in public health, social sciences, international relations, or related fields.",
-  "Individuals interested in diplomacy, leadership, and international cooperation in the health sector.",
-  "Those seeking to strengthen their capacity to engage in multilateral and bilateral health forums.",
+  "Peneliti dan Akademisi yang ingin memperkuat kapasitas riset.",
+  "Mahasiswa D3, D4, S1, S2, dan S3 di bidang kesehatan atau terkait.",
+  "Praktisi Kesehatan yang ingin memanfaatkan data untuk keputusan berbasis bukti.",
+  "Profesional dan Enthusiast Teknologi yang tertarik pada penerapan AI di bidang kesehatan.",
 ];
 ---
 
@@ -70,7 +71,6 @@ const audience = [
     title={content.title}
     breadcrumbs={false}
     headtitle="Center for Health Administration and Policy Studies, Faculty of Public Health, Universitas Indonesia"
-    subtitle="Foundational Level"
   />
 
   <section
@@ -86,25 +86,22 @@ const audience = [
             class="prose dark:prose-invert flex items-center gap-3 text-2xl font-bold"
           >
             <DynamicIcon icon="LuInfo" className="text-primary size-6" />
-            <span>About the Workshop</span>
+            <span>Tentang Workshop</span>
           </h2>
           <div class="prose dark:prose-invert mt-4 max-w-none space-y-4">
             <p>
-              In an era marked by shifting power dynamics in global health
-              governance including the withdrawal of major actors like the
-              United States from key institutions, the ability to navigate
-              international cooperation, lead across sectors, and negotiate
-              shared solutions has never been more critical.
+              Di era digital saat ini, kemampuan memanfaatkan kecerdasan buatan
+              (AI) dan data sekunder secara etis dan efektif menjadi kunci untuk
+              menghasilkan publikasi ilmiah yang berkualitas tinggi.
             </p>
             <p>
-              The <strong>
-                Workshop on Global Health Leadership and Diplomacy (GHLD) –
-                Foundational Level
-              </strong> is designed to introduce participants to the essential principles
-              of diplomacy, negotiation, and leadership in the global health context.
-              This one-day program combines lectures, interactive discussions, and
-              practical exercises, using real-world case studies to explore how global
-              health policies are shaped and how emerging leaders can influence decision-making.
+              Workshop ini dirancang untuk memperkenalkan peserta pada konsep
+              dasar literasi AI, teknik pengolahan data sampel BPJS Kesehatan,
+              serta strategi menyusun publikasi ilmiah yang relevan dengan
+              isu-isu kesehatan nasional. Melalui sesi interaktif dan praktik
+              langsung, peserta akan memahami bagaimana AI dan big data dapat
+              digunakan untuk meningkatkan kualitas penelitian kesehatan
+              masyarakat.
             </p>
           </div>
 
@@ -114,10 +111,10 @@ const audience = [
               class="prose dark:prose-invert flex items-center gap-3 text-xl font-bold"
             >
               <DynamicIcon icon="FaListCheck" className="text-primary size-5" />
-              <span>Participant Takeaways</span>
+              <span>Luaran Peserta</span>
             </h3>
             <p class="prose dark:prose-invert mt-2 max-w-none">
-              Through this workshop, participants will:
+              Setelah mengikuti workshop ini, peserta akan dapat:
             </p>
             <div class="mt-4 grid gap-3 sm:grid-cols-1">
               {
@@ -143,7 +140,7 @@ const audience = [
             class="prose dark:prose-invert flex items-center gap-3 text-2xl font-bold"
           >
             <DynamicIcon icon="LuUsers" className="text-primary size-6" />
-            <span>Who Should Join</span>
+            <span>Siapa Saja yang Dapat Bergabung</span>
           </h2>
           <div class="mt-4 grid gap-4">
             {
@@ -163,16 +160,19 @@ const audience = [
           >
             <DynamicIcon icon="LuLanguages" className="size-6 flex-shrink-0" />
             <p class="m-0 text-sm">
-              The workshop will be conducted in <strong>English</strong>
-              (basic–intermediate proficiency required).
+              Workshop akan dibawakan dalam <strong>Bahasa Indonesia</strong>.
             </p>
           </div>
           <div
             class="border-primary bg-primary/10 mt-4 flex items-center gap-3 rounded-lg border p-4"
           >
-            <DynamicIcon icon="FaUserTie" className="size-6 flex-shrink-0" />
+            <DynamicIcon
+              icon="LuClipboardCheck"
+              className="size-6 flex-shrink-0"
+            />
             <p class="m-0 text-sm">
-              No prior diplomatic experience is required.
+              Peserta diharapkan sudah menginstal aplikasi <strong>SPSS</strong
+              >.
             </p>
           </div>
         </div>
@@ -188,7 +188,7 @@ const audience = [
               icon="LuSquareUserRound"
               className="text-primary size-6"
             />
-            <span>Key Speakers</span>
+            <span>Narasumber</span>
           </h2>
           <div
             class="not-prose mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
@@ -211,18 +211,18 @@ const audience = [
       <div
         class="bg-background dark:shadow-primary/20 top-24 mt-8 w-full rounded-xl border p-6 font-light shadow-xl lg:sticky"
       >
-        <h3 class="mb-4 text-xl font-bold">Workshop Details</h3>
+        <h3 class="mb-4 text-xl font-bold">Detail Workshop</h3>
         <ul class="mb-4 space-y-3">
           <li class="flex items-center gap-3">
             <DynamicIcon
               icon="LuPresentation"
               className="text-primary h-5 w-5"
             />
-            <span>In-person, full-day interactive workshop</span>
+            <span>Workshop luring interaktif (full-day)</span>
           </li>
           <li class="flex items-center gap-3">
             <DynamicIcon icon="LuCalendar" className="text-primary h-5 w-5" />
-            <span>Thursday, 30 October 2025</span>
+            <span>Kamis, 30 Oktober 2025</span>
           </li>
           <li class="flex items-center gap-3">
             <DynamicIcon icon="LuClock" className="text-primary h-5 w-5" />
@@ -230,28 +230,12 @@ const audience = [
           </li>
           <li class="flex items-center gap-3">
             <DynamicIcon icon="LuMapPin" className="text-primary h-5 w-5" />
-            <span>Universitas Diponegoro, Semarang, Indonesia</span>
+            <span>Universitas Diponegoro, Semarang</span>
           </li>
         </ul>
 
-        <h4 class="mt-8 mb-4 text-lg font-semibold">Tuition Fees</h4>
+        <h4 class="mt-8 mb-4 text-lg font-semibold">Biaya Investasi</h4>
         <div class="space-y-3">
-          <div
-            class="bg-background flex items-center justify-between rounded-lg border p-4"
-          >
-            <div>
-              <p
-                class="flex items-center gap-2 font-bold text-gray-800 dark:text-gray-200"
-              >
-                <DynamicIcon icon="LuBird" className="text-primary size-4" />
-                <span>Early Bird</span>
-              </p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                until 12 Oct 2025
-              </p>
-            </div>
-            <p class="text-primary text-lg font-semibold">IDR 2,200,000</p>
-          </div>
           <div
             class="bg-background flex items-center justify-between rounded-lg border p-4"
           >
@@ -262,47 +246,55 @@ const audience = [
                 <DynamicIcon icon="LuTicket" className="size-4" />
                 <span>Regular</span>
               </p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                13-26 Oct 2025
-              </p>
             </div>
-            <p class="text-lg font-semibold">IDR 2,500,000</p>
+            <p class="text-primary text-lg font-semibold">Rp. 500.000,-</p>
           </div>
         </div>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          The tuition fee <strong>includes</strong> workshop materials, certificates,
-          coffee breaks, and lunch.
+          <strong>Termasuk</strong>: materi workshop, sertifikat, coffee break,
+          dan makan siang.
         </p>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          The tuition fee <strong>does not include</strong> accommodation, travel,
-          transportation, or other personal expenses.
+          <strong>Tidak termasuk</strong>: akomodasi, perjalanan, dan
+          transportasi.
         </p>
 
         <div class="mt-6 text-center">
           <Button
-            href="https://bit.ly/GHLD2025-ApplicationForm"
+            href="https://bit.ly/PendaftaranWorkshopPenulisanAI2025"
             target="_blank"
           >
-            Register Here
+            Daftar Sekarang
           </Button>
-          <p class="mt-2 text-sm">Submission Deadline: 26 October 2025</p>
+          <p class="mt-2 text-sm">Batas Akhir Pendaftaran: 26 Oktober 2025</p>
         </div>
         <Image
           src={QrCode}
-          alt="QR Code for GHLD 2025 Application Form"
+          alt="QR Code Pendaftaran Workshop"
           class="mx-auto mt-4 w-48 rounded-lg"
         />
         <div class="mt-6 border-t pt-4 text-center">
-          <p class="text-sm text-gray-600 dark:text-gray-400">For inquiries:</p>
-          <a
-            href="https://wa.me/6281324096624"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-primary mt-1 inline-flex items-center gap-2 transition"
-          >
-            <DynamicIcon icon="FaWhatsapp" className="size-5" />
-            <span class="link">(+62) 813-2409-6624</span>
-          </a>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Narahubung:</p>
+          <div class="mt-2 flex flex-col items-center gap-1">
+            <a
+              href="https://wa.me/6281280426012"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-primary inline-flex items-center gap-2 transition"
+            >
+              <DynamicIcon icon="FaWhatsapp" className="size-5" />
+              <span class="link">Fadlil (+62 812-8042-6012)</span>
+            </a>
+            <a
+              href="https://wa.me/6283819312825"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-primary inline-flex items-center gap-2 transition"
+            >
+              <DynamicIcon icon="FaWhatsapp" className="size-5" />
+              <span class="link">Sheila (+62 838-1931-2825)</span>
+            </a>
+          </div>
         </div>
       </div>
     </aside>

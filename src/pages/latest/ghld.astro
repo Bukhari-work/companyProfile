@@ -1,0 +1,310 @@
+---
+import Main from "@/layouts/Main.astro";
+import PageHeader from "@/components/blocks/PageHeader.astro";
+import DynamicIcon from "@/components/blocks/DynamicIcon.tsx";
+import Button from "@/components/ui-astro/Button.astro";
+import SpeakerCard from "@/components/blocks/SpeakerCard.astro";
+
+import QrCode from "@/assets/qr-code.jpg";
+import { Image } from "astro:assets";
+
+// Import speaker images
+import Speaker1Image from "@/assets/speaker-ghld-1.webp";
+import Speaker2Image from "@/assets/speaker-ghld-2.webp";
+import Speaker3Image from "@/assets/speaker-ghld-3.webp";
+
+// Content for SEO and Header
+const content = {
+  title: "Workshop on Global Health Leadership and Diplomacy",
+  description:
+    "A foundational workshop on global health diplomacy, negotiation, and leadership organized by CHAMPS FKM UI.",
+};
+
+// Speaker data array
+const speakers = [
+  {
+    name: "Prof. Tjandra Yoga Aditama",
+    title:
+      "Former Regional Coordinator of Health Security and Emergency Response, WHO SEARO",
+    image: {
+      src: Speaker1Image,
+      alt: "Prof. dr. Tjandra Yoga Aditama",
+    },
+  },
+  {
+    name: "Dr. Agustin Kusumayati",
+    title:
+      "President of the Asia Pacific Academic Consortium for Public Health (APACPH)",
+    image: {
+      src: Speaker2Image,
+      alt: "Dr. Agustin Kusumayati",
+    },
+  },
+  {
+    name: "Dr. Raditya M. Kusumaningprang",
+    title:
+      "Counsellor at the Ministry of Foreign Affairs, Republic of Indonesia",
+    image: {
+      src: Speaker3Image,
+      alt: "Raditya M. Kusumaningprang",
+    },
+  },
+];
+
+// Data for enhanced sections
+const takeaways = [
+  "Understand the fundamentals of global health diplomacy and negotiation.",
+  "Explore how shifting geopolitical power affects global health governance.",
+  "Strengthen leadership, communication, and consensus-building skills in health contexts.",
+];
+
+const audience = [
+  "University students (minimum D3/D4/S1) or early-career professionals in public health, social sciences, international relations, or related fields.",
+  "Individuals interested in diplomacy, leadership, and international cooperation in the health sector.",
+  "Those seeking to strengthen their capacity to engage in multilateral and bilateral health forums.",
+];
+---
+
+<Main {content} makara>
+  <PageHeader
+    title={content.title}
+    breadcrumbs={false}
+    headtitle="Center for Health Administration and Policy Studies, Faculty of Public Health, Universitas Indonesia"
+    subtitle="Foundational Level"
+  />
+
+  <section
+    class="relative mx-auto max-w-7xl gap-8 p-4 pb-24 lg:grid lg:grid-cols-3"
+  >
+    <div class="lg:col-span-2">
+      <article class="mt-8 space-y-12">
+        <div
+          class="not-prose bg-background dark:shadow-primary/20 rounded-2xl border p-8 shadow-lg"
+        >
+          <h2
+            id="about"
+            class="prose dark:prose-invert flex items-center gap-3 text-2xl font-bold"
+          >
+            <DynamicIcon icon="LuInfo" className="text-primary size-6" />
+            <span>About the Workshop</span>
+          </h2>
+          <div class="prose dark:prose-invert mt-4 max-w-none space-y-4">
+            <p>
+              In an era marked by shifting power dynamics in global health
+              governance including the withdrawal of major actors like the
+              United States from key institutions, the ability to navigate
+              international cooperation, lead across sectors, and negotiate
+              shared solutions has never been more critical.
+            </p>
+            <p>
+              The <strong>
+                Workshop on Global Health Leadership and Diplomacy (GHLD) –
+                Foundational Level
+              </strong> is designed to introduce participants to the essential principles
+              of diplomacy, negotiation, and leadership in the global health context.
+              This one-day program combines lectures, interactive discussions, and
+              practical exercises, using real-world case studies to explore how global
+              health policies are shaped and how emerging leaders can influence decision-making.
+            </p>
+          </div>
+
+          <div class="border-primary bg-primary/10 mt-8 rounded-xl border p-6">
+            <h3
+              id="objectives"
+              class="prose dark:prose-invert flex items-center gap-3 text-xl font-bold"
+            >
+              <DynamicIcon icon="FaListCheck" className="text-primary size-5" />
+              <span>Participant Takeaways</span>
+            </h3>
+            <p class="prose dark:prose-invert mt-2 max-w-none">
+              Through this workshop, participants will:
+            </p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-1">
+              {
+                takeaways.map((item) => (
+                  <div class="flex items-start gap-3">
+                    <DynamicIcon
+                      icon="FaRegCircleCheck"
+                      className="text-primary mt-1.5 size-4 flex-shrink-0"
+                    />
+                    <p class="m-0 text-base">{item}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="not-prose bg-background dark:shadow-primary/20 rounded-2xl border p-8 shadow-lg"
+        >
+          <h2
+            id="audience"
+            class="prose dark:prose-invert flex items-center gap-3 text-2xl font-bold"
+          >
+            <DynamicIcon icon="LuUsers" className="text-primary size-6" />
+            <span>Who Should Join</span>
+          </h2>
+          <div class="mt-4 grid gap-4">
+            {
+              audience.map((item) => (
+                <div class="flex items-start gap-4">
+                  <DynamicIcon
+                    icon="LuUserCheck"
+                    className="text-primary mt-1 size-5 flex-shrink-0"
+                  />
+                  <p class="m-0">{item}</p>
+                </div>
+              ))
+            }
+          </div>
+          <div
+            class="border-primary bg-primary/10 mt-6 flex items-center gap-3 rounded-lg border p-4"
+          >
+            <DynamicIcon icon="LuLanguages" className="size-6 flex-shrink-0" />
+            <p class="m-0 text-sm">
+              The workshop will be conducted in <strong>English</strong>
+              (basic–intermediate proficiency required).
+            </p>
+          </div>
+          <div
+            class="border-primary bg-primary/10 mt-4 flex items-center gap-3 rounded-lg border p-4"
+          >
+            <DynamicIcon icon="FaUserTie" className="size-6 flex-shrink-0" />
+            <p class="m-0 text-sm">
+              No prior diplomatic experience is required.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="bg-background dark:shadow-primary/20 rounded-2xl border p-8 shadow-lg"
+        >
+          <h2
+            id="speakers"
+            class="prose dark:prose-invert flex items-center gap-3 text-2xl font-bold"
+          >
+            <DynamicIcon
+              icon="LuSquareUserRound"
+              className="text-primary size-6"
+            />
+            <span>Key Speakers</span>
+          </h2>
+          <div
+            class="not-prose mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {
+              speakers.map((speaker) => (
+                <SpeakerCard
+                  name={speaker.name}
+                  title={speaker.title}
+                  image={speaker.image}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <aside class="lg:col-span-1">
+      <div
+        class="bg-background dark:shadow-primary/20 top-24 mt-8 w-full rounded-xl border p-6 font-light shadow-xl lg:sticky"
+      >
+        <h3 class="mb-4 text-xl font-bold">Workshop Details</h3>
+        <ul class="mb-4 space-y-3">
+          <li class="flex items-center gap-3">
+            <DynamicIcon
+              icon="LuPresentation"
+              className="text-primary h-5 w-5"
+            />
+            <span>In-person, full-day interactive workshop</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <DynamicIcon icon="LuCalendar" className="text-primary h-5 w-5" />
+            <span>Thursday, 30 October 2025</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <DynamicIcon icon="LuClock" className="text-primary h-5 w-5" />
+            <span>08.00 – 16.40 WIB</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <DynamicIcon icon="LuMapPin" className="text-primary h-5 w-5" />
+            <span>Universitas Diponegoro, Semarang, Indonesia</span>
+          </li>
+        </ul>
+
+        <h4 class="mt-8 mb-4 text-lg font-semibold">Tuition Fees</h4>
+        <div class="space-y-3">
+          <div
+            class="bg-background flex items-center justify-between rounded-lg border p-4"
+          >
+            <div>
+              <p
+                class="flex items-center gap-2 font-bold text-gray-800 dark:text-gray-200"
+              >
+                <DynamicIcon icon="LuBird" className="text-primary size-4" />
+                <span>Early Bird</span>
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                until 12 Oct 2025
+              </p>
+            </div>
+            <p class="text-primary text-lg font-semibold">IDR 2,200,000</p>
+          </div>
+          <div
+            class="bg-background flex items-center justify-between rounded-lg border p-4"
+          >
+            <div>
+              <p
+                class="flex items-center gap-2 font-bold text-gray-800 dark:text-gray-200"
+              >
+                <DynamicIcon icon="LuTicket" className="size-4" />
+                <span>Regular</span>
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                13-26 Oct 2025
+              </p>
+            </div>
+            <p class="text-lg font-semibold">IDR 2,500,000</p>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The tuition fee <strong>includes</strong> workshop materials, certificates,
+          coffee breaks, and lunch.
+        </p>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The tuition fee <strong>does not include</strong> accommodation, travel,
+          transportation, or other personal expenses.
+        </p>
+
+        <div class="mt-6 text-center">
+          <Button
+            href="https://bit.ly/GHLD2025-ApplicationForm"
+            target="_blank"
+          >
+            Register Here
+          </Button>
+          <p class="mt-2 text-sm">Submission Deadline: 26 October 2025</p>
+        </div>
+        <Image
+          src={QrCode}
+          alt="QR Code for GHLD 2025 Application Form"
+          class="mx-auto mt-4 w-48 rounded-lg"
+        />
+        <div class="mt-6 border-t pt-4 text-center">
+          <p class="text-sm text-gray-600 dark:text-gray-400">For inquiries:</p>
+          <a
+            href="https://wa.me/6281324096624"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-primary mt-1 inline-flex items-center gap-2 transition"
+          >
+            <DynamicIcon icon="FaWhatsapp" className="size-5" />
+            <span class="link">(+62) 813-2409-6624</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </section>
+</Main>
