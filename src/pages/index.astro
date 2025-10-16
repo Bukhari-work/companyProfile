@@ -21,8 +21,15 @@ import Quote from "@/components/ui-astro/Quote.astro";
 const NEWS_FOLDER = "news";
 const posts = await getSinglePage(NEWS_FOLDER);
 
-const sortedPosts = sortByDate(posts);
-const currentPosts = sortedPosts.slice(0, 3);
+// const sortedPosts = sortByDate(posts);
+// const currentPosts = sortedPosts.slice(0, 3);
+
+const desiredIDs = [
+  "advancing-evidence-for-malaria-elimination-in-indonesia",
+  "national-health-seminar-2025",
+  "pendampingan-tata-kelola-program-kesehatan-roren",
+];
+const currentPosts = posts.filter((post) => desiredIDs.includes(post.id));
 
 const content = { title: "Home" };
 ---
